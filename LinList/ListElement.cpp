@@ -19,3 +19,12 @@ ListElement::~ListElement() {
 	// TODO Auto-generated destructor stub
 }
 
+ostream& operator<<(ostream& o, const ListElement& ListElement){
+	o << ListElement.inhalt;
+	return o;
+}
+istream& operator>> (istream& i, ListElement& listElement){
+	i >> listElement.inhalt;
+	return i;
+}
+
