@@ -1,0 +1,7 @@
+*.opensdf
+*.filters
+*.vcxproj
+UEB07/Debug/
+*.sdf
+*.sln
+*.o
