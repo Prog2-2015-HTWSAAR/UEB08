@@ -9,6 +9,7 @@
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
 const char* ListenDialog::SEPERATOR_LISTE = "-------------LISTE-------------";
+const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LAGER----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
 const char* ListenDialog::SEPERATOR_MANUELL = "-----------MAUNUELL------------";
 const char* ListenDialog::SEPERATOR_INSERT = "------------INSERT-------------";
@@ -26,16 +27,20 @@ const char* ListenDialog::MAINDIALOG_OPTION_ZERO = "(0) EXIT";
 const char* ListenDialog::MAINDIALOG_OPTION_ONE = "(1) Automatischer Test";
 const char* ListenDialog::MAINDIALOG_OPTION_TWO = "(2) Manueller Test";
 //Manuell Dialog
+const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_NAME = "NAME: ";
+const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_POSITION = "Position";
 const char* ListenDialog::MANUELLDIALOG_OPTION_ZERO = "(0) BACK";
-const char* ListenDialog::MANUELLDIALOG_OPTION_ONE = "(1) push back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_TWO = "(2) push front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_THREE = "(3) pop back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FOUR = "(4) pop front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FIVE = "(5) insert before position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_SIX = "(6) erase position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_SEVEN = "(0) CLEAR";
+const char* ListenDialog::MANUELLDIALOG_OPTION_ONE = "(1) Push back";
+const char* ListenDialog::MANUELLDIALOG_OPTION_TWO = "(2) Push front";
+const char* ListenDialog::MANUELLDIALOG_OPTION_THREE = "(3) Pop back";
+const char* ListenDialog::MANUELLDIALOG_OPTION_FOUR = "(4) Pop front";
+const char* ListenDialog::MANUELLDIALOG_OPTION_FIVE = "(5) Insert before position";
+const char* ListenDialog::MANUELLDIALOG_OPTION_SIX = "(6) Erase position";
+const char* ListenDialog::MANUELLDIALOG_OPTION_SEVEN = "(7) CLEAR";
 const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich Loeschen (j)=Ja: ";
 const char* ListenDialog::CLEAR_CONFIRMATION = "LISTE wirklich Leeren (j)=Ja: ";
+const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
+const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 //AUTO_TEST
 const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)-";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK-";
@@ -178,6 +183,9 @@ void ListenDialog::automaticTest(){
 void ListenDialog::manuellDialog(){
 	LinList* liste = NULL;
 	liste = new LinList();
+	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
+	string name;
+	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
@@ -191,21 +199,68 @@ void ListenDialog::manuellDialog(){
 			switch (answer)
 			{
 			case BACK:
-
+				cout << SEPERATOR_DELETE_LISTE << endl << CLEAR_CONFIRMATION;
+				cin >> wirklichLoeschen;
+				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				}
+				cout << endl;
 				break;
 			case PUSH_BACK:
+				cout << SEPERATOR_PUSH << endl;
+				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
+				cin >> name;
+				clearInput();
+				liste->push_back(name);
 				break;
 			case PUSH_FRONT:
+				cout << SEPERATOR_PUSH << endl;
+				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
+				cin >> name;
+				clearInput();
+				liste->push_front(name);
 				break;
 			case POP_BACK:
+				liste->pop_back();
 				break;
 			case POP_FRONT:
+				liste->pop_front();
 				break;
 			case INSERT_ELEMENT:
+				cout << SEPERATOR_PUSH << endl;
+				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
+				cin >> name;
+				clearInput();
+				cout << MANUELLDIALOG_ELEMENT_NEU_POSITION;
+				cin >> position;
+				clearInput();
+				liste->insert(position, name);
 				break;
 			case ERASE_ELEMENT:
+				cout << MANUELLDIALOG_ELEMENT_NEU_POSITION;
+				cin >> position;
+				clearInput();
+				cout << SEPERATOR_ERASE << endl << CLEAR_CONFIRMATION;
+				cin >> wirklichLoeschen;
+				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				} else {
+					liste->erase(position);
+				}
+				cout << endl;
 				break;
 			case CLEAR:
+				cout << SEPERATOR_DELETE_LISTE << endl << CLEAR_CONFIRMATION;
+				cin >> wirklichLoeschen;
+				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				} else {
+					liste->clear();
+				}
+				cout << endl;
 				break;
 			default:
 				cout << INPUTERRORPHRASE << endl;
@@ -216,6 +271,7 @@ void ListenDialog::manuellDialog(){
 
 		}
 	} while (answer != BACK);
+	delete liste;
 }
 
 void ListenDialog::clearInput(){

@@ -10,7 +10,7 @@
 #define LINLIST_LISTENDIALOG_H_
 //TODO Implement me Senpai
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
-enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR };
+enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
 						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_CLEAR, POP_EMPTY };
 
@@ -20,6 +20,7 @@ public:
 	//Seperators
 	static const char* SEPERATOR;
 	static const char* SEPERATOR_LISTE;
+	static const char* SEPERATOR_DELETE_LISTE;
 	static const char* SEPERATOR_AUTOMATIC_TEST;
 	static const char* SEPERATOR_MANUELL;
 	static const char* SEPERATOR_INSERT;
@@ -37,6 +38,8 @@ public:
 	static const char* MAINDIALOG_OPTION_ONE;
 	static const char* MAINDIALOG_OPTION_TWO;
 	//Manuell Dialog
+	static const char* MANUELLDIALOG_ELEMENT_NEU_NAME;
+	static const char* MANUELLDIALOG_ELEMENT_NEU_POSITION;
 	static const char* MANUELLDIALOG_OPTION_ZERO;
 	static const char* MANUELLDIALOG_OPTION_ONE;
 	static const char* MANUELLDIALOG_OPTION_TWO;
@@ -47,6 +50,8 @@ public:
 	static const char* MANUELLDIALOG_OPTION_SEVEN;
 	static const char* ELEMENT_DELETE_CONFIRMATION;
 	static const char* CLEAR_CONFIRMATION;
+	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
+	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
 	//AUTO_TEST
 	static const char* AUTOMATIC_TEST_INIT;
 	static const char* AUTOMATIC_TEST_PUSH_BACK;
