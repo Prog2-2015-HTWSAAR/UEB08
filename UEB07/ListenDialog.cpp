@@ -37,10 +37,11 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_SEVEN = "(0) CLEAR";
 const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich Loeschen (j)=Ja: ";
 const char* ListenDialog::CLEAR_CONFIRMATION = "LISTE wirklich Leeren (j)=Ja: ";
 //AUTO_TEST
+const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)-";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK-";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_FRONT = "-PUSH FRONT-";
-const char* ListenDialog::AUTOMATIC_TEST_POP_BACK = "-PUSH BACK-";
-const char* ListenDialog::AUTOMATIC_TEST_POP_FRONT = "-PUSH FRONT-";
+const char* ListenDialog::AUTOMATIC_TEST_POP_BACK = "-POP BACK-";
+const char* ListenDialog::AUTOMATIC_TEST_POP_FRONT = "-POP FRONT-";
 const char* ListenDialog::AUTOMATIC_TEST_INSERT = "-INSERT-";
 const char* ListenDialog::AUTOMATIC_TEST_INSERT_HIGH = "-INSERT HIGH-";
 const char* ListenDialog::AUTOMATIC_TEST_INSERT_ZERO = "-INSERT ZERO-";
@@ -48,6 +49,11 @@ const char* ListenDialog::AUTOMATIC_TEST_ERASE = "-ERASE-";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE_ZERO = "-ERASE ZERO-";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE_NON_EXISTENCE = "-ERASE NON EXISTENT ELEMENT-";
 const char* ListenDialog::AUTOMATIC_TEST_CLEAR = "-CLEAR-";
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INIT = "INIT";
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_BACK = "BACK";
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_FRONT = "FRONT";
+
+
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
@@ -88,24 +94,33 @@ void ListenDialog::mainDialog(){
 }
 
 void ListenDialog::automaticTest(){
+	LinList* liste = NULL;
+	liste = new LinList();
 	int runCounter = ZERO_VALUE;
 	cout << SEPERATOR << endl << SEPERATOR_AUTOMATIC_TEST << endl << SEPERATOR << endl << endl;
 	do{
 		try{
+			cout << *liste << endl;
 			switch (runCounter) {
 			case AUTO_INIT:
+				cout << AUTOMATIC_TEST_INIT << endl;
+				liste->push_back(AUTOMATIC_TEST_ELEMENT_INIT);
 				break;
 			case AUTO_PUSH_BACK:
 				cout << AUTOMATIC_TEST_PUSH_BACK << endl;
+				liste->push_back(AUTOMATIC_TEST_ELEMENT_BACK);
 				break;
 			case AUTO_PUSH_FRONT:
 				cout << AUTOMATIC_TEST_PUSH_FRONT << endl;
+				liste->push_front(AUTOMATIC_TEST_ELEMENT_FRONT);
 				break;
 			case AUTO_POP_BACK:
 				cout << AUTOMATIC_TEST_POP_BACK << endl;
+				liste->pop_back();
 				break;
 			case AUTO_POP_FRONT:
 				cout << AUTOMATIC_TEST_POP_FRONT << endl;
+				liste->pop_front();
 				break;
 			case AUTO_INSERT:
 				cout << AUTOMATIC_TEST_INSERT << endl;
@@ -130,6 +145,9 @@ void ListenDialog::automaticTest(){
 				break;
 			}
 		}
+		catch (const char* e) {
+			cout << ERRORPHRASE << e << endl;
+		}
 		catch (ElementException& e){
 
 		}
@@ -138,10 +156,13 @@ void ListenDialog::automaticTest(){
 }
 
 void ListenDialog::manuellDialog(){
+	LinList* liste = NULL;
+	liste = new LinList();
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
-			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl << endl;
+			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
+			cout << *liste << endl << endl;
 			cout << MANUELLDIALOG_OPTION_ONE << endl << MANUELLDIALOG_OPTION_TWO << endl << MANUELLDIALOG_OPTION_THREE
 				<< endl << MANUELLDIALOG_OPTION_FOUR << endl << MANUELLDIALOG_OPTION_FIVE << endl << MANUELLDIALOG_OPTION_SIX
 				<< endl << MANUELLDIALOG_OPTION_SEVEN << endl << MANUELLDIALOG_OPTION_ZERO << endl << STANDARDCHOICEPHRASE;

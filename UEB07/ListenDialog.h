@@ -48,6 +48,7 @@ public:
 	static const char* ELEMENT_DELETE_CONFIRMATION;
 	static const char* CLEAR_CONFIRMATION;
 	//AUTO_TEST
+	static const char* AUTOMATIC_TEST_INIT;
 	static const char* AUTOMATIC_TEST_PUSH_BACK;
 	static const char* AUTOMATIC_TEST_PUSH_FRONT;
 	static const char* AUTOMATIC_TEST_POP_BACK;
@@ -60,6 +61,9 @@ public:
 	static const char* AUTOMATIC_TEST_ERASE_NON_EXISTENCE;
 	static const char* AUTOMATIC_TEST_CLEAR;
 
+	static const char* AUTOMATIC_TEST_ELEMENT_INIT;
+	static const char* AUTOMATIC_TEST_ELEMENT_BACK;
+	static const char* AUTOMATIC_TEST_ELEMENT_FRONT;
 	//const Int
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
