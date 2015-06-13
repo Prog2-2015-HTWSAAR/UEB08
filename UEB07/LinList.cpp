@@ -7,6 +7,7 @@
 
 #include "LinList.h"
 #include <sstream>
+#include <iostream>
 const char* LinList::meldungListeLeer = "Liste ist leer!";
 const char* LinList::meldungFalschePos = "Ungueltige Position!";
 LinList::LinList() {
@@ -66,6 +67,9 @@ void LinList::pop_back() {
 	delete last;
 	size--;
 	last = tmp;
+	if (last){
+		last->next = NULL;
+	}
 }
 
 void LinList::pop_front() {
@@ -76,6 +80,9 @@ void LinList::pop_front() {
 	delete first;
 	size--;
 	first = tmp;
+	if(first){
+		first->previous = NULL;
+	}
 }
 
 void LinList::insert(int pos, InhaltTyp t){

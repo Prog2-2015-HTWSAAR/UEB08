@@ -145,11 +145,11 @@ void ListenDialog::automaticTest(){
 				break;
 			}
 		}
-		catch (const char* e) {
-			cout << ERRORPHRASE << e << endl;
+		catch (LinListException& e) {
+			cout << ERRORPHRASE << e.what() << endl;
 		}
 		catch (ElementException& e){
-
+			cout << ERRORPHRASE << e.what() << endl;
 		}
 		runCounter++;
 	} while (runCounter < TEST_QUANTITY);
