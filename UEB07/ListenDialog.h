@@ -6,6 +6,8 @@
  */
 #include "LinList.h"
 #include <iostream>
+#include <sstream>      
+
 #ifndef LINLIST_LISTENDIALOG_H_
 #define LINLIST_LISTENDIALOG_H_
 //TODO Implement me Senpai

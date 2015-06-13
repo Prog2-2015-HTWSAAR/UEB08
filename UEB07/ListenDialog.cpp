@@ -109,6 +109,7 @@ void ListenDialog::mainDialog(){
 }
 
 void ListenDialog::automaticTest(){
+	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM);
 	LinList* liste = NULL;
 	liste = new LinList();
 	int runCounter = ZERO_VALUE;
@@ -162,8 +163,8 @@ void ListenDialog::automaticTest(){
 				liste->erase(HIGH_VALUE);
 				break;
 			case AUTO_INPUT_STREAM:
-				cout << AUTOMATIC_TEST_EINGABE_STREAM << endl;		
-			//	AUTOMATIC_TEST_EINGABE_STREAM >> liste;
+				cout << AUTOMATIC_TEST_EINGABE_STREAM << endl;	
+				is >> *liste;
 				break;
 			case AUTO_CLEAR:
 				cout << AUTOMATIC_TEST_CLEAR << endl;
@@ -183,6 +184,7 @@ void ListenDialog::automaticTest(){
 		}
 		runCounter++;
 	} while (runCounter < TEST_QUANTITY);
+
 }
 
 void ListenDialog::manuellDialog(){
