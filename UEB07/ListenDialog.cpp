@@ -162,7 +162,7 @@ void ListenDialog::automaticTest(){
 				break;
 			case AUTO_CLEAR:
 				cout << AUTOMATIC_TEST_CLEAR << endl;
-	//			liste->clear();
+				liste->clear();
 				break;
 			case POP_EMPTY:
 				cout << AUTOMATIC_TEST_POP_EMPTY_LIST << endl;
