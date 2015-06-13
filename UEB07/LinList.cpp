@@ -73,8 +73,11 @@ void LinList::pop_back() {
 	delete last;
 	size--;
 	last = tmp;
-	if (last){
+	if (last != NULL){
 		last->next = NULL;
+	}
+	if(isEmpty()){
+		first = NULL;
 	}
 }
 
@@ -88,6 +91,9 @@ void LinList::pop_front() {
 	first = tmp;
 	if(first){
 		first->previous = NULL;
+	}
+	if(isEmpty()){
+		last = NULL;
 	}
 }
 
@@ -167,6 +173,7 @@ string LinList::toString() const {
 	ostringstream o;
 	o << CHAINED_LIST << size << ELEMENTS;
 	ListElement* tmp = first;
+
 	while (tmp){
 		o << *tmp << ADD_SPACE;
 		tmp = tmp->next;
