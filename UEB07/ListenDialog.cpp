@@ -47,18 +47,23 @@ const char* ListenDialog::AUTOMATIC_TEST_INSERT_HIGH = "-INSERT HIGH-";
 const char* ListenDialog::AUTOMATIC_TEST_INSERT_ZERO = "-INSERT ZERO-";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE = "-ERASE-";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE_ZERO = "-ERASE ZERO-";
+const char* ListenDialog::AUTOMATIC_TEST_INPUT_STREAM = "-READ INPUT STREAM-";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE_NON_EXISTENCE = "-ERASE NON EXISTENT ELEMENT-";
 const char* ListenDialog::AUTOMATIC_TEST_CLEAR = "-CLEAR-";
+const char* ListenDialog::AUTOMATIC_TEST_POP_EMPTY_LIST= "-POP EMPTY LIST-";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INIT = "INIT";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_BACK = "BACK";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_FRONT = "FRONT";
-
-
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT = "IMHERE";
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_HIGH = "HIGH";
+const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_LOW = "LOW";
+const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "A B C D NIL";
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
+const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::HIGH_VALUE = 1000;
-const int ListenDialog::TEST_QUANTITY = 12;
+const int ListenDialog::TEST_QUANTITY = 14;
 
 //TODO Implement me Senpai
 ListenDialog::ListenDialog() {
@@ -124,24 +129,39 @@ void ListenDialog::automaticTest(){
 				break;
 			case AUTO_INSERT:
 				cout << AUTOMATIC_TEST_INSERT << endl;
+				liste->insert(INPUT_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT);
 				break;
 			case AUTO_INSERT_HIGH_VALUE:
 				cout << AUTOMATIC_TEST_INSERT_HIGH << endl;
+				liste->insert(HIGH_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_HIGH);
 				break;
 			case AUTO_INSERT_LOW_VALUE:
 				cout << AUTOMATIC_TEST_INSERT_ZERO << endl;
+				liste->insert(ZERO_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_LOW);
 				break;
 			case AUTO_ERASE:
 				cout << AUTOMATIC_TEST_ERASE << endl;
+				liste->erase(INPUT_VALUE);
 				break;
 			case AUTO_ERASE_ZERO:
 				cout << AUTOMATIC_TEST_ERASE_ZERO << endl;
+				liste->erase(ZERO_VALUE);
 				break;
 			case AUTO_ERASE_NON_EXISTENT_ELEMENT:
 				cout << AUTOMATIC_TEST_ERASE_NON_EXISTENCE << endl;
+				liste->erase(HIGH_VALUE);
+				break;
+			case AUTO_INPUT_STREAM:
+				cout << AUTOMATIC_TEST_EINGABE_STREAM << endl;
+			//	AUTOMATIC_TEST_EINGABE_STREAM >> liste;
 				break;
 			case AUTO_CLEAR:
 				cout << AUTOMATIC_TEST_CLEAR << endl;
+	//			liste->clear();
+				break;
+			case POP_EMPTY:
+				cout << AUTOMATIC_TEST_POP_EMPTY_LIST << endl;
+				liste->pop_back();
 				break;
 			}
 		}
@@ -171,6 +191,7 @@ void ListenDialog::manuellDialog(){
 			switch (answer)
 			{
 			case BACK:
+
 				break;
 			case PUSH_BACK:
 				break;

@@ -41,8 +41,12 @@ public:
 	string toString() const;
 	friend ostream& operator<< (ostream& o, const LinList& linList);
 	friend istream& operator>> (istream& i, LinList& linList);
-	static const char* meldungListeLeer;
-	static const char* meldungFalschePos;
+	static const char* MELDUNG_LISTE_LEER;
+	static const char* MELDUNG_FALSCHE_POS;
+	static const char* ADD_SPACE;
+	static const char* CHAINED_LIST;
+	static const char* ELEMENTS;
+
 private:
 	void copyElements(const LinList& linlist);
 	size_t size;

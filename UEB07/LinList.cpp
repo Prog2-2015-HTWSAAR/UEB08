@@ -8,8 +8,14 @@
 #include "LinList.h"
 #include <sstream>
 #include <iostream>
-const char* LinList::meldungListeLeer = "Liste ist leer!";
-const char* LinList::meldungFalschePos = "Ungueltige Position!";
+const char* LinList::MELDUNG_LISTE_LEER = "Liste ist leer!";
+const char* LinList::MELDUNG_FALSCHE_POS  = "Ungueltige Position!";
+const char* LinList::ADD_SPACE = " ";
+const char* LinList::CHAINED_LIST = "Verkettete Liste: ";
+const char* LinList::ELEMENTS = " Elemente\n";
+const char* NIL_PHRASE = "NIL";
+const char* EMPTY_CHAR_ARRAY = "";
+
 LinList::LinList() {
 	this->first = 0;
 	this->last = 0;
@@ -61,7 +67,7 @@ void LinList::push_front(InhaltTyp t) {
 
 void LinList::pop_back() {
 	if(isEmpty()){
-		throw LinListException(meldungListeLeer);
+		throw LinListException(MELDUNG_LISTE_LEER);
 	}
 	ListElement* tmp = last->previous;
 	delete last;
@@ -74,7 +80,7 @@ void LinList::pop_back() {
 
 void LinList::pop_front() {
 	if(isEmpty()){
-		throw LinListException(meldungListeLeer);
+		throw LinListException(MELDUNG_LISTE_LEER);
 	}
 	ListElement* tmp = first->next;
 	delete first;
@@ -92,7 +98,7 @@ void LinList::insert(int pos, InhaltTyp t){
 	ListElement* tmp3 = NULL;
 	//TODO Trotzdem Anfang/Ende anhaengen?
 	if(pos < 1 || pos > size){
-		throw LinListException(meldungFalschePos);
+		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 
 	//Anfang
@@ -122,7 +128,7 @@ void LinList::erase(int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
 	if(pos < 1 || pos > size){
-		throw LinListException(meldungFalschePos);
+		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 	//Anfang
 	if(pos == 1){
@@ -159,10 +165,10 @@ bool LinList::isEmpty(){
 
 string LinList::toString() const {
 	ostringstream o;
-	o << "Verkettete Liste: " << size << " Elemente\n";
+	o << CHAINED_LIST << size << ELEMENTS;
 	ListElement* tmp = first;
 	while (tmp){
-		o << *tmp << " ";
+		o << *tmp << ADD_SPACE;
 		tmp = tmp->next;
 	}
 	o << endl;
@@ -175,8 +181,8 @@ ostream& operator<<(ostream& o, const LinList& linList){
 
 istream& operator>> (istream& i, LinList& linList){
 	//ListElement tmp = new ListElement("tmp");
-	InhaltTyp t = "";
-	while (i >> t && t != "NIL"){
+	InhaltTyp t = EMPTY_CHAR_ARRAY;
+	while (i >> t && t != NIL_PHRASE){
 		linList.push_back(t);
 	}
 	return i;
