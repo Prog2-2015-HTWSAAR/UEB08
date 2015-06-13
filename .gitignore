@@ -2,6 +2,9 @@
 *.filters
 *.vcxproj
 UEB07/Debug/
+UEB07/Release/
 *.sdf
 *.sln
 *.o
+*.TMP
+*.tlog
