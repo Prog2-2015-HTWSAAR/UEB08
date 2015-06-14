@@ -10,7 +10,7 @@
 //Konstanten 
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
-const char* ListenDialog::SEPERATOR_LISTE = "-------------LISTE-------------";
+const char* ListenDialog::SEPERATOR_LISTE = "-------------linListe-------------";
 const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LAGER----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
 const char* ListenDialog::SEPERATOR_MANUELL = "-----------MAUNUELL------------";
@@ -19,6 +19,8 @@ const char* ListenDialog::SEPERATOR_ERASE = "------------ERASE--------------";
 const char* ListenDialog::SEPERATOR_CLEAR = "------------CLEAR--------------";
 const char* ListenDialog::SEPERATOR_PUSH = "-------------PUSH--------------";
 const char* ListenDialog::SEPERATOR_POP = "-------------POP---------------";
+const char* ListenDialog::SPACER = " ";
+
 //ErrorphrassesMANUELLDIALOG_OPTION_ERASE
 const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* ListenDialog::ERRORPHRASE = "Fehler: ";
@@ -40,14 +42,15 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_INSERT = "(5) Insert before posit
 const char* ListenDialog::MANUELLDIALOG_OPTION_ERASE = "(6) Erase position";
 const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
 const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) STREAM";
+const char* ListenDialog::MANUELLDIALOG_OPTION_COPY = "(9) COPY LinList& Print Both";
 const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
 const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich Loeschen (j)=Ja: ";
-const char* ListenDialog::CLEAR_CONFIRMATION = "LISTE wirklich Leeren (j)=Ja: ";
+const char* ListenDialog::CLEAR_CONFIRMATION = "linListe wirklich Leeren (j)=Ja: ";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 //AUTO_TEST
-const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "-";
+const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "- ";
 const char* ListenDialog::AUTOMATIC_TEST_POSITION = " POSITION: ";
 const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK VALUE: ";
@@ -74,6 +77,9 @@ const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
+//VON BEIDEN VERWENDET
+const char* ListenDialog::COPY_RESULT = "ERSTER WERT linListe ZWEITER WERT linListeCopy";
+
 //TODO Implement me Senpai
 
 /**
@@ -117,69 +123,76 @@ void ListenDialog::mainDialog(){
 */
 void ListenDialog::automaticTest(){
 	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM_VALUE);
-	LinList* liste = NULL;
-	liste = new LinList();
+	LinList* linListe = NULL;
+	LinList* linListeCopy = NULL;
+	linListe = new LinList();
+	linListeCopy = new LinList();
 	int runCounter = ZERO_VALUE;
 	cout << SEPERATOR << endl << SEPERATOR_AUTOMATIC_TEST << endl << SEPERATOR << endl << endl;
 	do{
 		try{
-			cout << *liste << endl;
+			cout << *linListe << endl;
 			switch (runCounter) {
 			case AUTO_INIT:
 				cout << AUTOMATIC_TEST_INIT << AUTOMATIC_TEST_ELEMENT_INIT << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->push_back(AUTOMATIC_TEST_ELEMENT_INIT);
+				linListe->push_back(AUTOMATIC_TEST_ELEMENT_INIT);
 				break;
 			case AUTO_PUSH_BACK:
 				cout << AUTOMATIC_TEST_PUSH_BACK << AUTOMATIC_TEST_ELEMENT_BACK << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->push_back(AUTOMATIC_TEST_ELEMENT_BACK);
+				linListe->push_back(AUTOMATIC_TEST_ELEMENT_BACK);
 				break;
 			case AUTO_PUSH_FRONT:
 				cout << AUTOMATIC_TEST_PUSH_FRONT << AUTOMATIC_TEST_ELEMENT_FRONT << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->push_front(AUTOMATIC_TEST_ELEMENT_FRONT);
+				linListe->push_front(AUTOMATIC_TEST_ELEMENT_FRONT);
 				break;
 			case AUTO_POP_BACK:
 				cout << AUTOMATIC_TEST_POP_BACK << endl;
-				liste->pop_back();
+				linListe->pop_back();
 				break;
 			case AUTO_POP_FRONT:
 				cout << AUTOMATIC_TEST_POP_FRONT << endl;
-				liste->pop_front();
+				linListe->pop_front();
 				break;
 			case AUTO_INSERT:
 				cout << AUTOMATIC_TEST_INSERT << INPUT_ONE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->insert(INPUT_ONE, AUTOMATIC_TEST_ELEMENT_INSERT);
+				linListe->insert(INPUT_ONE, AUTOMATIC_TEST_ELEMENT_INSERT);
 				break;
 			case AUTO_INSERT_HIGH_VALUE:
 				cout << AUTOMATIC_TEST_INSERT << HIGH_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_HIGH << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->insert(HIGH_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_HIGH);
+				linListe->insert(HIGH_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_HIGH);
 				break;
 			case AUTO_INSERT_LOW_VALUE:
 				cout << AUTOMATIC_TEST_INSERT << ZERO_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_LOW << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->insert(ZERO_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_LOW);
+				linListe->insert(ZERO_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_LOW);
 				break;
 			case AUTO_ERASE:
 				cout << AUTOMATIC_TEST_ERASE << INPUT_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->erase(INPUT_VALUE);
+				linListe->erase(INPUT_VALUE);
 				break;
 			case AUTO_ERASE_ZERO:
 				cout << AUTOMATIC_TEST_ERASE << ZERO_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->erase(ZERO_VALUE);
+				linListe->erase(ZERO_VALUE);
 				break;
 			case AUTO_ERASE_NON_EXISTENT_ELEMENT:
 				cout << AUTOMATIC_TEST_ERASE << HIGH_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
-				liste->erase(HIGH_VALUE);
+				linListe->erase(HIGH_VALUE);
 				break;
 			case AUTO_INPUT_STREAM:
 				cout << AUTOMATIC_TEST_EINGABE_STREAM << AUTOMATIC_TEST_EINGABE_STREAM_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
-				is >> *liste;
+				is >> *linListe;
+				break;
+			case AUTO_COPY_TEST:
+				*linListeCopy = *linListe;
+				cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl 
+					<< linListeCopy << SPACER << *linListeCopy << endl;
 				break;
 			case AUTO_CLEAR:
 				cout << AUTOMATIC_TEST_CLEAR << endl;
-				liste->clear();
+				linListe->clear();
 				break;
 			case POP_EMPTY:
 				cout << AUTOMATIC_TEST_POP_EMPTY_LIST << endl;
-				liste->pop_back();
+				linListe->pop_back();
 				break;
 			}
 		} 
@@ -197,19 +210,25 @@ void ListenDialog::automaticTest(){
 * @details Manuelle Steuerung Des Programmes
 */
 void ListenDialog::manuellDialog(){
-	LinList* liste = NULL;
-	liste = new LinList();
+	LinList* linListe = NULL;
+	LinList* linListeCopy = NULL;
+	linListe = new LinList();
+	linListeCopy = new LinList();
+
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
+	linListe->push_back(AUTOMATIC_TEST_ELEMENT_BACK); //INIT
+	linListe->pop_back(); //INIT
 	do{
 		try{
 			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
-			cout << *liste << endl;
+			cout << *linListe << endl;
 			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
 				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
-				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_COPY << endl
+				<< MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			clearInput();
 			switch (answer) {
@@ -227,14 +246,14 @@ void ListenDialog::manuellDialog(){
 				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
 				cin >> name;
 				clearInput();
-				liste->push_back(name);
+				linListe->push_back(name);
 				break;
 			case PUSH_FRONT:
 				cout << SEPERATOR_PUSH << endl;
 				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
 				cin >> name;
 				clearInput();
-				liste->push_front(name);
+				linListe->push_front(name);
 				break;
 			case POP_BACK:
 				cout << SEPERATOR_POP << endl << ELEMENT_DELETE_CONFIRMATION;
@@ -243,7 +262,7 @@ void ListenDialog::manuellDialog(){
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
 				} else {
-					liste->pop_back();
+					linListe->pop_back();
 				}
 				break;
 			case POP_FRONT:
@@ -253,7 +272,7 @@ void ListenDialog::manuellDialog(){
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
 				} else {
-					liste->pop_front();
+					linListe->pop_front();
 				}
 				break;
 			case INSERT_ELEMENT:
@@ -264,7 +283,7 @@ void ListenDialog::manuellDialog(){
 				cout << MANUELLDIALOG_ELEMENT_NEU_POSITION;
 				cin >> position;
 				clearInput();
-				liste->insert(position, name);
+				linListe->insert(position, name);
 				break;
 			case ERASE_ELEMENT:
 				cout << MANUELLDIALOG_ELEMENT_NEU_POSITION;
@@ -276,7 +295,7 @@ void ListenDialog::manuellDialog(){
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
 				} else {
-					liste->erase(position);
+					linListe->erase(position);
 				}
 				cout << endl;
 				break;
@@ -287,14 +306,18 @@ void ListenDialog::manuellDialog(){
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
 				} else {
-					liste->clear();
+					linListe->clear();
 				}
 				cout << endl;
 				break;
 			case STREAM:
 				cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
-				cin >> *liste;
+				cin >> *linListe;
 				clearInput();
+			case COPY:
+				*linListeCopy = *linListe;
+				cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl
+					<< linListeCopy << SPACER << *linListeCopy << endl;
 			case ABORT:
 				break;
 			default:
@@ -309,7 +332,7 @@ void ListenDialog::manuellDialog(){
 			cout << ERRORPHRASE << e.what() << endl;
 		}
 	} while (answer != BACK);
-	delete liste;
+	delete linListe;
 }
 /**
 * @brief ListenDialog::clearInput()

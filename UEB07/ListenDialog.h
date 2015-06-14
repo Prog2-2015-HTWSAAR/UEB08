@@ -14,9 +14,9 @@
 #define LINLIST_LISTENDIALOG_H_
 //TODO Implement me Senpai
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
-enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, ABORT };
+enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, COPY, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
-						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_CLEAR, POP_EMPTY };
+						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_COPY_TEST, AUTO_CLEAR, POP_EMPTY };
 
 class ListenDialog {
 public:
@@ -32,6 +32,7 @@ public:
 	static const char* SEPERATOR_CLEAR;
 	static const char* SEPERATOR_PUSH;
 	static const char* SEPERATOR_POP;
+	static const char* SPACER;
 	//Errorphrasses
 	static const char* INPUTERRORPHRASE;
 	static const char* ERRORPHRASE;
@@ -53,6 +54,7 @@ public:
 	static const char* MANUELLDIALOG_OPTION_ERASE;
 	static const char* MANUELLDIALOG_OPTION_CLEAR;
 	static const char* MANUELLDIALOG_OPTION_STREAM;
+	static const char* MANUELLDIALOG_OPTION_COPY;
 	static const char* MANUELLDIALOF_STEAM_EINGABE;
 	static const char* MANUELLDIALOF_EINGABESYMBOL;
 	static const char* ELEMENT_DELETE_CONFIRMATION;
@@ -87,6 +89,8 @@ public:
 	static const int INPUT_VALUE;
 	static const int HIGH_VALUE;
 	static const int TEST_QUANTITY;
+	//VON BEIDEN VERWENDET
+	static const char* COPY_RESULT;
 	//FKT
 	/**
 	* @brief mainDialog()

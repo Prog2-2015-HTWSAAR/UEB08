@@ -30,7 +30,7 @@ public:
 	 */
 	LinList(const LinList&);
 	~LinList();
-	LinList& operator=(const LinList&);
+	LinList& operator=(const LinList& linList);
 	void push_back (InhaltTyp t);
 	void push_front(InhaltTyp t);
 	void pop_back();
