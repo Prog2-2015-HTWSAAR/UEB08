@@ -38,21 +38,21 @@ public:
 	//STD Phrases
 	static const char* STANDARDCHOICEPHRASE;
 	//Main Dialog
-	static const char* MAINDIALOG_OPTION_ZERO;
-	static const char* MAINDIALOG_OPTION_ONE;
-	static const char* MAINDIALOG_OPTION_TWO;
+	static const char* MAINDIALOG_OPTION_EXIT;
+	static const char* MAINDIALOG_OPTION_AUTO_TEST;
+	static const char* MAINDIALOG_OPTION_MANUELL;
 	//Manuell Dialog
 	static const char* MANUELLDIALOG_ELEMENT_NEU_NAME;
 	static const char* MANUELLDIALOG_ELEMENT_NEU_POSITION;
-	static const char* MANUELLDIALOG_OPTION_ZERO;
-	static const char* MANUELLDIALOG_OPTION_ONE;
-	static const char* MANUELLDIALOG_OPTION_TWO;
-	static const char* MANUELLDIALOG_OPTION_THREE;
-	static const char* MANUELLDIALOG_OPTION_FOUR;
-	static const char* MANUELLDIALOG_OPTION_FIVE;
-	static const char* MANUELLDIALOG_OPTION_SIX;
-	static const char* MANUELLDIALOG_OPTION_SEVEN;
-	static const char* MANUELLDIALOG_OPTION_EIGHT;
+	static const char* MANUELLDIALOG_OPTION_BACK;
+	static const char* MANUELLDIALOG_OPTION_PUSH_BACK;
+	static const char* MANUELLDIALOG_OPTION_PUSH_FRONT;
+	static const char* MANUELLDIALOG_OPTION_POP_BACK;
+	static const char* MANUELLDIALOG_OPTION_POP_FRONT;
+	static const char* MANUELLDIALOG_OPTION_INSERT;
+	static const char* MANUELLDIALOG_OPTION_ERASE;
+	static const char* MANUELLDIALOG_OPTION_CLEAR;
+	static const char* MANUELLDIALOG_OPTION_STREAM;
 	static const char* MANUELLDIALOF_STEAM_EINGABE;
 	static const char* MANUELLDIALOF_EINGABESYMBOL;
 	static const char* ELEMENT_DELETE_CONFIRMATION;
@@ -84,18 +84,38 @@ public:
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
-
 	static const int INPUT_VALUE;
 	static const int HIGH_VALUE;
 	static const int TEST_QUANTITY;
-
 	//FKT
+	/**
+	* @brief mainDialog()
+	* @details HauptDialog Auswahl Auto Manuell Exit
+	*/
 	void mainDialog();
+	/**
+	* @brief automaticTest()
+	* @details Automatischer Test
+	*/
 	void automaticTest();
-
+	/**
+	* @brief manuellDialog()
+	* @details Manuelle Steuerung Des Programmes
+	*/
 	void manuellDialog();
+	/**
+	* @brief clearInput()
+	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+	*/
 	void clearInput();
+
+	/**
+	* @brief Konstruktor
+	*/
 	ListenDialog();
+	/**
+	* @brief Dekonstruktor
+	*/
 	virtual ~ListenDialog();
 };
 

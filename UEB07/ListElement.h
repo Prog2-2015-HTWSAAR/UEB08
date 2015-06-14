@@ -17,13 +17,7 @@ class ElementException : public logic_error {
 public:
     ElementException(const string& msg = "") : logic_error(msg) {}
 };
-/**
- * Listenelement fuer eine doppelt-verkettete Lineare Liste
- * 
- * @author	folz
- * @version 
- * @date	20.05.2012
- */
+
 class ListElement {
 public:
 	ListElement(InhaltTyp, ListElement* =0, ListElement* =0);

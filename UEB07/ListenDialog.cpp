@@ -19,27 +19,27 @@ const char* ListenDialog::SEPERATOR_ERASE = "------------ERASE--------------";
 const char* ListenDialog::SEPERATOR_CLEAR = "------------CLEAR--------------";
 const char* ListenDialog::SEPERATOR_PUSH = "-------------PUSH--------------";
 const char* ListenDialog::SEPERATOR_POP = "-------------POP---------------";
-//Errorphrasses
+//ErrorphrassesMANUELLDIALOG_OPTION_ERASE
 const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* ListenDialog::ERRORPHRASE = "Fehler: ";
 //STD Phrases
 const char* ListenDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
 //Main Dialog
-const char* ListenDialog::MAINDIALOG_OPTION_ZERO = "(0) EXIT";
-const char* ListenDialog::MAINDIALOG_OPTION_ONE = "(1) Automatischer Test";
-const char* ListenDialog::MAINDIALOG_OPTION_TWO = "(2) Manueller Test";
+const char* ListenDialog::MAINDIALOG_OPTION_EXIT = "(0) EXIT";
+const char* ListenDialog::MAINDIALOG_OPTION_AUTO_TEST = "(1) Automatischer Test";
+const char* ListenDialog::MAINDIALOG_OPTION_MANUELL = "(2) Manueller Test";
 //Manuell Dialog
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_NAME = "NAME: ";
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_POSITION = "Position: ";
-const char* ListenDialog::MANUELLDIALOG_OPTION_ZERO = "(0) BACK";
-const char* ListenDialog::MANUELLDIALOG_OPTION_ONE = "(1) Push back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_TWO = "(2) Push front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_THREE = "(3) Pop back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FOUR = "(4) Pop front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FIVE = "(5) Insert before position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_SIX = "(6) Erase position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_SEVEN = "(7) CLEAR";
-const char* ListenDialog::MANUELLDIALOG_OPTION_EIGHT = "(8) STREAM";
+const char* ListenDialog::MANUELLDIALOG_OPTION_BACK = "(0) BACK";
+const char* ListenDialog::MANUELLDIALOG_OPTION_PUSH_BACK = "(1) Push back";
+const char* ListenDialog::MANUELLDIALOG_OPTION_PUSH_FRONT = "(2) Push front";
+const char* ListenDialog::MANUELLDIALOG_OPTION_POP_BACK = "(3) Pop back";
+const char* ListenDialog::MANUELLDIALOG_OPTION_POP_FRONT = "(4) Pop front";
+const char* ListenDialog::MANUELLDIALOG_OPTION_INSERT = "(5) Insert before position";
+const char* ListenDialog::MANUELLDIALOG_OPTION_ERASE = "(6) Erase position";
+const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
+const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) STREAM";
 const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
 const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich Loeschen (j)=Ja: ";
@@ -67,7 +67,6 @@ const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_HIGH = "HIGH";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_LOW = "LOW";
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "-INPUT STREAM VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM_VALUE = "A B C D NIL";
-
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
@@ -75,22 +74,26 @@ const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
-
 //TODO Implement me Senpai
-ListenDialog::ListenDialog() {
-	// TODO Auto-generated constructor stub
 
-}
+/**
+* @brief Konstruktor
+*/
+ListenDialog::ListenDialog() {}
 
-ListenDialog::~ListenDialog() {
-	// TODO Auto-generated destructor stub
-}
-
+/**
+* @brief Dekonstruktor
+*/
+ListenDialog::~ListenDialog() {}
+/**
+* @brief ListenDialog::mainDialog()
+* @details HauptDialog Auswahl Auto Manuell Exit
+*/
 void ListenDialog::mainDialog(){
 	int answer = STD_ANSWER_VALUE;
 	do{
 		cout << SEPERATOR << endl << SEPERATOR_LISTE << endl << SEPERATOR << endl << endl; 
-		cout << MAINDIALOG_OPTION_ONE << endl << MAINDIALOG_OPTION_TWO << endl << MAINDIALOG_OPTION_ZERO << endl << STANDARDCHOICEPHRASE;
+		cout << MAINDIALOG_OPTION_AUTO_TEST << endl << MAINDIALOG_OPTION_MANUELL << endl << MAINDIALOG_OPTION_EXIT << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		clearInput();
 		switch (answer) {
@@ -108,7 +111,10 @@ void ListenDialog::mainDialog(){
 		}
 	} while (answer != EXIT);
 }
-
+/**
+* @brief ListenDialog::automaticTest()
+* @details Automatischer Test
+*/
 void ListenDialog::automaticTest(){
 	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM_VALUE);
 	LinList* liste = NULL;
@@ -176,7 +182,7 @@ void ListenDialog::automaticTest(){
 				liste->pop_back();
 				break;
 			}
-		}
+		} 
 		catch (LinListException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
@@ -185,9 +191,11 @@ void ListenDialog::automaticTest(){
 		}
 		runCounter++;
 	} while (runCounter < TEST_QUANTITY);
-
 }
-
+/**
+* @brief ListenDialog::manuellDialog()
+* @details Manuelle Steuerung Des Programmes
+*/
 void ListenDialog::manuellDialog(){
 	LinList* liste = NULL;
 	liste = new LinList();
@@ -199,13 +207,12 @@ void ListenDialog::manuellDialog(){
 		try{
 			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
 			cout << *liste << endl;
-			cout << MANUELLDIALOG_OPTION_ONE << endl << MANUELLDIALOG_OPTION_TWO << endl << MANUELLDIALOG_OPTION_THREE
-				<< endl << MANUELLDIALOG_OPTION_FOUR << endl << MANUELLDIALOG_OPTION_FIVE << endl << MANUELLDIALOG_OPTION_SIX
-				<< endl << MANUELLDIALOG_OPTION_SEVEN << endl << MANUELLDIALOG_OPTION_EIGHT << endl << MANUELLDIALOG_OPTION_ZERO << endl << STANDARDCHOICEPHRASE;
+			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
+				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
+				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			clearInput();
-			switch (answer)
-			{
+			switch (answer) {
 			case BACK:
 				cout << SEPERATOR_DELETE_LISTE << endl << CLEAR_CONFIRMATION;
 				cin >> wirklichLoeschen;
@@ -245,8 +252,7 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				}
-				else {
+				} else {
 					liste->pop_front();
 				}
 				break;
@@ -305,7 +311,10 @@ void ListenDialog::manuellDialog(){
 	} while (answer != BACK);
 	delete liste;
 }
-
+/**
+* @brief ListenDialog::clearInput()
+* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+*/
 void ListenDialog::clearInput(){
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');

@@ -7,8 +7,6 @@
 * @date 14.06.2015
 *
 * Main Funktion
-*
-
 */
 #include <iostream>
 #include "ListenDialog.h"

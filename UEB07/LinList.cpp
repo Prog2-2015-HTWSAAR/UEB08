@@ -105,7 +105,7 @@ void LinList::insert(int pos, InhaltTyp t){
 	ListElement* tmp2 = NULL;
 	ListElement* tmp3 = NULL;
 	//TODO Trotzdem Anfang/Ende anhaengen?
-	if(pos < 1 || pos > size){
+	if ((unsigned int)pos < 1 || (unsigned int)pos > size){
 		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 
@@ -135,7 +135,7 @@ void LinList::insert(int pos, InhaltTyp t){
 void LinList::erase(int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
-	if(pos < 1 || pos > size){
+	if ((unsigned int)pos < 1 || (unsigned int)pos > size){
 		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 	//Anfang
