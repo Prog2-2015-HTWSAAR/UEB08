@@ -1,9 +1,11 @@
-/*
- * ListenDialog.h
- *
- *  Created on: 11.06.2015
- *      Author: sbastian
- */
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb07 *.o
+* @file  ListenDialog.h
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 14.06.2015
+*/
 #include "LinList.h"
 #include <iostream>
 #include <sstream>      
@@ -58,18 +60,17 @@ public:
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
 	//AUTO_TEST
+	static const char* AUTOMATIC_TEST_HYPHEN;
+	static const char* AUTOMATIC_TEST_POSITION;
 	static const char* AUTOMATIC_TEST_INIT;
 	static const char* AUTOMATIC_TEST_PUSH_BACK;
 	static const char* AUTOMATIC_TEST_PUSH_FRONT;
 	static const char* AUTOMATIC_TEST_POP_BACK;
 	static const char* AUTOMATIC_TEST_POP_FRONT;
 	static const char* AUTOMATIC_TEST_INSERT;
-	static const char* AUTOMATIC_TEST_INSERT_HIGH;
-	static const char* AUTOMATIC_TEST_INSERT_ZERO;
 	static const char* AUTOMATIC_TEST_ERASE;
-	static const char* AUTOMATIC_TEST_ERASE_ZERO;
-	static const char* AUTOMATIC_TEST_ERASE_NON_EXISTENCE;
 	static const char* AUTOMATIC_TEST_INPUT_STREAM;
+	static const char* AUTOMATIC_TEST_EINGABE_STREAM_VALUE;
 	static const char* AUTOMATIC_TEST_CLEAR;
 	static const char* AUTOMATIC_TEST_POP_EMPTY_LIST;
 	static const char* AUTOMATIC_TEST_ELEMENT_INIT;

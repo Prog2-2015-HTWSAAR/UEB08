@@ -1,10 +1,11 @@
 /**
- * 
- * @file	ListElement.h
- * @author	folz
- * @date	20.05.2012
- */
-
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb07 *.o
+* @file	ListElement.h
+* @author Andreas Schreiner & Simon Bastian
+* @detail Basierend auf Folz Klasse
+* @date 14.06.2015
+*/
 #ifndef LISTELEMENT_H_
 #define LISTELEMENT_H_
 #include <string>

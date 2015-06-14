@@ -1,9 +1,11 @@
-/*
- * ListenDialog.cpp
- *
- *  Created on: 11.06.2015
- *      Author: sbastian
- */
+/**
+* compile: g++ -c -Wall -pedantic *.cpp
+* compile: g++ -o ueb07 *.o
+* @file  ListenDialog.cpp
+* @author Andreas Schreiner & Simon Bastian
+*
+* @date 14.06.2015
+*/
 #include "ListenDialog.h"
 //Konstanten 
 //Seperators
@@ -45,18 +47,16 @@ const char* ListenDialog::CLEAR_CONFIRMATION = "LISTE wirklich Leeren (j)=Ja: ";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 //AUTO_TEST
-const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)-";
-const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK-";
-const char* ListenDialog::AUTOMATIC_TEST_PUSH_FRONT = "-PUSH FRONT-";
+const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "-";
+const char* ListenDialog::AUTOMATIC_TEST_POSITION = " POSITION: ";
+const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)VALUE: ";
+const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK VALUE: ";
+const char* ListenDialog::AUTOMATIC_TEST_PUSH_FRONT = "-PUSH FRONT VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_POP_BACK = "-POP BACK-";
 const char* ListenDialog::AUTOMATIC_TEST_POP_FRONT = "-POP FRONT-";
-const char* ListenDialog::AUTOMATIC_TEST_INSERT = "-INSERT-";
-const char* ListenDialog::AUTOMATIC_TEST_INSERT_HIGH = "-INSERT HIGH-";
-const char* ListenDialog::AUTOMATIC_TEST_INSERT_ZERO = "-INSERT ZERO-";
-const char* ListenDialog::AUTOMATIC_TEST_ERASE = "-ERASE-";
-const char* ListenDialog::AUTOMATIC_TEST_ERASE_ZERO = "-ERASE ZERO-";
+const char* ListenDialog::AUTOMATIC_TEST_INSERT = "-INSERT VALUE: ";
+const char* ListenDialog::AUTOMATIC_TEST_ERASE = "-ERASE POSITION: ";
 const char* ListenDialog::AUTOMATIC_TEST_INPUT_STREAM = "-READ INPUT STREAM-";
-const char* ListenDialog::AUTOMATIC_TEST_ERASE_NON_EXISTENCE = "-ERASE NON EXISTENT ELEMENT-";
 const char* ListenDialog::AUTOMATIC_TEST_CLEAR = "-CLEAR-";
 const char* ListenDialog::AUTOMATIC_TEST_POP_EMPTY_LIST= "-POP EMPTY LIST-";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INIT = "INIT";
@@ -65,7 +65,8 @@ const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_FRONT = "FRONT";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT = "IMHERE";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_HIGH = "HIGH";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_LOW = "LOW";
-const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "A B C D NIL";
+const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "-INPUT STREAM VALUE: ";
+const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM_VALUE = "A B C D NIL";
 
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
@@ -109,7 +110,7 @@ void ListenDialog::mainDialog(){
 }
 
 void ListenDialog::automaticTest(){
-	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM);
+	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM_VALUE);
 	LinList* liste = NULL;
 	liste = new LinList();
 	int runCounter = ZERO_VALUE;
@@ -119,15 +120,15 @@ void ListenDialog::automaticTest(){
 			cout << *liste << endl;
 			switch (runCounter) {
 			case AUTO_INIT:
-				cout << AUTOMATIC_TEST_INIT << endl;
+				cout << AUTOMATIC_TEST_INIT << AUTOMATIC_TEST_ELEMENT_INIT << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->push_back(AUTOMATIC_TEST_ELEMENT_INIT);
 				break;
 			case AUTO_PUSH_BACK:
-				cout << AUTOMATIC_TEST_PUSH_BACK << endl;
+				cout << AUTOMATIC_TEST_PUSH_BACK << AUTOMATIC_TEST_ELEMENT_BACK << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->push_back(AUTOMATIC_TEST_ELEMENT_BACK);
 				break;
 			case AUTO_PUSH_FRONT:
-				cout << AUTOMATIC_TEST_PUSH_FRONT << endl;
+				cout << AUTOMATIC_TEST_PUSH_FRONT << AUTOMATIC_TEST_ELEMENT_FRONT << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->push_front(AUTOMATIC_TEST_ELEMENT_FRONT);
 				break;
 			case AUTO_POP_BACK:
@@ -139,31 +140,31 @@ void ListenDialog::automaticTest(){
 				liste->pop_front();
 				break;
 			case AUTO_INSERT:
-				cout << AUTOMATIC_TEST_INSERT << endl;
+				cout << AUTOMATIC_TEST_INSERT << INPUT_ONE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->insert(INPUT_ONE, AUTOMATIC_TEST_ELEMENT_INSERT);
 				break;
 			case AUTO_INSERT_HIGH_VALUE:
-				cout << AUTOMATIC_TEST_INSERT_HIGH << endl;
+				cout << AUTOMATIC_TEST_INSERT << HIGH_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_HIGH << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->insert(HIGH_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_HIGH);
 				break;
 			case AUTO_INSERT_LOW_VALUE:
-				cout << AUTOMATIC_TEST_INSERT_ZERO << endl;
+				cout << AUTOMATIC_TEST_INSERT << ZERO_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_LOW << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->insert(ZERO_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_LOW);
 				break;
 			case AUTO_ERASE:
-				cout << AUTOMATIC_TEST_ERASE << endl;
+				cout << AUTOMATIC_TEST_ERASE << INPUT_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->erase(INPUT_VALUE);
 				break;
 			case AUTO_ERASE_ZERO:
-				cout << AUTOMATIC_TEST_ERASE_ZERO << endl;
+				cout << AUTOMATIC_TEST_ERASE << ZERO_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->erase(ZERO_VALUE);
 				break;
 			case AUTO_ERASE_NON_EXISTENT_ELEMENT:
-				cout << AUTOMATIC_TEST_ERASE_NON_EXISTENCE << endl;
+				cout << AUTOMATIC_TEST_ERASE << HIGH_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
 				liste->erase(HIGH_VALUE);
 				break;
 			case AUTO_INPUT_STREAM:
-				cout << AUTOMATIC_TEST_EINGABE_STREAM << endl;	
+				cout << AUTOMATIC_TEST_EINGABE_STREAM << AUTOMATIC_TEST_EINGABE_STREAM_VALUE << AUTOMATIC_TEST_HYPHEN << endl;
 				is >> *liste;
 				break;
 			case AUTO_CLEAR:

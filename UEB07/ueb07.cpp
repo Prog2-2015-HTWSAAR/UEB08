@@ -4,7 +4,7 @@
 * @file ueb07.cpp
 * @author Andreas Schreiner & Simon Bastian
 *
-* 
+* @date 14.06.2015
 *
 * Main Funktion
 *
