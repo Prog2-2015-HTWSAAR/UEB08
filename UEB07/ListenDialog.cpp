@@ -7,6 +7,11 @@
 * @date 14.06.2015
 */
 #include "ListenDialog.h"
+#include <string>
+#include <iostream>
+
+#include <fstream>
+
 //Konstanten 
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
@@ -20,8 +25,11 @@ const char* ListenDialog::SEPERATOR_CLEAR = "------------CLEAR--------------";
 const char* ListenDialog::SEPERATOR_PUSH = "-------------PUSH--------------";
 const char* ListenDialog::SEPERATOR_POP = "-------------POP---------------";
 const char* ListenDialog::SEPERATOR_BACKUP = "-------------BACKUP------------";
-const char* ListenDialog::SPACER = " ";
+const char* ListenDialog::SEPERATOR_LOAD = "-------------LOAD-------------";
+const char* ListenDialog::SEPERATOR_SAVE = "-------------SAVE-------------";
+const char* ListenDialog::SEPERATOR_FILE_EDIT = "-----------FILE_EDIT-----------";
 
+const char* ListenDialog::SPACER = " ";
 //ErrorphrassesMANUELLDIALOG_OPTION_ERASE
 const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* ListenDialog::ERRORPHRASE = "Fehler: ";
@@ -45,6 +53,7 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
 const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) STREAM";
 const char* ListenDialog::MANUELLDIALOG_OPTION_SAVE_BACKUP = "(9) Listen Backup speichern";
 const char* ListenDialog::MANUELLDIALOG_OPTION_LOAD_BACKUP = "(10) Listen Backup laden";
+const char* ListenDialog::MANUELLDIALOG_OPTION_FILE_BACKUP = "(11) Speichern/Laden";
 const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
 const char* ListenDialog::BACK_CONFIRMATION = "Daten gehen verloren! Weiter? (j)=Ja: ";
@@ -52,8 +61,18 @@ const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich loesch
 const char* ListenDialog::CLEAR_CONFIRMATION = "linListe wirklich leeren? (j)=Ja: ";
 const char* ListenDialog::LOAD_CONFIRMATION = "aktuelle Liste verwerfen? (j)=Ja: ";
 const char* ListenDialog::SAVE_CONFIRMATION = "Backup ueberschreiben? (j)=Ja: ";
+const char* ListenDialog::OVERWIDE_CONFIRMATION = "Werte ueberschreiben? (j)=Ja: ";
+
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
+const char* ListenDialog::MANUELLDIALOF_FILE_NAME = "Dateinamen bitte eingeben: ";
+
+//FILE_DIALOG
+const char* ListenDialog::FILEDIALOG_OPTION_SAVE = "(1) Save";
+const char* ListenDialog::FILEDIALOG_OPTION_LOAD = "(2) Load";
+const char* ListenDialog::FILEDIALOG_OPTION_BACK = "(0) Back ";
+
+
 //AUTO_TEST
 const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "- ";
 const char* ListenDialog::AUTOMATIC_TEST_POSITION = " POSITION: ";
@@ -66,7 +85,7 @@ const char* ListenDialog::AUTOMATIC_TEST_INSERT = "-INSERT VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_ERASE = "-ERASE POSITION: ";
 const char* ListenDialog::AUTOMATIC_TEST_INPUT_STREAM = "-READ INPUT STREAM-";
 const char* ListenDialog::AUTOMATIC_TEST_CLEAR = "-CLEAR-";
-const char* ListenDialog::AUTOMATIC_TEST_POP_EMPTY_LIST= "-POP EMPTY LIST-";
+const char* ListenDialog::AUTOMATIC_TEST_POP_EMPTY_LIST = "-POP EMPTY LIST-";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INIT = "INIT";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_BACK = "BACK";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_FRONT = "FRONT";
@@ -80,6 +99,8 @@ const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
 const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
+const int ListenDialog::MAX_RUNS_FILE_READ = 4;
+
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
 //VON BEIDEN VERWENDET
@@ -103,7 +124,7 @@ ListenDialog::~ListenDialog() {}
 void ListenDialog::mainDialog(){
 	int answer = STD_ANSWER_VALUE;
 	do{
-		cout << SEPERATOR << endl << SEPERATOR_LISTE << endl << SEPERATOR << endl << endl; 
+		cout << SEPERATOR << endl << SEPERATOR_LISTE << endl << SEPERATOR << endl << endl;
 		cout << MAINDIALOG_OPTION_AUTO_TEST << endl << MAINDIALOG_OPTION_MANUELL << endl << MAINDIALOG_OPTION_EXIT << endl << STANDARDCHOICEPHRASE;
 		cin >> answer;
 		clearInput();
@@ -200,7 +221,7 @@ void ListenDialog::automaticTest(){
 				linListe->pop_back();
 				break;
 			}
-		} 
+		}
 		catch (LinListException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
 		}
@@ -219,6 +240,7 @@ void ListenDialog::manuellDialog(){
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
+	string fileName;
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
@@ -231,7 +253,7 @@ void ListenDialog::manuellDialog(){
 			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
 				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
 				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_SAVE_BACKUP << endl
-				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl << MANUELLDIALOG_OPTION_FILE_BACKUP << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			clearInput();
 			switch (answer) {
@@ -264,7 +286,8 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					linListe->pop_back();
 				}
 				break;
@@ -274,7 +297,8 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					linListe->pop_front();
 				}
 				break;
@@ -297,7 +321,8 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					linListe->erase(position);
 				}
 				cout << endl;
@@ -308,7 +333,8 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					linListe->clear();
 				}
 				cout << endl;
@@ -316,7 +342,14 @@ void ListenDialog::manuellDialog(){
 			case STREAM:
 				cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
 				cin >> *linListe;
+				cout << SEPERATOR << endl << OVERWIDE_CONFIRMATION;
+				cin >> wirklichLoeschen;
 				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				} else {
+					clearInput();
+				}
 				break;
 			case SAVE_BACKUP:
 				cout << SEPERATOR_BACKUP << endl;
@@ -326,7 +359,8 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					*linListeCopy = *linListe;
 					cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl
 						<< linListeCopy << SPACER << *linListeCopy << endl;
@@ -341,12 +375,19 @@ void ListenDialog::manuellDialog(){
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
+				}
+				else {
 					*linListe = *linListeCopy;
 					cout << COPY_RESULT << endl << linListeCopy << SPACER << *linListeCopy << endl
 						<< linListe << SPACER << *linListe << endl;
 				}
-
+				break;
+			case FILE_DIALOG:
+				cout << MANUELLDIALOF_FILE_NAME;
+				cin >> fileName;
+				clearInput();
+				*linListeCopy = *linListe;
+				fileDialog(linListe, fileName);
 				break;
 			case ABORT:
 				break;
@@ -363,6 +404,51 @@ void ListenDialog::manuellDialog(){
 		}
 	} while (answer != BACK);
 	delete linListe;
+}
+/**
+* @brief fileDialog(LinList* linListe, string fileName)
+* @details SAVE AND LOAD
+* @param *linListe Listenreferenz
+* @param fileName Dateiname
+*/
+void ListenDialog::fileDialog(LinList* liste, string fileName) {
+	fstream file;
+	istringstream is;
+	int run = INPUT_ONE;
+	char* test;
+	string line;
+	int answer = STD_ANSWER_VALUE;
+	do {
+		cout << SEPERATOR << endl << SEPERATOR_FILE_EDIT << endl << SEPERATOR << endl
+			<< FILEDIALOG_OPTION_SAVE << endl << FILEDIALOG_OPTION_LOAD << endl
+			<< FILEDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+		cin >> answer;
+		switch (answer)	{
+		case SAVE:
+			file.open(fileName);
+			file << *liste;
+			file.close();
+			break;
+		case LOAD:
+			run = INPUT_ONE;
+			file.open(fileName);
+			while (run < MAX_RUNS_FILE_READ){
+				getline(file, line);
+				if (run == INPUT_ONE){
+					getline(file, line);
+					is.str(line);
+					is >> *liste;
+				}
+				run++;
+			}
+			file.close();
+			break;
+		case CLOSE_FILE_DIALOG:
+			break;
+		default:
+			break;
+		}
+	} while (answer != CLOSE_FILE_DIALOG);
 }
 /**
 * @brief ListenDialog::clearInput()

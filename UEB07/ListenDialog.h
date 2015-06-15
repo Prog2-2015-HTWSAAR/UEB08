@@ -14,9 +14,10 @@
 #define LINLIST_LISTENDIALOG_H_
 //TODO Implement me Senpai
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
-enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, SAVE_BACKUP, LOAD_BACKUP, ABORT };
+enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, SAVE_BACKUP, LOAD_BACKUP, FILE_DIALOG, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
 						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_COPY_TEST, AUTO_CLEAR, POP_EMPTY };
+enum FileDialogOption{ CLOSE_FILE_DIALOG, SAVE, LOAD };
 
 class ListenDialog {
 public:
@@ -33,6 +34,9 @@ public:
 	static const char* SEPERATOR_PUSH;
 	static const char* SEPERATOR_POP;
 	static const char* SEPERATOR_BACKUP;
+	static const char* SEPERATOR_LOAD;
+	static const char* SEPERATOR_SAVE;
+	static const char* SEPERATOR_FILE_EDIT;
 	static const char* SPACER;
 	//Errorphrasses
 	static const char* INPUTERRORPHRASE;
@@ -57,6 +61,7 @@ public:
 	static const char* MANUELLDIALOG_OPTION_STREAM;
 	static const char* MANUELLDIALOG_OPTION_SAVE_BACKUP;
 	static const char* MANUELLDIALOG_OPTION_LOAD_BACKUP;
+	static const char* MANUELLDIALOG_OPTION_FILE_BACKUP;
 	static const char* MANUELLDIALOF_STEAM_EINGABE;
 	static const char* MANUELLDIALOF_EINGABESYMBOL;
 	static const char* BACK_CONFIRMATION;
@@ -64,8 +69,14 @@ public:
 	static const char* CLEAR_CONFIRMATION;
 	static const char* LOAD_CONFIRMATION;
 	static const char* SAVE_CONFIRMATION;
+	static const char* OVERWIDE_CONFIRMATION;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
+	static const char* MANUELLDIALOF_FILE_NAME;
+	//FILE_DIALOG
+	static const char* FILEDIALOG_OPTION_SAVE;
+	static const char* FILEDIALOG_OPTION_LOAD;
+	static const char* FILEDIALOG_OPTION_BACK;
 	//AUTO_TEST
 	static const char* AUTOMATIC_TEST_HYPHEN;
 	static const char* AUTOMATIC_TEST_POSITION;
@@ -94,6 +105,8 @@ public:
 	static const int INPUT_VALUE;
 	static const int HIGH_VALUE;
 	static const int TEST_QUANTITY;
+	static const int MAX_RUNS_FILE_READ;
+
 	//VON BEIDEN VERWENDET
 	static const char* COPY_RESULT;
 	//FKT
@@ -112,6 +125,13 @@ public:
 	* @details Manuelle Steuerung Des Programmes
 	*/
 	void manuellDialog();
+	/**
+	* @brief fileDialog(LinList* linListe, string fileName)
+	* @details SAVE AND LOAD
+	* @param *linListe Listenreferenz
+	* @param fileName Dateiname
+	*/
+	void fileDialog(LinList* linListe, string fileName);
 	/**
 	* @brief clearInput()
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
