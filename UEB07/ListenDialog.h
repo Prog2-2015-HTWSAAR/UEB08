@@ -131,7 +131,7 @@ public:
 	* @param *linListe Listenreferenz
 	* @param fileName Dateiname
 	*/
-	void fileDialog(LinList* linListe, string fileName);
+	void fileDialog(LinList* linListe, char* fileName);
 	/**
 	* @brief clearInput()
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.

@@ -240,7 +240,7 @@ void ListenDialog::manuellDialog(){
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
-	string fileName;
+	char* fileName = "";
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
@@ -411,11 +411,10 @@ void ListenDialog::manuellDialog(){
 * @param *linListe Listenreferenz
 * @param fileName Dateiname
 */
-void ListenDialog::fileDialog(LinList* liste, string fileName) {
+void ListenDialog::fileDialog(LinList* liste, char* fileName) {
 	fstream file;
 	istringstream is;
 	int run = INPUT_ONE;
-	char* test;
 	string line;
 	int answer = STD_ANSWER_VALUE;
 	do {
