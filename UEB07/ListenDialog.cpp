@@ -15,19 +15,20 @@
 //Konstanten 
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
-const char* ListenDialog::SEPERATOR_LISTE = "-------------linListe-------------";
-const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LISTE----------";
+const char* ListenDialog::SEPERATOR_LISTE = "------------linListe----------_";
+const char* ListenDialog::SEPERATOR_DELETE_LISTE =	"-L-------DELETE-LISTE----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
-const char* ListenDialog::SEPERATOR_MANUELL = "-----------MANUELL------------";
+const char* ListenDialog::SEPERATOR_MANUELL = "------------MANUELL------------";
 const char* ListenDialog::SEPERATOR_INSERT = "------------INSERT-------------";
 const char* ListenDialog::SEPERATOR_ERASE = "------------ERASE--------------";
 const char* ListenDialog::SEPERATOR_CLEAR = "------------CLEAR--------------";
 const char* ListenDialog::SEPERATOR_PUSH = "-------------PUSH--------------";
 const char* ListenDialog::SEPERATOR_POP = "-------------POP---------------";
 const char* ListenDialog::SEPERATOR_BACKUP = "-------------BACKUP------------";
-const char* ListenDialog::SEPERATOR_LOAD = "-------------LOAD-------------";
-const char* ListenDialog::SEPERATOR_SAVE = "-------------SAVE-------------";
-const char* ListenDialog::SEPERATOR_FILE_EDIT = "-----------FILE_EDIT-----------";
+
+//const char* ListenDialog::SEPERATOR_LOAD = "-------------LOAD--------------";
+//const char* ListenDialog::SEPERATOR_SAVE = "-------------SAVE--------------";
+//const char* ListenDialog::SEPERATOR_FILE_EDIT = "-----------FILE_EDIT-----------";
 
 const char* ListenDialog::SPACER = " ";
 //ErrorphrassesMANUELLDIALOG_OPTION_ERASE
