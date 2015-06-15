@@ -11,14 +11,15 @@
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
 const char* ListenDialog::SEPERATOR_LISTE = "-------------linListe-------------";
-const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LAGER----------";
+const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LISTE----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
-const char* ListenDialog::SEPERATOR_MANUELL = "-----------MAUNUELL------------";
+const char* ListenDialog::SEPERATOR_MANUELL = "-----------MANUELL------------";
 const char* ListenDialog::SEPERATOR_INSERT = "------------INSERT-------------";
 const char* ListenDialog::SEPERATOR_ERASE = "------------ERASE--------------";
 const char* ListenDialog::SEPERATOR_CLEAR = "------------CLEAR--------------";
 const char* ListenDialog::SEPERATOR_PUSH = "-------------PUSH--------------";
 const char* ListenDialog::SEPERATOR_POP = "-------------POP---------------";
+const char* ListenDialog::SEPERATOR_BACKUP = "-------------BACKUP------------";
 const char* ListenDialog::SPACER = " ";
 
 //ErrorphrassesMANUELLDIALOG_OPTION_ERASE
@@ -42,11 +43,15 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_INSERT = "(5) Insert before posit
 const char* ListenDialog::MANUELLDIALOG_OPTION_ERASE = "(6) Erase position";
 const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
 const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) STREAM";
-const char* ListenDialog::MANUELLDIALOG_OPTION_COPY = "(9) COPY LinList& Print Both";
+const char* ListenDialog::MANUELLDIALOG_OPTION_SAVE_BACKUP = "(9) Listen Backup speichern";
+const char* ListenDialog::MANUELLDIALOG_OPTION_LOAD_BACKUP = "(10) Listen Backup laden";
 const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
-const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich Loeschen (j)=Ja: ";
-const char* ListenDialog::CLEAR_CONFIRMATION = "linListe wirklich Leeren (j)=Ja: ";
+const char* ListenDialog::BACK_CONFIRMATION = "Daten gehen verloren! Weiter? (j)=Ja: ";
+const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich loeschen? (j)=Ja: ";
+const char* ListenDialog::CLEAR_CONFIRMATION = "linListe wirklich leeren? (j)=Ja: ";
+const char* ListenDialog::LOAD_CONFIRMATION = "aktuelle Liste verwerfen? (j)=Ja: ";
+const char* ListenDialog::SAVE_CONFIRMATION = "Backup ueberschreiben? (j)=Ja: ";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 //AUTO_TEST
@@ -183,8 +188,8 @@ void ListenDialog::automaticTest(){
 				break;
 			case AUTO_COPY_TEST:
 				*linListeCopy = *linListe;
-				cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl 
-					<< linListeCopy << SPACER << *linListeCopy << endl;
+				cout << COPY_RESULT << endl << *linListe << SPACER << *linListe << endl
+					<< *linListeCopy << SPACER << *linListeCopy << endl;
 				break;
 			case AUTO_CLEAR:
 				cout << AUTOMATIC_TEST_CLEAR << endl;
@@ -227,13 +232,13 @@ void ListenDialog::manuellDialog(){
 			cout << *linListe << endl;
 			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
 				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
-				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_COPY << endl
-				<< MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_SAVE_BACKUP << endl
+				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			clearInput();
 			switch (answer) {
 			case BACK:
-				cout << SEPERATOR_DELETE_LISTE << endl << CLEAR_CONFIRMATION;
+				cout << SEPERATOR_DELETE_LISTE << endl << BACK_CONFIRMATION;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
@@ -314,10 +319,37 @@ void ListenDialog::manuellDialog(){
 				cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
 				cin >> *linListe;
 				clearInput();
-			case COPY:
-				*linListeCopy = *linListe;
-				cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl
-					<< linListeCopy << SPACER << *linListeCopy << endl;
+				break;
+			case SAVE_BACKUP:
+				cout << SEPERATOR_BACKUP << endl;
+				cout << *linListeCopy << endl;
+				cout << SEPERATOR_DELETE_LISTE << endl << SAVE_CONFIRMATION;
+				cin >> wirklichLoeschen;
+				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				} else {
+					*linListeCopy = *linListe;
+					cout << COPY_RESULT << endl << linListe << SPACER << *linListe << endl
+						<< linListeCopy << SPACER << *linListeCopy << endl;
+				}
+
+				break;
+			case LOAD_BACKUP:
+				cout << SEPERATOR_BACKUP << endl;
+				cout << *linListeCopy << endl;
+				cout << SEPERATOR_DELETE_LISTE << endl << LOAD_CONFIRMATION;
+				cin >> wirklichLoeschen;
+				clearInput();
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
+					answer = ABORT;
+				} else {
+					*linListe = *linListeCopy;
+					cout << COPY_RESULT << endl << linListeCopy << SPACER << *linListeCopy << endl
+						<< linListe << SPACER << *linListe << endl;
+				}
+
+				break;
 			case ABORT:
 				break;
 			default:

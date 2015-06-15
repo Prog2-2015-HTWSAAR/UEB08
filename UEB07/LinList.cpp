@@ -44,9 +44,9 @@ LinList& LinList::operator=(const LinList& linlist){
 	if(this == &linlist){
 		return *this;
 	}
-
 	// bisherige ListElement-Objekte destruieren
 	clear();
+
 	//Listenelemente kopieren
 	copyElements(linlist);
 	return *this;
@@ -88,14 +88,20 @@ void LinList::pop_back() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
 	}
+	cout << "tmp?" << endl;
 	ListElement* tmp = last->previous;
+	cout << "delete?" << endl;
 	delete last;
 	size--;
+	cout << size << endl;
 	last = tmp;
+	cout << "last?" << endl;
 	if (last != NULL){
 		last->next = NULL;
 	}
+	cout << "empty?" << endl;
 	if(isEmpty()){
+		cout << "first" << endl;
 		first = NULL;
 	}
 }
@@ -118,7 +124,7 @@ void LinList::pop_front() {
 	}
 }
 /**
-* @brief insert Fügt Element vor pos ein
+* @brief insert Fï¿½gt Element vor pos ein
 * @param pos Position des Obj, welches der neue Nachfolger werden soll
 * @param t Wert der in die Liste Aufgenommen werden soll
 */
@@ -128,7 +134,7 @@ void LinList::insert(int pos, InhaltTyp t){
 	ListElement* tmp2 = NULL;
 	ListElement* tmp3 = NULL;
 	//TODO Trotzdem Anfang/Ende anhaengen?
-	if ((unsigned int)pos < 1 || (unsigned int)pos > size){
+	if ((size_t)pos < 1 || (size_t)pos > size){
 		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 
@@ -161,7 +167,7 @@ void LinList::insert(int pos, InhaltTyp t){
 void LinList::erase(int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
-	if ((unsigned int)pos < 1 || (unsigned int)pos > size){
+	if ((size_t)pos < 1 || (size_t)pos > size){
 		throw LinListException(MELDUNG_FALSCHE_POS);
 	}
 	//Anfang
@@ -169,7 +175,7 @@ void LinList::erase(int pos){
 		pop_front();
 	}else{
 		//Ende
-		if(pos == size){
+		if((size_t)pos >= size){
 			pop_back();
 		}else{
 			//Mitte
@@ -196,7 +202,7 @@ void LinList::clear(){
 	}
 }
 /**
-* @brief isEmpty Prüfung auf leer
+* @brief isEmpty Prï¿½fung auf leer
 * @returns true == empty false == non empty
 */
 bool LinList::isEmpty(){
@@ -238,4 +244,5 @@ void LinList::copyElements(const LinList& linlist){
 		push_back(tmp->inhalt);
 		tmp = tmp->next;
 	}
+	cout << endl;
 }
