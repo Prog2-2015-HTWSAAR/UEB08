@@ -15,8 +15,8 @@ const char* LinList::MELDUNG_FALSCHE_POS  = "Ungueltige Position!";
 const char* LinList::ADD_SPACE = " ";
 const char* LinList::CHAINED_LIST = "Verkettete Liste: ";
 const char* LinList::ELEMENTS = " Elemente\n";
-const char* NIL_PHRASE = "NIL";
-const char* EMPTY_CHAR_ARRAY = "";
+const char* LinList::NIL_PHRASE = "NIL";
+const char* LinList::EMPTY_CHAR_ARRAY = "";
 /**
 * @brief Konstruktor
 */
@@ -224,8 +224,8 @@ ostream& operator<<(ostream& o, const LinList& linList){
 
 istream& operator>> (istream& i, LinList& linList){
 	//ListElement tmp = new ListElement("tmp");
-	InhaltTyp t = EMPTY_CHAR_ARRAY;
-	while (i >> t && t != NIL_PHRASE){
+	InhaltTyp t = LinList::EMPTY_CHAR_ARRAY;
+	while (i >> t && t != LinList::NIL_PHRASE){
 		linList.push_back(t);
 	}
 	return i;

@@ -56,7 +56,7 @@ public:
 	*/
 	void pop_front();
 	/**
-	* @brief insert Fügt Element vor pos ein
+	* @brief insert Fï¿½gt Element vor pos ein
 	* @param pos Position des Obj, welches der neue Nachfolger werden soll
 	* @param t Wert der in die Liste Aufgenommen werden soll
 	*/
@@ -71,7 +71,7 @@ public:
 	*/
 	void clear();
 	/**
-	* @brief isEmpty Prüfung auf leer
+	* @brief isEmpty Prï¿½fung auf leer
 	* @returns true == empty false == non empty
 	*/
 	bool isEmpty();
@@ -83,6 +83,8 @@ public:
 	static const char* ADD_SPACE;
 	static const char* CHAINED_LIST;
 	static const char* ELEMENTS;
+	static const char* NIL_PHRASE;
+	static const char* EMPTY_CHAR_ARRAY;
 
 private:
 	/**
