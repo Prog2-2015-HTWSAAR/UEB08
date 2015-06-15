@@ -124,12 +124,12 @@ public:
 	* @details Manuelle Steuerung Des Programmes
 	*/
 	void manuellDialog();
-//	/**
-//	* @brief fileDialog(LinList* linListe, string fileName)
-//	* @details SAVE AND LOAD
-//	* @param *linListe Listenreferenz
-//	* @param fileName Dateiname
-//	*/
+	/*
+	* @brief fileDialog(LinList* linListe, string fileName)
+	* @details SAVE AND LOAD
+	* @param *linListe Listenreferenz
+	* @param fileName Dateiname
+	*/
 //	void fileDialog(LinList* linListe, string fileName);
 	/**
 	* @brief clearInput()

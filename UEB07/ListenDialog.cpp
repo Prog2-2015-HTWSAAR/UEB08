@@ -407,12 +407,12 @@ void ListenDialog::manuellDialog(){
 	} while (answer != BACK);
 	delete linListe;
 }
-///**
-//* @brief fileDialog(LinList* linListe, string fileName)
-//* @details SAVE AND LOAD
-//* @param *linListe Listenreferenz
-//* @param fileName Dateiname
-//*/
+/*
+* @brief fileDialog(LinList* linListe, string fileName)
+* @details SAVE AND LOAD
+* @param *linListe Listenreferenz
+* @param fileName Dateiname
+*/
 //void ListenDialog::fileDialog(LinList* liste, string fileName) {
 //	fstream file;
 //	istringstream is;
