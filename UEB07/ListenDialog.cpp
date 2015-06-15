@@ -224,8 +224,6 @@ void ListenDialog::manuellDialog(){
 	string name;
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
-	linListe->push_back(AUTOMATIC_TEST_ELEMENT_BACK); //INIT
-	linListe->pop_back(); //INIT
 	do{
 		try{
 			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
@@ -281,7 +279,7 @@ void ListenDialog::manuellDialog(){
 				}
 				break;
 			case INSERT_ELEMENT:
-				cout << SEPERATOR_PUSH << endl;
+				cout << SEPERATOR_INSERT << endl;
 				cout << MANUELLDIALOG_ELEMENT_NEU_NAME;
 				cin >> name;
 				clearInput();
