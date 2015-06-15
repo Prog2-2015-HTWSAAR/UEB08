@@ -3,7 +3,7 @@
 * compile: g++ -o ueb07 *.o
 * @file	LinList.cpp
 * @author Andreas Schreiner & Simon Bastian
-* @detail Basierend auf Folz Klasse
+* @details Basierend auf Folz Klasse
 * @date 14.06.2015
 */
 
@@ -198,13 +198,16 @@ void LinList::clear(){
 	}
 }
 /**
-* @brief isEmpty Pr�fung auf leer
+* @brief isEmpty Pruefung auf leer
 * @returns true == empty false == non empty
 */
 bool LinList::isEmpty(){
 	return (size == 0);
 }
-
+/**
+ * @brief gibt den Inhalt der Liste als String zurueck
+ * @returns Stringrepresentation des LinList-Objekts
+ */
 string LinList::toString() const {
 	ostringstream o;
 	o << CHAINED_LIST << size << ELEMENTS;
@@ -217,13 +220,22 @@ string LinList::toString() const {
 	o << endl;
 	return o.str();
 }
-
+/**
+ * @brief <<Operator zur Ausgabe in einen Stream
+ * @param o Streamreferenz
+ * @param linList Listenreferenz
+ * @returns Referenz auf Stream mit angehaengtem LinListString
+ */
 ostream& operator<<(ostream& o, const LinList& linList){
 	return o << linList.toString();
 }
-
+/**
+ * @brief >>Operator zur Eingabe durch einen Stream
+ * @param i Streamreferenz
+ * @param linList Listenreferenz
+ * @returns Referenz auf Stream mit entnommenem LinListString
+ */
 istream& operator>> (istream& i, LinList& linList){
-	//ListElement tmp = new ListElement("tmp");
 	InhaltTyp t = LinList::EMPTY_CHAR_ARRAY;
 	while (i >> t && t != LinList::NIL_PHRASE){
 		linList.push_back(t);
@@ -232,10 +244,10 @@ istream& operator>> (istream& i, LinList& linList){
 }
 /**
 * @brief copyElements Kopierfunktion
-* @params linlist Referenz auf LinListen Obj
+* @param linList Referenz auf LinListen Obj
 */
-void LinList::copyElements(const LinList& linlist){
-	ListElement* tmp = linlist.first;
+void LinList::copyElements(const LinList& linList){
+	ListElement* tmp = linList.first;
 	while(tmp != NULL){
 		push_back(tmp->inhalt);
 		tmp = tmp->next;

@@ -3,7 +3,7 @@
 * compile: g++ -o ueb07 *.o
 * @file	ListElement.h
 * @author Andreas Schreiner & Simon Bastian
-* @detail Basierend auf Folz Klasse
+* @details Basierend auf Folz Klasse
 * @date 14.06.2015
 */
 #ifndef LISTELEMENT_H_
@@ -20,13 +20,19 @@ public:
 
 class ListElement {
 public:
+	/**
+	* @brief Konstruktor
+	* @param inhalt Der Inhalt des Listenelements
+	* @param previous Das Vorangegangene Element
+	* @param next Das Nachfolgende Element
+	*/
 	ListElement(InhaltTyp, ListElement* =0, ListElement* =0);
 	~ListElement();
 	friend class LinList;
 	/**
 	* @brief <<Operator zur ausgabe in einen stream
 	* @param o Streamreferenz
-	* @param ListElement Listenreferenz
+	* @param listElement Listenreferenz
 	* @returns referenz auf stream mit angehaengtem ListenString
 	*/
 	friend ostream& operator<< (ostream& o, const ListElement& listElement);

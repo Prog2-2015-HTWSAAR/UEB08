@@ -3,7 +3,7 @@
 * compile: g++ -o ueb07 *.o
 * @file	ListElement.cpp
 * @author Andreas Schreiner & Simon Bastian
-* @detail Basierend auf Folz Klasse
+* @details Basierend auf Folz Klasse
 * @date 14.06.2015
 */
 
@@ -13,7 +13,7 @@
 * @brief Konstruktor
 * @param inhalt Der Inhalt des Listenelements
 * @param previous Das Vorangegangene Element
-* @param previous Das Nachfolgende Element
+* @param next Das Nachfolgende Element
 */
 ListElement::ListElement(InhaltTyp inhalt, ListElement* previous,
 		                                   ListElement* next) {
@@ -30,11 +30,11 @@ ListElement::~ListElement() {
 /**
 * @brief <<Operator zur ausgabe in einen stream
 * @param o Streamreferenz
-* @param ListElement Listenreferenz
+* @param listElement Listenreferenz
 * @returns referenz auf stream mit angehaengtem ListenString
 */
-ostream& operator<<(ostream& o, const ListElement& ListElement){
-	o << ListElement.inhalt;
+ostream& operator<<(ostream& o, const ListElement& listElement){
+	o << listElement.inhalt;
 	return o;
 }
 /**

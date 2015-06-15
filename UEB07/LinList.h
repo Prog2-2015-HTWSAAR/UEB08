@@ -3,7 +3,7 @@
 * compile: g++ -o ueb07 *.o
 * @file	LinList.h
 * @author Andreas Schreiner & Simon Bastian
-* @detail Basierend auf Folz Klasse
+* @details Basierend auf Folz Klasse
 * @date 14.06.2015
 */
 #ifndef LINLIST_H_
@@ -56,7 +56,7 @@ public:
 	*/
 	void pop_front();
 	/**
-	* @brief insert F�gt Element vor pos ein
+	* @brief insert Fuegt Element vor pos ein
 	* @param pos Position des Obj, welches der neue Nachfolger werden soll
 	* @param t Wert der in die Liste Aufgenommen werden soll
 	*/
@@ -71,12 +71,28 @@ public:
 	*/
 	void clear();
 	/**
-	* @brief isEmpty Pr�fung auf leer
+	* @brief isEmpty Pruefung auf leer
 	* @returns true == empty false == non empty
 	*/
 	bool isEmpty();
+	/**
+	 * @brief gibt den Inhalt der Liste als String zurueck
+	 * @returns Stringrepresentation des LinList-Objekts
+	 */
 	string toString() const;
+	/**
+	 * @brief <<Operator zur Ausgabe in einen Stream
+	 * @param o Streamreferenz
+	 * @param linList Listenreferenz
+	 * @returns Referenz auf Stream mit angehaengtem LinListString
+	 */
 	friend ostream& operator<< (ostream& o, const LinList& linList);
+	/**
+	 * @brief >>Operator zur Eingabe durch einen Stream
+	 * @param i Streamreferenz
+	 * @param linList Listenreferenz
+	 * @returns Referenz auf Stream mit entnommenem LinListString
+	 */
 	friend istream& operator>> (istream& i, LinList& linList);
 	static const char* MELDUNG_LISTE_LEER;
 	static const char* MELDUNG_FALSCHE_POS;
@@ -89,9 +105,9 @@ public:
 private:
 	/**
 	* @brief copyElements Kopierfunktion
-	* @params linlist Referenz auf LinListen Obj
+	* @param linList Referenz auf LinListen Obj
 	*/
-	void copyElements(const LinList& linlist);
+	void copyElements(const LinList& linList);
 	size_t size;
 	ListElement* first;
 	ListElement* last;
