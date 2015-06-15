@@ -88,22 +88,15 @@ void LinList::pop_back() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
 	}
-	cout << "tmp?" << endl;
 	ListElement* tmp = last->previous;
-	cout << "delete?" << endl;
 	delete last;
 	size--;
-	cout << size << endl;
 	last = tmp;
-	cout << "last?" << endl;
 	if (last != NULL){
 		last->next = NULL;
 	}
-	cout << "empty?" << endl;
 	if(isEmpty()){
-		cout << "empty!" << endl;
 		first = NULL;
-		cout << "first" << endl;
 	}
 }
 /**
