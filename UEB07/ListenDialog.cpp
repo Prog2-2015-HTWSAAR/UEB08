@@ -386,7 +386,6 @@ void ListenDialog::manuellDialog(){
 				cout << MANUELLDIALOF_FILE_NAME;
 				cin >> fileName;
 				clearInput();
-				*linListeCopy = *linListe;
 				fileDialog(linListe, fileName);
 				break;
 			case ABORT:
@@ -411,9 +410,10 @@ void ListenDialog::manuellDialog(){
 * @param *linListe Listenreferenz
 * @param fileName Dateiname
 */
-void ListenDialog::fileDialog(LinList* liste, char* fileName) {
+void ListenDialog::fileDialog(LinList* liste, string fileName) {
 	fstream file;
 	istringstream is;
+	const char* constName = fileName.c_str();
 	int run = INPUT_ONE;
 	string line;
 	int answer = STD_ANSWER_VALUE;
@@ -424,13 +424,13 @@ void ListenDialog::fileDialog(LinList* liste, char* fileName) {
 		cin >> answer;
 		switch (answer)	{
 		case SAVE:
-			file.open(fileName);
+			file.open(constName);
 			file << *liste;
 			file.close();
 			break;
 		case LOAD:
 			run = INPUT_ONE;
-			file.open(fileName);
+			file.open(constName);
 			while (run < MAX_RUNS_FILE_READ){
 				getline(file, line);
 				if (run == INPUT_ONE){
