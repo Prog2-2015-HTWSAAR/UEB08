@@ -54,23 +54,23 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) Liste Einlesen ";
 const char* ListenDialog::MANUELLDIALOG_OPTION_SAVE_BACKUP = "(9) Listen Backup speichern";
 const char* ListenDialog::MANUELLDIALOG_OPTION_LOAD_BACKUP = "(10) Listen Backup laden";
 const char* ListenDialog::MANUELLDIALOG_OPTION_FILE_BACKUP = "(11) Speichern/Laden !!EXPERIMENTELL!!";
-const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
-const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
+const char* ListenDialog::MANUELLDIALOG_STREAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
+const char* ListenDialog::MANUELLDIALOG_EINGABESYMBOL = "->> ";
 const char* ListenDialog::BACK_CONFIRMATION = "Daten gehen verloren! Weiter? (j)=Ja: ";
 const char* ListenDialog::ELEMENT_DELETE_CONFIRMATION = "ELEMENT wirklich loeschen? (j)=Ja: ";
 const char* ListenDialog::CLEAR_CONFIRMATION = "linListe wirklich leeren? (j)=Ja: ";
 const char* ListenDialog::LOAD_CONFIRMATION = "aktuelle Liste verwerfen? (j)=Ja: ";
 const char* ListenDialog::SAVE_CONFIRMATION = "Backup ueberschreiben? (j)=Ja: ";
-const char* ListenDialog::OVERWIDE_CONFIRMATION = "Werte ueberschreiben? (j)=Ja: ";
+const char* ListenDialog::OVERRRIDE_CONFIRMATION = "Werte ueberschreiben? (j)=Ja: ";
 
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 const char* ListenDialog::MANUELLDIALOF_FILE_NAME = "Dateinamen bitte eingeben: ";
 
 //FILE_DIALOG
-const char* ListenDialog::FILEDIALOG_OPTION_SAVE = "(1) Save";
-const char* ListenDialog::FILEDIALOG_OPTION_LOAD = "(2) Load";
-const char* ListenDialog::FILEDIALOG_OPTION_BACK = "(0) Back ";
+//const char* ListenDialog::FILEDIALOG_OPTION_SAVE = "(1) Save";
+//const char* ListenDialog::FILEDIALOG_OPTION_LOAD = "(2) Load";
+//const char* ListenDialog::FILEDIALOG_OPTION_BACK = "(0) Back ";
 
 
 //AUTO_TEST
@@ -240,7 +240,7 @@ void ListenDialog::manuellDialog(){
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
-	char* fileName = "";
+	string fileName;
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
@@ -254,7 +254,9 @@ void ListenDialog::manuellDialog(){
 			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
 				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
 				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_SAVE_BACKUP << endl
-				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl << MANUELLDIALOG_OPTION_FILE_BACKUP << endl << MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl
+				//<< MANUELLDIALOG_OPTION_FILE_BACKUP << endl
+				<< MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
 			cin >> answer;
 			clearInput();
 			switch (answer) {
@@ -341,14 +343,14 @@ void ListenDialog::manuellDialog(){
 				cout << endl;
 				break;
 			case STREAM:
-				cout << SEPERATOR << endl << OVERWIDE_CONFIRMATION;
+				cout << SEPERATOR << endl << LOAD_CONFIRMATION;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
 				}
 				else {
-					cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
+					cout << MANUELLDIALOG_STREAM_EINGABE << endl << MANUELLDIALOG_EINGABESYMBOL;
 					cin >> *linListe;
 				}
 				break;
@@ -383,12 +385,12 @@ void ListenDialog::manuellDialog(){
 						<< linListe << SPACER << *linListe << endl;
 				}
 				break;
-			case FILE_DIALOG:
-				cout << MANUELLDIALOF_FILE_NAME;
-				cin >> fileName;
-				clearInput();
-				fileDialog(linListe, fileName);
-				break;
+//			case FILE_DIALOG:
+//				cout << MANUELLDIALOF_FILE_NAME;
+//				cin >> fileName;
+//				clearInput();
+//				fileDialog(linListe, fileName);
+//				break;
 			case ABORT:
 				break;
 			default:
@@ -405,51 +407,51 @@ void ListenDialog::manuellDialog(){
 	} while (answer != BACK);
 	delete linListe;
 }
-/**
-* @brief fileDialog(LinList* linListe, string fileName)
-* @details SAVE AND LOAD
-* @param *linListe Listenreferenz
-* @param fileName Dateiname
-*/
-void ListenDialog::fileDialog(LinList* liste, string fileName) {
-	fstream file;
-	istringstream is;
-	const char* constName = fileName.c_str();
-	int run = INPUT_ONE;
-	string line;
-	int answer = STD_ANSWER_VALUE;
-	do {
-		cout << SEPERATOR << endl << SEPERATOR_FILE_EDIT << endl << SEPERATOR << endl
-			<< FILEDIALOG_OPTION_SAVE << endl << FILEDIALOG_OPTION_LOAD << endl
-			<< FILEDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
-		cin >> answer;
-		switch (answer)	{
-		case SAVE:
-			file.open(constName);
-			file << *liste;
-			file.close();
-			break;
-		case LOAD:
-			run = INPUT_ONE;
-			file.open(constName);
-			while (run < MAX_RUNS_FILE_READ){
-				getline(file, line);
-				if (run == INPUT_ONE){
-					getline(file, line);
-					is.str(line);
-					is >> *liste;
-				}
-				run++;
-			}
-			file.close();
-			break;
-		case CLOSE_FILE_DIALOG:
-			break;
-		default:
-			break;
-		}
-	} while (answer != CLOSE_FILE_DIALOG);
-}
+///**
+//* @brief fileDialog(LinList* linListe, string fileName)
+//* @details SAVE AND LOAD
+//* @param *linListe Listenreferenz
+//* @param fileName Dateiname
+//*/
+//void ListenDialog::fileDialog(LinList* liste, string fileName) {
+//	fstream file;
+//	istringstream is;
+//	const char* constName = fileName.c_str();
+//	int run = INPUT_ONE;
+//	string line;
+//	int answer = STD_ANSWER_VALUE;
+//	do {
+//		cout << SEPERATOR << endl << SEPERATOR_FILE_EDIT << endl << SEPERATOR << endl
+//			<< FILEDIALOG_OPTION_SAVE << endl << FILEDIALOG_OPTION_LOAD << endl
+//			<< FILEDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+//		cin >> answer;
+//		switch (answer)	{
+//		case SAVE:
+//			file.open(constName);
+//			file << *liste;
+//			file.close();
+//			break;
+//		case LOAD:
+//			run = INPUT_ONE;
+//			file.open(constName);
+//			while (run < MAX_RUNS_FILE_READ){
+//				getline(file, line);
+//				if (run == INPUT_ONE){
+//					getline(file, line);
+//					is.str(line);
+//					is >> *liste;
+//				}
+//				run++;
+//			}
+//			file.close();
+//			break;
+//		case CLOSE_FILE_DIALOG:
+//			break;
+//		default:
+//			break;
+//		}
+//	} while (answer != CLOSE_FILE_DIALOG);
+//}
 /**
 * @brief ListenDialog::clearInput()
 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
