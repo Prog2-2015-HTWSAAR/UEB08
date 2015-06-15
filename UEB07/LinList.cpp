@@ -236,6 +236,7 @@ ostream& operator<<(ostream& o, const LinList& linList){
  * @returns Referenz auf Stream mit entnommenem LinListString
  */
 istream& operator>> (istream& i, LinList& linList){
+	linList.clear();
 	InhaltTyp t = LinList::EMPTY_CHAR_ARRAY;
 	while (i >> t && t != LinList::NIL_PHRASE){
 		linList.push_back(t);
