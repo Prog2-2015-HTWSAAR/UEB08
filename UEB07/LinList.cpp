@@ -101,8 +101,9 @@ void LinList::pop_back() {
 	}
 	cout << "empty?" << endl;
 	if(isEmpty()){
-		cout << "first" << endl;
+		cout << "empty!" << endl;
 		first = NULL;
+		cout << "first" << endl;
 	}
 }
 /**
@@ -156,6 +157,7 @@ void LinList::insert(int pos, InhaltTyp t){
 		// links ausgehend von neuem Element
 		tmp3->previous = tmp1;
 		tmp3->next = tmp2;
+		size++;
 
 	}
 
@@ -189,6 +191,7 @@ void LinList::erase(int pos){
 			tmp->next->previous = tmp->previous;
 			//Element loeschen
 			delete tmp;
+			size--;
 		}
 	}
 
