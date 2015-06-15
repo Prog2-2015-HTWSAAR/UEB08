@@ -15,7 +15,7 @@
 //Konstanten 
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
-const char* ListenDialog::SEPERATOR_LISTE = "------------linListe----------_";
+const char* ListenDialog::SEPERATOR_LISTE = "------------linListe-----------";
 const char* ListenDialog::SEPERATOR_DELETE_LISTE =	"-L-------DELETE-LISTE----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
 const char* ListenDialog::SEPERATOR_MANUELL = "------------MANUELL------------";
@@ -344,7 +344,7 @@ void ListenDialog::manuellDialog(){
 				cout << endl;
 				break;
 			case STREAM:
-				cout << SEPERATOR << endl << LOAD_CONFIRMATION;
+				cout << SEPERATOR_DELETE_LISTE << endl << LOAD_CONFIRMATION;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
