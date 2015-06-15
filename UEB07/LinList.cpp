@@ -17,16 +17,24 @@ const char* LinList::CHAINED_LIST = "Verkettete Liste: ";
 const char* LinList::ELEMENTS = " Elemente\n";
 const char* NIL_PHRASE = "NIL";
 const char* EMPTY_CHAR_ARRAY = "";
-
+/**
+* @brief Konstruktor
+*/
 LinList::LinList() {
 	this->first = 0;
 	this->last = 0;
 	this->size = 0;
 }
-
+/**
+* @brief Kopierkonstruktor
+* @param linlist Referenz auf zu kopierendes Objekt
+*/
 LinList::LinList(const LinList& linlist){
 	copyElements(linlist);
 }
+/**
+* @brief Dekonstruktor
+*/
 LinList::~LinList() {
 	clear();
 }
@@ -43,6 +51,10 @@ LinList& LinList::operator=(const LinList& linlist){
 	copyElements(linlist);
 	return *this;
 }
+/**
+* @brief push_back Haengt Element hinten an die Liste an
+* @param t Wert der in die Liste Aufgenommen werden soll
+*/
 void LinList::push_back(InhaltTyp t) {
 	ListElement* tmp = new ListElement(t);
 	if(isEmpty()){
@@ -54,7 +66,10 @@ void LinList::push_back(InhaltTyp t) {
 	last = tmp;
 	size++;
 }
-
+/**
+* @brief push_front Haengt Element vorne an die Liste an
+* @param t Wert der in die Liste Aufgenommen werden soll
+*/
 void LinList::push_front(InhaltTyp t) {
 	ListElement* tmp = new ListElement(t);
 	if(isEmpty()){
@@ -66,7 +81,9 @@ void LinList::push_front(InhaltTyp t) {
 	first = tmp;
 	size++;
 }
-
+/**
+* @brief pop_back Entfernt letztes Element in der Liste
+*/
 void LinList::pop_back() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
@@ -82,7 +99,9 @@ void LinList::pop_back() {
 		first = NULL;
 	}
 }
-
+/**
+* @brief pop_front Entfernt erstes Element in der Liste
+*/
 void LinList::pop_front() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
@@ -98,7 +117,11 @@ void LinList::pop_front() {
 		last = NULL;
 	}
 }
-
+/**
+* @brief insert Fügt Element vor pos ein
+* @param pos Position des Obj, welches der neue Nachfolger werden soll
+* @param t Wert der in die Liste Aufgenommen werden soll
+*/
 void LinList::insert(int pos, InhaltTyp t){
 	int suchIndex = 2; //Start bei zwei wegen Vorgaengersuche
 	ListElement* tmp1 = first;
@@ -131,7 +154,10 @@ void LinList::insert(int pos, InhaltTyp t){
 	}
 
 }
-
+/**
+* @brief erase Entfernt Element auf pos
+* @param pos Position des zu loeschenden Obj
+*/
 void LinList::erase(int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
@@ -161,12 +187,18 @@ void LinList::erase(int pos){
 	}
 
 }
+/**
+* @brief clear Entfernt alle Elemente der Liste
+*/
 void LinList::clear(){
 	while(!isEmpty()){
 		pop_back();
 	}
 }
-
+/**
+* @brief isEmpty Prüfung auf leer
+* @returns true == empty false == non empty
+*/
 bool LinList::isEmpty(){
 	return (size == 0);
 }
@@ -196,7 +228,10 @@ istream& operator>> (istream& i, LinList& linList){
 	}
 	return i;
 }
-
+/**
+* @brief copyElements Kopierfunktion
+* @params linlist Referenz auf LinListen Obj
+*/
 void LinList::copyElements(const LinList& linlist){
 	ListElement* tmp = linlist.first;
 	while(tmp != NULL){

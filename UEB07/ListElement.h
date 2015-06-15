@@ -23,7 +23,19 @@ public:
 	ListElement(InhaltTyp, ListElement* =0, ListElement* =0);
 	~ListElement();
 	friend class LinList;
+	/**
+	* @brief <<Operator zur ausgabe in einen stream
+	* @param o Streamreferenz
+	* @param ListElement Listenreferenz
+	* @returns referenz auf stream mit angehaengtem ListenString
+	*/
 	friend ostream& operator<< (ostream& o, const ListElement& listElement);
+	/**
+	* @brief <<Operator zum auswerten eines isteams
+	* @param i Streamreferenz
+	* @param listElement Listenreferenz
+	* @returns referenz auf stream mit angehaengtem istream Element
+	*/
 	friend istream& operator>> (istream& i, ListElement& listElement);
 private:
 	InhaltTyp inhalt;

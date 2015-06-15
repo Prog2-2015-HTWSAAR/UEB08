@@ -23,21 +23,57 @@ public:
  */
 class LinList {
 public:
+	/**
+	* @brief Konstruktor
+	*/
 	LinList();
 	/**
 	 * Kopierkonstruktor
 	 * @param linlist Referenz auf zu kopierendes Objekt
 	 */
 	LinList(const LinList&);
+	/**
+	* @brief Dekonstruktor
+	*/
 	~LinList();
 	LinList& operator=(const LinList& linList);
+	/**
+	* @brief push_back Haengt Element hinten an die Liste an
+	* @param t Wert der in die Liste Aufgenommen werden soll
+	*/
 	void push_back (InhaltTyp t);
+	/**
+	* @brief push_front Haengt Element vorne an die Liste an
+	* @param t Wert der in die Liste Aufgenommen werden soll
+	*/
 	void push_front(InhaltTyp t);
+	/**
+	* @brief pop_back Entfernt letztes Element in der Liste
+	*/
 	void pop_back();
+	/**
+	* @brief pop_front Entfernt erstes Element in der Liste
+	*/
 	void pop_front();
+	/**
+	* @brief insert Fügt Element vor pos ein
+	* @param pos Position des Obj, welches der neue Nachfolger werden soll
+	* @param t Wert der in die Liste Aufgenommen werden soll
+	*/
 	void insert(int pos, InhaltTyp t);
+	/**
+	* @brief erase Entfernt Element auf pos
+	* @param pos Position des zu loeschenden Obj
+	*/
 	void erase(int pos);
+	/**
+	* @brief clear Entfernt alle Elemente der Liste
+	*/
 	void clear();
+	/**
+	* @brief isEmpty Prüfung auf leer
+	* @returns true == empty false == non empty
+	*/
 	bool isEmpty();
 	string toString() const;
 	friend ostream& operator<< (ostream& o, const LinList& linList);
@@ -49,6 +85,10 @@ public:
 	static const char* ELEMENTS;
 
 private:
+	/**
+	* @brief copyElements Kopierfunktion
+	* @params linlist Referenz auf LinListen Obj
+	*/
 	void copyElements(const LinList& linlist);
 	size_t size;
 	ListElement* first;
