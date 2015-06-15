@@ -50,10 +50,10 @@ const char* ListenDialog::MANUELLDIALOG_OPTION_POP_FRONT = "(4) Pop front";
 const char* ListenDialog::MANUELLDIALOG_OPTION_INSERT = "(5) Insert before position";
 const char* ListenDialog::MANUELLDIALOG_OPTION_ERASE = "(6) Erase position";
 const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
-const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) STREAM";
+const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) Liste Einlesen ";
 const char* ListenDialog::MANUELLDIALOG_OPTION_SAVE_BACKUP = "(9) Listen Backup speichern";
 const char* ListenDialog::MANUELLDIALOG_OPTION_LOAD_BACKUP = "(10) Listen Backup laden";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FILE_BACKUP = "(11) Speichern/Laden";
+const char* ListenDialog::MANUELLDIALOG_OPTION_FILE_BACKUP = "(11) Speichern/Laden !!EXPERIMENTELL!!";
 const char* ListenDialog::MANUELLDIALOF_STEAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOF_EINGABESYMBOL = "->> ";
 const char* ListenDialog::BACK_CONFIRMATION = "Daten gehen verloren! Weiter? (j)=Ja: ";
@@ -244,6 +244,7 @@ void ListenDialog::manuellDialog(){
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
+	istringstream is;
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
@@ -340,15 +341,15 @@ void ListenDialog::manuellDialog(){
 				cout << endl;
 				break;
 			case STREAM:
-				cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
-				cin >> *linListe;
 				cout << SEPERATOR << endl << OVERWIDE_CONFIRMATION;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
 					answer = ABORT;
-				} else {
-					clearInput();
+				}
+				else {
+					cout << MANUELLDIALOF_STEAM_EINGABE << endl << MANUELLDIALOF_EINGABESYMBOL;
+					cin >> *linListe;
 				}
 				break;
 			case SAVE_BACKUP:
