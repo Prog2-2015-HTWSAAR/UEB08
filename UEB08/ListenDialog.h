@@ -107,6 +107,9 @@ public:
 	static const int SEPERATOR_POSITION[];
 	static const int SEPERATOR_LINLISTE_POSITION[];
 	static const int SEPERATOR_MANUELL_POSITION[];
+	static const int MAINDIALOG_POSITION[];
+	static const int MANUELLDIALOG_POSITION[];
+	static const int ERROR_INVAILD_INPUT_POSITION[];
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;

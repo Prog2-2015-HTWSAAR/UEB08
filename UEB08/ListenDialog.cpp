@@ -36,11 +36,6 @@ const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* ListenDialog::ERRORPHRASE = "Fehler: ";
 //STD Phrases
 const char* ListenDialog::STANDARDCHOICEPHRASE = "-> ";
-//Main Dialog
-const char* ListenDialog::MAINDIALOG_OPTION_EXIT = "(0) EXIT";
-const char* ListenDialog::MAINDIALOG_OPTION_AUTO_TEST = "(1) Automatischer Test";
-const char* ListenDialog::MAINDIALOG_OPTION_MANUELL = "(2) Manueller Test";
-//Manuell Dialog
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_NAME = "NAME: ";
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_POSITION = "Position: ";
 const char* ListenDialog::MANUELLDIALOG_STREAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
@@ -102,6 +97,9 @@ const int ListenDialog::MAX_RUNS_FILE_READ = 4;
 const int ListenDialog::SEPERATOR_POSITION[] = { 1, 2 };
 const int ListenDialog::SEPERATOR_LINLISTE_POSITION[] = { 1, 4 };
 const int ListenDialog::SEPERATOR_MANUELL_POSITION[] = { 7, 10 };
+const int ListenDialog::MAINDIALOG_POSITION[] = { 28, 33 };
+const int ListenDialog::MANUELLDIALOG_POSITION[] = { 35, 48 };
+const int ListenDialog::ERROR_INVAILD_INPUT_POSITION[] = { 24, 25 };
 
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
@@ -124,10 +122,12 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
+	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION[0], ERROR_INVAILD_INPUT_POSITION[1]);
+	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION[0], SEPERATOR_LINLISTE_POSITION[1]);
+	stringstream main_dialog = readVariables(fileName, MAINDIALOG_POSITION[0], MAINDIALOG_POSITION[1]);
 	int answer = STD_ANSWER_VALUE;
 	do{
-		cout << SEPERATOR << endl << SEPERATOR_LISTE << endl << SEPERATOR << endl << endl;
-		cout << MAINDIALOG_OPTION_AUTO_TEST << endl << MAINDIALOG_OPTION_MANUELL << endl << MAINDIALOG_OPTION_EXIT << endl << STANDARDCHOICEPHRASE;
+		cout << seperator_LinListe.str() << endl << main_dialog.str();
 		cin >> answer;
 		clearInput();
 		switch (answer) {
@@ -142,9 +142,10 @@ void ListenDialog::mainDialog(string &fileName){
 
 			break;
 		default:
-			cout << INPUTERRORPHRASE << endl;
+			cout << error_input.str() << endl;
 			break;
 		}
+		answer = STD_ANSWER_VALUE;
 	} while (answer != EXIT);
 }
 /**
@@ -240,20 +241,17 @@ void ListenDialog::automaticTest(){
 * @details Manuelle Steuerung Des Programmes
 */
 void ListenDialog::manuellDialog(string &fileName){
-
 	LinList* linListe = NULL;
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
-
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
 	stringstream is;
 //	is = readVariables("de_DE.lang", 1, 2);
 	stringstream is2;
-	is2 = readVariables(fileName, 33, 44);
+	is2 = readVariables(fileName, 33, 46);
 	stringstream seperator = readVariables(fileName, SEPERATOR_POSITION[0], SEPERATOR_POSITION[1]);
-	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_POSITION[0], SEPERATOR_POSITION[1]);
 	stringstream seperator_delete_liste = readVariables(fileName, 3, 6);
 	stringstream seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION[0], SEPERATOR_MANUELL_POSITION[1]);
 	stringstream seperator_insert = readVariables(fileName, 7, 10);
@@ -262,8 +260,10 @@ void ListenDialog::manuellDialog(string &fileName){
 	stringstream seperator_push = readVariables(fileName, 7, 10);
 	stringstream seperator_pop = readVariables(fileName, 7, 10);
 	stringstream seperator_backup = readVariables(fileName, 7, 10);
-	stringstream error_input = readVariables(fileName, 7, 10);
+	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION[0], ERROR_INVAILD_INPUT_POSITION[1]);
 	stringstream error_std = readVariables(fileName, 7, 10);
+	stringstream manuell_dialog = readVariables(fileName, MANUELLDIALOG_POSITION[0], MANUELLDIALOG_POSITION[1]);
+
 
 
 
@@ -272,9 +272,7 @@ void ListenDialog::manuellDialog(string &fileName){
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
-			cout << seperator_maunuell.str();
-			cout << *linListe << endl;
-			cout << is.str() << is2.str();
+			cout << seperator_maunuell.str() << endl << *linListe << endl << manuell_dialog.str();
 			cout.clear();
 			cin >> answer;
 			clearInput();
@@ -411,8 +409,10 @@ void ListenDialog::manuellDialog(string &fileName){
 				break;
 			default:
 				cout << error_input.str() << endl;
+				cout.clear();
 				break;
 			}
+			answer = STD_ANSWER_VALUE;
 		}
 		catch (LinListException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
@@ -511,7 +511,10 @@ stringstream ListenDialog::readVariables(string fileName, int lowerBorder, int u
 	int run = ZERO_VALUE;
 	while (getline(file, line)){
 		if (run >= lowerBorder && run < upperBorder){
-			is << line << endl;
+			is << line;
+			if (run+1 < upperBorder){
+				is << endl;
+			}
 		}
 		run++;
 	}

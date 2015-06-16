@@ -23,12 +23,14 @@
 ####SEPERATOR END####
 ####ERROR BEGIN ####
 -> FEHLERHAFTE EINGABE <-
-
+FEHLER!!
 ####ERROR END####
 ####MAINDIALOG BEGIN####
 (1) Automatischer Test
 (2) Manueller Test
 (0) Beenden
+
+Ihre Wahl: 
 ####MAINDIALOG END####
 ####MANUELLDIALOG BEGIN####
 (1 )  Push back
@@ -42,6 +44,8 @@
 (9 )  Listen Backup speichern
 (10) Listen Backup laden
 (0 )  BACK
+
+Ihre Wahl: 
 ####MANUELLDIALOG END####
 ####ADDITIONAL PHRASES BEGIN####
 ####ADDITIONAL PHRASES END####
