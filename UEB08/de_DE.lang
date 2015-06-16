@@ -1,0 +1,48 @@
+ #####SEPERATOREN BEGIN#####
+-------------------------------
+------------linListe-----------
+-------------------------------
+---------DELETE-LISTE----------
+-------------------------------
+---------AUTOMATIC-TEST--------
+-------------------------------
+------------MANUELL------------
+-------------------------------
+------------INSERT-------------
+-------------------------------
+------------ERASE--------------
+-------------------------------
+------------CLEAR--------------
+-------------------------------
+-------------PUSH--------------
+-------------------------------
+-------------POP---------------
+-------------------------------
+-------------BACKUP------------
+-------------------------------
+####SEPERATOR END####
+####ERROR BEGIN ####
+-> FEHLERHAFTE EINGABE <-
+Fehler: 
+####ERROR END####
+####MAINDIALOG BEGIN####
+(1) Automatischer Test
+(2) Manueller Test
+(0) Beenden
+####MAINDIALOG END####
+####MANUELLDIALOG BEGIN####
+(1 )  Push back
+(2 )  Push front
+(3 )  Pop back
+(4 )  Pop front
+(5 )  Vor Position Einfuegen
+(6 )  Position Loeschen
+(7 )  Aufraumen
+(8 )  Liste Einlesen
+(9 )  Listen Backup speichern
+(10) Listen Backup laden
+(0 )  BACK
+####MANUELLDIALOG END####
+####ADDITIONAL PHRASES BEGIN####
+####ADDITIONAL PHRASES END####
+

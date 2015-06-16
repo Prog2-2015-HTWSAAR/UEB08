@@ -245,19 +245,16 @@ void ListenDialog::manuellDialog(){
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
-	istringstream is;
+	stringstream is;
+	is = readVariables("2", 0, 13);
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
 			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
 			cout << *linListe << endl;
-			cout << MANUELLDIALOG_OPTION_PUSH_BACK << endl << MANUELLDIALOG_OPTION_PUSH_FRONT << endl << MANUELLDIALOG_OPTION_POP_BACK
-				<< endl << MANUELLDIALOG_OPTION_POP_FRONT << endl << MANUELLDIALOG_OPTION_INSERT << endl << MANUELLDIALOG_OPTION_ERASE
-				<< endl << MANUELLDIALOG_OPTION_CLEAR << endl << MANUELLDIALOG_OPTION_STREAM << endl << MANUELLDIALOG_OPTION_SAVE_BACKUP << endl
-				<< MANUELLDIALOG_OPTION_LOAD_BACKUP << endl
-				//<< MANUELLDIALOG_OPTION_FILE_BACKUP << endl
-				<< MANUELLDIALOG_OPTION_BACK << endl << STANDARDCHOICEPHRASE;
+			cout << is.str();
+			cout.clear();
 			cin >> answer;
 			clearInput();
 			switch (answer) {
@@ -386,12 +383,9 @@ void ListenDialog::manuellDialog(){
 						<< linListe << SPACER << *linListe << endl;
 				}
 				break;
-//			case FILE_DIALOG:
-//				cout << MANUELLDIALOF_FILE_NAME;
-//				cin >> fileName;
-//				clearInput();
-//				fileDialog(linListe, fileName);
-//				break;
+			case FILE_DIALOG:
+				is= readVariables("2", 0, 13);
+				break;
 			case ABORT:
 				break;
 			default:
@@ -457,6 +451,27 @@ void ListenDialog::manuellDialog(){
 * @brief ListenDialog::clearInput()
 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 */
+void ListenDialog::initVariables(){
+
+}
+
+stringstream ListenDialog::readVariables(string fileName, int lowerBorder, int upperBorder){
+	fstream file;
+	stringstream is;
+	stringstream is2;
+
+	const char* constName = fileName.c_str();
+	file.open(constName);
+	string line;
+	int run = ZERO_VALUE;
+	while (getline(file, line)){
+		if (run >= lowerBorder && run < upperBorder){
+			is << line << endl;
+		}
+		run++;
+	}
+	return is;
+}
 void ListenDialog::clearInput(){
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');

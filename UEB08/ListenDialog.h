@@ -136,6 +136,8 @@ public:
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 	*/
 	void clearInput();
+	void initVariables();
+	stringstream readVariables(string fileName, int lowerBorder, int upperBorder);
 
 	/**
 	* @brief Konstruktor
