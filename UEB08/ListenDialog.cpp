@@ -35,7 +35,7 @@ const char* ListenDialog::SPACER = " ";
 const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
 const char* ListenDialog::ERRORPHRASE = "Fehler: ";
 //STD Phrases
-const char* ListenDialog::STANDARDCHOICEPHRASE = "Waehlen sie eine Option : ";
+const char* ListenDialog::STANDARDCHOICEPHRASE = "-> ";
 //Main Dialog
 const char* ListenDialog::MAINDIALOG_OPTION_EXIT = "(0) EXIT";
 const char* ListenDialog::MAINDIALOG_OPTION_AUTO_TEST = "(1) Automatischer Test";
@@ -43,18 +43,6 @@ const char* ListenDialog::MAINDIALOG_OPTION_MANUELL = "(2) Manueller Test";
 //Manuell Dialog
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_NAME = "NAME: ";
 const char* ListenDialog::MANUELLDIALOG_ELEMENT_NEU_POSITION = "Position: ";
-const char* ListenDialog::MANUELLDIALOG_OPTION_BACK = "(0) BACK";
-const char* ListenDialog::MANUELLDIALOG_OPTION_PUSH_BACK = "(1) Push back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_PUSH_FRONT = "(2) Push front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_POP_BACK = "(3) Pop back";
-const char* ListenDialog::MANUELLDIALOG_OPTION_POP_FRONT = "(4) Pop front";
-const char* ListenDialog::MANUELLDIALOG_OPTION_INSERT = "(5) Insert before position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_ERASE = "(6) Erase position";
-const char* ListenDialog::MANUELLDIALOG_OPTION_CLEAR = "(7) CLEAR";
-const char* ListenDialog::MANUELLDIALOG_OPTION_STREAM = "(8) Liste Einlesen ";
-const char* ListenDialog::MANUELLDIALOG_OPTION_SAVE_BACKUP = "(9) Listen Backup speichern";
-const char* ListenDialog::MANUELLDIALOG_OPTION_LOAD_BACKUP = "(10) Listen Backup laden";
-const char* ListenDialog::MANUELLDIALOG_OPTION_FILE_BACKUP = "(11) Speichern/Laden !!EXPERIMENTELL!!";
 const char* ListenDialog::MANUELLDIALOG_STREAM_EINGABE = "Mehrere eingaben bis NIL getrennt mit Leerzeichen!!";
 const char* ListenDialog::MANUELLDIALOG_EINGABESYMBOL = "->> ";
 const char* ListenDialog::BACK_CONFIRMATION = "Daten gehen verloren! Weiter? (j)=Ja: ";
@@ -95,12 +83,25 @@ const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_HIGH = "HIGH";
 const char* ListenDialog::AUTOMATIC_TEST_ELEMENT_INSERT_LOW = "LOW";
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "-INPUT STREAM VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM_VALUE = "A B C D NIL";
+
+
+
+const char* ListenDialog::LANGUAGE_OPTION_OVERVIEW = "Please chose Language";
+const char* ListenDialog::LANGUAGE_OPTION_GERMAN = "(1) GERMAN";
+const char* ListenDialog::LANGUAGE_OPTION_ENGLISH = "(2) ENGLISH";
+const char* ListenDialog::LANGUAGE_OPTION_HODOR = "(3) HODOR";
+
+
+
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
 const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::MAX_RUNS_FILE_READ = 4;
+const int ListenDialog::SEPERATOR_POSITION[] = { 1, 2 };
+const int ListenDialog::SEPERATOR_LINLISTE_POSITION[] = { 1, 4 };
+const int ListenDialog::SEPERATOR_MANUELL_POSITION[] = { 7, 10 };
 
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
@@ -122,7 +123,7 @@ ListenDialog::~ListenDialog() {}
 * @brief ListenDialog::mainDialog()
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
-void ListenDialog::mainDialog(){
+void ListenDialog::mainDialog(string &fileName){
 	int answer = STD_ANSWER_VALUE;
 	do{
 		cout << SEPERATOR << endl << SEPERATOR_LISTE << endl << SEPERATOR << endl << endl;
@@ -136,7 +137,9 @@ void ListenDialog::mainDialog(){
 			automaticTest();
 			break;
 		case MANUELLDIALOG:
-			manuellDialog();
+			//manuellDialog("de_DE.lang");
+			manuellDialog(fileName);
+
 			break;
 		default:
 			cout << INPUTERRORPHRASE << endl;
@@ -236,24 +239,42 @@ void ListenDialog::automaticTest(){
 * @brief ListenDialog::manuellDialog()
 * @details Manuelle Steuerung Des Programmes
 */
-void ListenDialog::manuellDialog(){
+void ListenDialog::manuellDialog(string &fileName){
+
 	LinList* linListe = NULL;
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
-	string fileName;
 
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
 	stringstream is;
-	is = readVariables("2", 0, 13);
+//	is = readVariables("de_DE.lang", 1, 2);
+	stringstream is2;
+	is2 = readVariables(fileName, 33, 44);
+	stringstream seperator = readVariables(fileName, SEPERATOR_POSITION[0], SEPERATOR_POSITION[1]);
+	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_POSITION[0], SEPERATOR_POSITION[1]);
+	stringstream seperator_delete_liste = readVariables(fileName, 3, 6);
+	stringstream seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION[0], SEPERATOR_MANUELL_POSITION[1]);
+	stringstream seperator_insert = readVariables(fileName, 7, 10);
+	stringstream seperator_erase = readVariables(fileName, 7, 10);
+	stringstream seperator_clear = readVariables(fileName, 7, 10);
+	stringstream seperator_push = readVariables(fileName, 7, 10);
+	stringstream seperator_pop = readVariables(fileName, 7, 10);
+	stringstream seperator_backup = readVariables(fileName, 7, 10);
+	stringstream error_input = readVariables(fileName, 7, 10);
+	stringstream error_std = readVariables(fileName, 7, 10);
+
+
+
+
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
-			cout << SEPERATOR << endl << SEPERATOR_MANUELL << endl << SEPERATOR << endl;
+			cout << seperator_maunuell.str();
 			cout << *linListe << endl;
-			cout << is.str();
+			cout << is.str() << is2.str();
 			cout.clear();
 			cin >> answer;
 			clearInput();
@@ -389,7 +410,7 @@ void ListenDialog::manuellDialog(){
 			case ABORT:
 				break;
 			default:
-				cout << INPUTERRORPHRASE << endl;
+				cout << error_input.str() << endl;
 				break;
 			}
 		}
@@ -451,8 +472,32 @@ void ListenDialog::manuellDialog(){
 * @brief ListenDialog::clearInput()
 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 */
-void ListenDialog::initVariables(){
-
+void ListenDialog::initLanguage(){
+	string LANGUAGE_GERMAN = "de_DE.lang";
+	string LANGUAGE_ENGLISH = "en_US.lang";
+	string LANGUAGE_HODOR = "hodor_WESTEROS.lang";
+	int answer = STD_ANSWER_VALUE;
+	do{
+		cout << LANGUAGE_OPTION_OVERVIEW << endl << LANGUAGE_OPTION_GERMAN << endl << LANGUAGE_OPTION_ENGLISH << endl << LANGUAGE_OPTION_HODOR << endl << STANDARDCHOICEPHRASE;
+		cin >> answer;
+		clearInput();
+		switch (answer) {
+		case CLOSEPROGRAM:
+			break;
+		case GERMAN:
+			mainDialog(LANGUAGE_GERMAN);
+			break;
+		case ENGLISH:
+			mainDialog(LANGUAGE_ENGLISH);
+			break;
+		case HODOR:
+			mainDialog(LANGUAGE_HODOR);
+			break;
+		default:
+			cout << INPUTERRORPHRASE << endl;
+			break;
+		}
+	} while (answer != EXIT);
 }
 
 stringstream ListenDialog::readVariables(string fileName, int lowerBorder, int upperBorder){

@@ -12,6 +12,7 @@
 
 #ifndef LINLIST_LISTENDIALOG_H_
 #define LINLIST_LISTENDIALOG_H_
+enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR };
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
 enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, SAVE_BACKUP, LOAD_BACKUP, FILE_DIALOG, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
@@ -97,7 +98,15 @@ public:
 	static const char* AUTOMATIC_TEST_ELEMENT_INSERT_HIGH;
 	static const char* AUTOMATIC_TEST_ELEMENT_INSERT_LOW;
 	static const char* AUTOMATIC_TEST_EINGABE_STREAM;
+
+	static const char* LANGUAGE_OPTION_OVERVIEW;
+	static const char* LANGUAGE_OPTION_GERMAN;
+	static const char* LANGUAGE_OPTION_ENGLISH;
+	static const char* LANGUAGE_OPTION_HODOR;
 	//const Int
+	static const int SEPERATOR_POSITION[];
+	static const int SEPERATOR_LINLISTE_POSITION[];
+	static const int SEPERATOR_MANUELL_POSITION[];
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
@@ -113,7 +122,7 @@ public:
 	* @brief mainDialog()
 	* @details HauptDialog Auswahl Auto Manuell Exit
 	*/
-	void mainDialog();
+	void mainDialog(string &fileName);
 	/**
 	* @brief automaticTest()
 	* @details Automatischer Test
@@ -123,7 +132,7 @@ public:
 	* @brief manuellDialog()
 	* @details Manuelle Steuerung Des Programmes
 	*/
-	void manuellDialog();
+	void manuellDialog(string &fileName);
 	/*
 	* @brief fileDialog(LinList* linListe, string fileName)
 	* @details SAVE AND LOAD
@@ -136,7 +145,7 @@ public:
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 	*/
 	void clearInput();
-	void initVariables();
+	void initLanguage();
 	stringstream readVariables(string fileName, int lowerBorder, int upperBorder);
 
 	/**

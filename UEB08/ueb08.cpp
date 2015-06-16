@@ -17,6 +17,6 @@ using namespace std;
 */
 int main(){
 	ListenDialog listenDialog;
-	listenDialog.mainDialog();
+	listenDialog.initLanguage();
 	return 0;
 }
