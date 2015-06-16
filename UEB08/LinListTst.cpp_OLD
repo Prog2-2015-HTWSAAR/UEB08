@@ -11,11 +11,22 @@ using namespace std;
 
 int main() {
 	LinList liste1;
-	//liste1.push_back("alpha");
-	//liste1.push_back("beta");
-	cout << "Geben Sie die Liste ein (Ende mit NIL):" << endl;
+	LinList liste2;
+	LinList liste3;
+	cout << "Geben Sie die erste Liste ein (Ende mit NIL):" << endl;
 	cin >> liste1;
 	cout << liste1 << endl;
+	cout << "Geben Sie die zweite Liste ein (Ende mit NIL):" << endl;
+	cin >> liste2;
+	cout << liste2 << endl;
+	cout << "Geben Sie die dritte Liste ein (Ende mit NIL):" << endl;
+	cin >> liste3;
+	cout << liste3 << endl;
+	cout << "Liste1[2]: " << liste1[2] << endl;
+	cout << "Liste1 += Liste2: " << (liste1 += liste2) << endl;
+	cout << "Liste2 == Liste3: " << (liste1 == liste2) << endl;
+	cout << "Liste1 != Liste1: " << (liste1 != liste2) << endl;
+	cout << "Liste2 + Liste3" << (liste2 + liste3) << endl;
 }
 
 

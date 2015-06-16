@@ -30,6 +30,7 @@ LinList::LinList() {
 * @param linlist Referenz auf zu kopierendes Objekt
 */
 LinList::LinList(const LinList& linlist){
+	this->size = 0;
 	copyElements(linlist);
 }
 /**
@@ -243,15 +244,56 @@ istream& operator>> (istream& i, LinList& linList){
 	}
 	return i;
 }
+
+ListElement& LinList::operator[] (int pos){
+	int suchIndex = 1;
+	ListElement* tmp = first;
+	if ((size_t)pos < 1 || (size_t)pos > size){
+		throw LinListException(MELDUNG_FALSCHE_POS);
+	}
+	while (suchIndex < pos){
+		tmp = tmp->next;
+		suchIndex++;
+	}
+	return *tmp;
+}
+LinList& LinList::operator+= (LinList& linList){
+	copyElements(linList);
+	return *this;
+}
+
+bool LinList::operator== (LinList& linList){
+	bool ergebnis = true;
+	ListElement* tmp1 = first;
+	ListElement* tmp2 = linList.first;
+	while(tmp1 &&  tmp2 && ergebnis){
+		if(tmp1!=tmp2){
+			ergebnis = false;
+		}
+		tmp1 = tmp1->next;
+		tmp2 = tmp2->next;
+	}
+	return ergebnis;
+}
+
+bool LinList::operator!= (LinList& linList){
+	return !(*this == linList);
+}
+
+LinList& operator+(LinList& linList1, LinList& linList2){
+	LinList* tmp = new LinList(linList1);
+	*tmp += linList2;
+	return *tmp;
+}
 /**
 * @brief copyElements Kopierfunktion
 * @param linList Referenz auf LinListen Obj
 */
 void LinList::copyElements(const LinList& linList){
 	ListElement* tmp = linList.first;
+
 	while(tmp != NULL){
 		push_back(tmp->inhalt);
 		tmp = tmp->next;
 	}
-	cout << endl;
 }

@@ -94,6 +94,27 @@ public:
 	 * @returns Referenz auf Stream mit entnommenem LinListString
 	 */
 	friend istream& operator>> (istream& i, LinList& linList);
+	/**
+	 * @brief indexOperator zum Zugriff auf ein Element
+	 *
+	 */
+	ListElement& operator[](int pos);
+	/**
+	 *
+	 */
+	LinList& operator+=(LinList& linList);
+	/**
+	 *
+	 */
+	bool operator==(LinList& linList);
+	/**
+	 *
+	 */
+	bool operator!=(LinList& linList);
+	/**
+	 *
+	 */
+	friend LinList& operator+(LinList& linList1, LinList& linList2);
 	static const char* MELDUNG_LISTE_LEER;
 	static const char* MELDUNG_FALSCHE_POS;
 	static const char* ADD_SPACE;
