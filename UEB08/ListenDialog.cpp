@@ -16,7 +16,7 @@
 //Seperators
 const char* ListenDialog::SEPERATOR = "-------------------------------";
 const char* ListenDialog::SEPERATOR_LISTE = "------------linListe-----------";
-const char* ListenDialog::SEPERATOR_DELETE_LISTE =	"-L-------DELETE-LISTE----------";
+const char* ListenDialog::SEPERATOR_DELETE_LISTE = "-L-------DELETE-LISTE----------";
 const char* ListenDialog::SEPERATOR_AUTOMATIC_TEST = "---------AUTOMATIC-TEST--------";
 const char* ListenDialog::SEPERATOR_MANUELL = "------------MANUELL------------";
 const char* ListenDialog::SEPERATOR_INSERT = "------------INSERT-------------";
@@ -94,12 +94,14 @@ const int ListenDialog::ZERO_VALUE = 0;
 const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::MAX_RUNS_FILE_READ = 4;
-const int ListenDialog::SEPERATOR_POSITION[] = { 1, 2 };
-const int ListenDialog::SEPERATOR_LINLISTE_POSITION[] = { 1, 4 };
-const int ListenDialog::SEPERATOR_MANUELL_POSITION[] = { 7, 10 };
-const int ListenDialog::MAINDIALOG_POSITION[] = { 28, 33 };
-const int ListenDialog::MANUELLDIALOG_POSITION[] = { 35, 48 };
-const int ListenDialog::ERROR_INVAILD_INPUT_POSITION[] = { 24, 25 };
+const int ListenDialog::SEPERATOR_POSITION = 2;
+const int ListenDialog::SEPERATOR_LINLISTE_POSITION = 5;
+const int ListenDialog::SEPERATOR_MANUELL_POSITION = 15;
+const int ListenDialog::SEPERATOR_PUSH_POSITION = 32;
+const int ListenDialog::SEPERATOR_POP_POSITION = 35;
+const int ListenDialog::MAINDIALOG_POSITION = 51;
+const int ListenDialog::MANUELLDIALOG_POSITION = 59;
+const int ListenDialog::ERROR_INVAILD_INPUT_POSITION = 43;
 
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 14;
@@ -122,9 +124,9 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
-	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION[0], ERROR_INVAILD_INPUT_POSITION[1]);
-	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION[0], SEPERATOR_LINLISTE_POSITION[1]);
-	stringstream main_dialog = readVariables(fileName, MAINDIALOG_POSITION[0], MAINDIALOG_POSITION[1]);
+	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
+	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION);
+	stringstream main_dialog = readVariables(fileName, MAINDIALOG_POSITION);
 	int answer = STD_ANSWER_VALUE;
 	do{
 		cout << seperator_LinListe.str() << endl << main_dialog.str();
@@ -145,7 +147,6 @@ void ListenDialog::mainDialog(string &fileName){
 			cout << error_input.str() << endl;
 			break;
 		}
-		answer = STD_ANSWER_VALUE;
 	} while (answer != EXIT);
 }
 /**
@@ -248,26 +249,21 @@ void ListenDialog::manuellDialog(string &fileName){
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
 	stringstream is;
-//	is = readVariables("de_DE.lang", 1, 2);
+	//	is = readVariables("de_DE.lang", 1, 2);
 	stringstream is2;
-	is2 = readVariables(fileName, 33, 46);
-	stringstream seperator = readVariables(fileName, SEPERATOR_POSITION[0], SEPERATOR_POSITION[1]);
-	stringstream seperator_delete_liste = readVariables(fileName, 3, 6);
-	stringstream seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION[0], SEPERATOR_MANUELL_POSITION[1]);
-	stringstream seperator_insert = readVariables(fileName, 7, 10);
-	stringstream seperator_erase = readVariables(fileName, 7, 10);
-	stringstream seperator_clear = readVariables(fileName, 7, 10);
-	stringstream seperator_push = readVariables(fileName, 7, 10);
-	stringstream seperator_pop = readVariables(fileName, 7, 10);
-	stringstream seperator_backup = readVariables(fileName, 7, 10);
-	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION[0], ERROR_INVAILD_INPUT_POSITION[1]);
-	stringstream error_std = readVariables(fileName, 7, 10);
-	stringstream manuell_dialog = readVariables(fileName, MANUELLDIALOG_POSITION[0], MANUELLDIALOG_POSITION[1]);
-
-
-
-
-
+	is2 = readVariables(fileName, 33);
+	stringstream seperator = readVariables(fileName, SEPERATOR_POSITION);
+	stringstream seperator_delete_liste = readVariables(fileName, 3);
+	stringstream seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION);
+	stringstream seperator_insert = readVariables(fileName, 7);
+	stringstream seperator_erase = readVariables(fileName, 7);
+	stringstream seperator_clear = readVariables(fileName, 7);
+	stringstream seperator_push = readVariables(fileName, SEPERATOR_PUSH_POSITION);
+	stringstream seperator_pop = readVariables(fileName, SEPERATOR_PUSH_POSITION);
+	stringstream seperator_backup = readVariables(fileName, 7);
+	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
+	stringstream error_std = readVariables(fileName, 7);
+	stringstream manuell_dialog = readVariables(fileName, MANUELLDIALOG_POSITION);
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
@@ -278,7 +274,7 @@ void ListenDialog::manuellDialog(string &fileName){
 			clearInput();
 			switch (answer) {
 			case BACK:
-				cout << SEPERATOR_DELETE_LISTE << endl << BACK_CONFIRMATION;
+				cout << seperator_push.str() << endl << BACK_CONFIRMATION;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES){
@@ -402,9 +398,6 @@ void ListenDialog::manuellDialog(string &fileName){
 						<< linListe << SPACER << *linListe << endl;
 				}
 				break;
-			case FILE_DIALOG:
-				is= readVariables("2", 0, 13);
-				break;
 			case ABORT:
 				break;
 			default:
@@ -412,7 +405,9 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout.clear();
 				break;
 			}
-			answer = STD_ANSWER_VALUE;
+			if (answer != 0){
+				answer = STD_ANSWER_VALUE;
+			}
 		}
 		catch (LinListException& e) {
 			cout << ERRORPHRASE << e.what() << endl;
@@ -476,51 +471,72 @@ void ListenDialog::initLanguage(){
 	string LANGUAGE_GERMAN = "de_DE.lang";
 	string LANGUAGE_ENGLISH = "en_US.lang";
 	string LANGUAGE_HODOR = "hodor_WESTEROS.lang";
-	int answer = STD_ANSWER_VALUE;
-	do{
-		cout << LANGUAGE_OPTION_OVERVIEW << endl << LANGUAGE_OPTION_GERMAN << endl << LANGUAGE_OPTION_ENGLISH << endl << LANGUAGE_OPTION_HODOR << endl << STANDARDCHOICEPHRASE;
-		cin >> answer;
+	if (fileExists(LANGUAGE_GERMAN) && fileExists(LANGUAGE_ENGLISH) && fileExists(LANGUAGE_HODOR)){
+		int answer = STD_ANSWER_VALUE;
+		do{
+			cout << LANGUAGE_OPTION_OVERVIEW << endl << LANGUAGE_OPTION_GERMAN << endl << LANGUAGE_OPTION_ENGLISH << endl << LANGUAGE_OPTION_HODOR << endl << STANDARDCHOICEPHRASE;
+			cin >> answer;
+			clearInput();
+			switch (answer) {
+			case CLOSEPROGRAM:
+				break;
+			case GERMAN:
+				mainDialog(LANGUAGE_GERMAN);
+				break;
+			case ENGLISH:
+				mainDialog(LANGUAGE_ENGLISH);
+				break;
+			case HODOR:
+				mainDialog(LANGUAGE_HODOR);
+				break;
+			default:
+				cout << INPUTERRORPHRASE << endl;
+				break;
+			}
+		} while (answer != EXIT);
+	}
+	else{
+		cout << "NO LANGUAGE FILES DETECTED" << endl << "Press Enter to Exit";
 		clearInput();
-		switch (answer) {
-		case CLOSEPROGRAM:
-			break;
-		case GERMAN:
-			mainDialog(LANGUAGE_GERMAN);
-			break;
-		case ENGLISH:
-			mainDialog(LANGUAGE_ENGLISH);
-			break;
-		case HODOR:
-			mainDialog(LANGUAGE_HODOR);
-			break;
-		default:
-			cout << INPUTERRORPHRASE << endl;
-			break;
-		}
-	} while (answer != EXIT);
+	}
 }
 
-stringstream ListenDialog::readVariables(string fileName, int lowerBorder, int upperBorder){
+stringstream ListenDialog::readVariables(string fileName, int lowerBorder){
 	fstream file;
 	stringstream is;
-	stringstream is2;
-
+	string cache;
+	string line;
 	const char* constName = fileName.c_str();
 	file.open(constName);
-	string line;
-	int run = ZERO_VALUE;
+	int lines = ZERO_VALUE;
+	int stop = ZERO_VALUE;
 	while (getline(file, line)){
-		if (run >= lowerBorder && run < upperBorder){
-			is << line;
-			if (run+1 < upperBorder){
+		if (stop != INPUT_ONE && lowerBorder<lines){
+			if (lowerBorder + 1 < lines){
 				is << endl;
 			}
+			is << cache;
 		}
-		run++;
+		if (lines >= lowerBorder && stop != INPUT_ONE){
+			if (line == "##END"){
+				stop = INPUT_ONE;
+			}
+			else{
+				cache = line;
+			}
+		}
+		lines++;
 	}
+	file.close();
 	return is;
 }
 void ListenDialog::clearInput(){
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');
+}
+
+bool ListenDialog::fileExists(string fileName) {
+	const char* constName = fileName.c_str();
+	ifstream infile(constName);
+	return infile.good();
 }

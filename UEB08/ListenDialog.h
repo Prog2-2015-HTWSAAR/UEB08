@@ -104,12 +104,14 @@ public:
 	static const char* LANGUAGE_OPTION_ENGLISH;
 	static const char* LANGUAGE_OPTION_HODOR;
 	//const Int
-	static const int SEPERATOR_POSITION[];
-	static const int SEPERATOR_LINLISTE_POSITION[];
-	static const int SEPERATOR_MANUELL_POSITION[];
-	static const int MAINDIALOG_POSITION[];
-	static const int MANUELLDIALOG_POSITION[];
-	static const int ERROR_INVAILD_INPUT_POSITION[];
+	static const int SEPERATOR_POSITION;
+	static const int SEPERATOR_LINLISTE_POSITION;
+	static const int SEPERATOR_MANUELL_POSITION;
+	static const int SEPERATOR_PUSH_POSITION;
+	static const int SEPERATOR_POP_POSITION;
+	static const int MAINDIALOG_POSITION;
+	static const int MANUELLDIALOG_POSITION;
+	static const int ERROR_INVAILD_INPUT_POSITION;
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
@@ -149,7 +151,8 @@ public:
 	*/
 	void clearInput();
 	void initLanguage();
-	stringstream readVariables(string fileName, int lowerBorder, int upperBorder);
+	bool fileExists(string fileName);
+	stringstream readVariables(string fileName, int lowerBorder);
 
 	/**
 	* @brief Konstruktor

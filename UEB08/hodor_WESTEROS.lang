@@ -1,36 +1,60 @@
-  #####SEPERATOREN BEGIN#####
+#####SEPERATOREN BEGIN#####
+##BEGIN
+-------------------------------
+##END
+##BEGIN
 -------------------------------
 -------------HODOR-------------
 -------------------------------
--------------HODOR-------------
+##END
+##BEGIN
 -------------------------------
 -------------HODOR-------------
 -------------------------------
--------------HODOR-------------
+##END
+##BEGIN
 -------------------------------
 -------------HODOR-------------
 -------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
--------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
--------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
--------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
--------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
--------------------------------
+##END
+##BEGIN
+-------------HODOR-------------
+##END
+##BEGIN
+-------------HODOR-------------
+##END
 ####SEPERATOR END####
 ####ERROR BEGIN ####
+##BEGIN
 -> HODOR HODOR <-
-HODOR: 
+##END
+##BEGIN
+HODOR!!
+##END
 ####ERROR END####
 ####MAINDIALOG BEGIN####
-(1) HODOR HODOR 
+##BEGIN
+(1) HODOR HODOR
 (2) HODOR HODOR
-(0) HODOR
+(0) HODOR HODOR HODOR
 
-HODOR:
+HODOR HODOR: 
+##END
 ####MAINDIALOG END####
 ####MANUELLDIALOG BEGIN####
 (1 )  HODOR HODOR
@@ -43,10 +67,12 @@ HODOR:
 (8 )  HODOR HODOR
 (9 )  HODOR HODOR HODOR
 (10)  HODOR HODOR HODOR
-(0 )  HODOR
+(0 )  HODOR HODOR HODOR
 
-HODOR:
+HODOR HODOR: 
+##END
 ####MANUELLDIALOG END####
 ####ADDITIONAL PHRASES BEGIN####
+
 ####ADDITIONAL PHRASES END####
 

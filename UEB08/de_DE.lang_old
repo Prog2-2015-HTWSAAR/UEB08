@@ -1,60 +1,36 @@
-#####SEPERATOREN BEGIN#####
-##BEGIN
--------------------------------
-##END
-##BEGIN
+ #####SEPERATOREN BEGIN#####
 -------------------------------
 ------------linListe-----------
 -------------------------------
-##END
-##BEGIN
+---------DELETE-LISTE----------
 -------------------------------
 ---------AUTOMATIC-TEST--------
 -------------------------------
-##END
-##BEGIN
--------------------------------
 ------------MANUELL------------
 -------------------------------
-##END
-##BEGIN
----------DELETE-LISTE----------
-##END
-##BEGIN
 ------------INSERT-------------
-##END
-##BEGIN
+-------------------------------
 ------------ERASE--------------
-##END
-##BEGIN
+-------------------------------
 ------------CLEAR--------------
-##END
-##BEGIN
+-------------------------------
 -------------PUSH--------------
-##END
-##BEGIN
+-------------------------------
 -------------POP---------------
-##END
-##BEGIN
+-------------------------------
 -------------BACKUP------------
-##END
+-------------------------------
 ####SEPERATOR END####
 ####ERROR BEGIN ####
-##BEGIN
 -> FEHLERHAFTE EINGABE <-
-##END
-##BEGIN
 FEHLER!!
-##END
 ####ERROR END####
 ####MAINDIALOG BEGIN####
-##BEGIN
 (1) Automatischer Test
 (2) Manueller Test
-(0) Zurueck zur Sprachauswahl
+(0) Beenden
 
 Ihre Wahl: 
-##END
 ####MAINDIALOG END####
 ####MANUELLDIALOG BEGIN####
 (1 )  Push back
@@ -66,11 +42,10 @@ Ihre Wahl:
 (7 )  Aufraumen
 (8 )  Liste Einlesen
 (9 )  Listen Backup speichern
-(10)  Listen Backup laden
-(0 )  Zurueck zum Main Dialog
+(10) Listen Backup laden
+(0 )  BACK
 
 Ihre Wahl: 
-##END
 ####MANUELLDIALOG END####
 ####ADDITIONAL PHRASES BEGIN####
 
