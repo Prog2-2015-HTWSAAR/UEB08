@@ -12,11 +12,11 @@
 #include "LinList.h"
 #include <sstream>
 #include <iostream>
-const char* LinList::MELDUNG_LISTE_LEER = "Liste ist leer!";
-const char* LinList::MELDUNG_FALSCHE_POS  = "Ungueltige Position!";
+const char* LinList::MELDUNG_LISTE_LEER = "List EMPTY!";
+const char* LinList::MELDUNG_FALSCHE_POS  = "Invalid Position!";
 const char* LinList::ADD_SPACE = " ";
-const char* LinList::CHAINED_LIST = "Verkettete Liste: ";
-const char* LinList::ELEMENTS = " Elemente\n";
+const char* LinList::CHAINED_LIST = "Vk Liste: ";
+const char* LinList::ELEMENTS = " Element\n";
 const char* LinList::NIL_PHRASE = "NIL";
 const char* LinList::EMPTY_CHAR_ARRAY = "";
 /**

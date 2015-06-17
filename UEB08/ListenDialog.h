@@ -73,6 +73,7 @@ public:
 	static const char* OVERRRIDE_CONFIRMATION;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
+	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_EN;
 	static const char* MANUELLDIALOF_FILE_NAME;
 	//FILE_DIALOG
 //	static const char* FILEDIALOG_OPTION_SAVE;
@@ -104,6 +105,9 @@ public:
 	static const char* LANGUAGE_OPTION_GERMAN;
 	static const char* LANGUAGE_OPTION_ENGLISH;
 	static const char* LANGUAGE_OPTION_HODOR;
+
+	static const string READ_END;
+
 	//const Int
 	static const int SEPERATOR_POSITION;
 	static const int SEPERATOR_LINLISTE_POSITION;
@@ -114,6 +118,20 @@ public:
 	static const int MANUELLDIALOG_POSITION;
 	static const int ERROR_INVAILD_INPUT_POSITION;
 	static const int STD_ANSWER_VALUE;
+	static const int SEPERATOR_DELETE_LISTE_POSITION;
+	static const int SEPERATOR_CLEAR_POSITION;
+	static const int ERROR_STD_POSITION;
+	static const int SEPERATOR_BACKUP_POSITION;
+	static const int SEPERATOR_INSERT_POSITION;
+	static const int SEPERATOR_ERASE_POSITION;
+	static const int PHRASE_NAME_POSITION;
+	static const int PHRASE_POSITION_POSITION;
+	static const int PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION_POITION;
+	static const int PHRASE_ELEMENT_DELETE_CONFIRMATION_POSITION;
+	static const int PHRASE_CLEAR_CONFIRMATION_POSITION;
+	static const int PHRASE_LOAD_CONFIRMATION_POITION;
+	static const int PHRASE_SAVE_CONFIRMATION_POITION;
+	static const int PHRASE_READ_STREAM;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
 	static const int INPUT_VALUE;

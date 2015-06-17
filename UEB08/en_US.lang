@@ -73,6 +73,37 @@ Your Choice:
 ##END
 ####MANUELLDIALOG END####
 ####ADDITIONAL PHRASES BEGIN####
+##BEGIN
+NAME: 
+##END
+##BEGIN
+Position: 
+##END
+##BEGIN
+Enter Multible Elements seperated by space. Enter NIL for stop reading!!
+-> 
+##END
+##BEGIN
+DELETE DATA! continuo? (y)=yes: 
+##END
+##BEGIN
+ELEMENT delete. sure? (y)=yes: 
+##END
+##BEGIN
+linListe clear. sure? (y)=yes: 
+##END
+##BEGIN
+drop list? (y)=yes: 
+##END
+##BEGIN
+Overwride Backup? (y)=yes: 
+##END
+##BEGIN
+##END
+##BEGIN
+##END
+##BEGIN
+##END
 
 ####ADDITIONAL PHRASES END####
 

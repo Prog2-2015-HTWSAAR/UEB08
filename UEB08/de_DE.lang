@@ -73,6 +73,37 @@ Ihre Wahl:
 ##END
 ####MANUELLDIALOG END####
 ####ADDITIONAL PHRASES BEGIN####
+##BEGIN
+NAME: 
+##END
+##BEGIN
+Position: 
+##END
+##BEGIN
+Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
+-> 
+##END
+##BEGIN
+Daten gehen verloren! Weiter? (j)=Ja: 
+##END
+##BEGIN
+ELEMENT wirklich loeschen? (j)=Ja: 
+##END
+##BEGIN
+linListe wirklich leeren? (j)=Ja: 
+##END
+##BEGIN
+aktuelle Liste verwerfen? (j)=Ja: 
+##END
+##BEGIN
+Backup ueberschreiben? (j)=Ja: 
+##END
+##BEGIN
+##END
+##BEGIN
+##END
+##BEGIN
+##END
 
 ####ADDITIONAL PHRASES END####
 
