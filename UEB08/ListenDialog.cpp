@@ -127,12 +127,12 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
-	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
-	stringstream seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION);
-	stringstream main_dialog = readVariables(fileName, MAINDIALOG_POSITION);
+	string error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
+	string seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION);
+	string main_dialog = readVariables(fileName, MAINDIALOG_POSITION);
 	int answer = STD_ANSWER_VALUE;
 	do{
-		cout << seperator_LinListe.str() << endl << main_dialog.str();
+		cout << seperator_LinListe << endl << main_dialog;
 		cin >> answer;
 		clearInput();
 		switch (answer) {
@@ -147,7 +147,7 @@ void ListenDialog::mainDialog(string &fileName){
 
 			break;
 		default:
-			cout << error_input.str() << endl;
+			cout << error_input << endl;
 			break;
 		}
 	} while (answer != EXIT);
@@ -251,40 +251,40 @@ void ListenDialog::manuellDialog(string &fileName){
 	linListeCopy = new LinList();
 	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
 	string name;
-	stringstream seperator = readVariables(fileName, SEPERATOR_POSITION);
-	stringstream seperator_delete_liste = readVariables(fileName, SEPERATOR_DELETE_LISTE_POSITION);
-	stringstream seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION);
-	stringstream seperator_insert = readVariables(fileName, SEPERATOR_INSERT_POSITION);
-	stringstream seperator_erase = readVariables(fileName, SEPERATOR_ERASE_POSITION);
-	stringstream seperator_clear = readVariables(fileName, SEPERATOR_CLEAR_POSITION);
-	stringstream seperator_push = readVariables(fileName, SEPERATOR_PUSH_POSITION);
-	stringstream seperator_pop = readVariables(fileName, SEPERATOR_PUSH_POSITION);
-	stringstream seperator_backup = readVariables(fileName, SEPERATOR_BACKUP_POSITION);
-	stringstream error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
-	stringstream error_std = readVariables(fileName, ERROR_STD_POSITION);
-	stringstream manuell_dialog = readVariables(fileName, MANUELLDIALOG_POSITION);
-	stringstream seperator_delete = readVariables(fileName, SEPERATOR_DELETE_LISTE_POSITION);
-	stringstream phrase_name = readVariables(fileName, PHRASE_NAME_POSITION);
-	stringstream phrase_position = readVariables(fileName, PHRASE_POSITION_POSITION);
-	stringstream phrase_element_delete_back_confirmation = readVariables(fileName, PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION_POITION);
-	stringstream phrase_element_delete_confirmation = readVariables(fileName, PHRASE_ELEMENT_DELETE_CONFIRMATION_POSITION);
-	stringstream phrase_clear_confirmation = readVariables(fileName, PHRASE_CLEAR_CONFIRMATION_POSITION);
-	stringstream phrase_load_confirmation = readVariables(fileName, PHRASE_LOAD_CONFIRMATION_POITION);
-	stringstream phrase_save_confirmation = readVariables(fileName, PHRASE_SAVE_CONFIRMATION_POITION);
-	stringstream phrase_read_stream = readVariables(fileName, PHRASE_READ_STREAM);
+	string seperator = readVariables(fileName, SEPERATOR_POSITION);
+	string seperator_delete_liste = readVariables(fileName, SEPERATOR_DELETE_LISTE_POSITION);
+	string seperator_maunuell = readVariables(fileName, SEPERATOR_MANUELL_POSITION);
+	string seperator_insert = readVariables(fileName, SEPERATOR_INSERT_POSITION);
+	string seperator_erase = readVariables(fileName, SEPERATOR_ERASE_POSITION);
+	string seperator_clear = readVariables(fileName, SEPERATOR_CLEAR_POSITION);
+	string seperator_push = readVariables(fileName, SEPERATOR_PUSH_POSITION);
+	string seperator_pop = readVariables(fileName, SEPERATOR_PUSH_POSITION);
+	string seperator_backup = readVariables(fileName, SEPERATOR_BACKUP_POSITION);
+	string error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
+	string error_std = readVariables(fileName, ERROR_STD_POSITION);
+	string manuell_dialog = readVariables(fileName, MANUELLDIALOG_POSITION);
+	string seperator_delete = readVariables(fileName, SEPERATOR_DELETE_LISTE_POSITION);
+	string phrase_name = readVariables(fileName, PHRASE_NAME_POSITION);
+	string phrase_position = readVariables(fileName, PHRASE_POSITION_POSITION);
+	string phrase_element_delete_back_confirmation = readVariables(fileName, PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION_POITION);
+	string phrase_element_delete_confirmation = readVariables(fileName, PHRASE_ELEMENT_DELETE_CONFIRMATION_POSITION);
+	string phrase_clear_confirmation = readVariables(fileName, PHRASE_CLEAR_CONFIRMATION_POSITION);
+	string phrase_load_confirmation = readVariables(fileName, PHRASE_LOAD_CONFIRMATION_POITION);
+	string phrase_save_confirmation = readVariables(fileName, PHRASE_SAVE_CONFIRMATION_POITION);
+	string phrase_read_stream = readVariables(fileName, PHRASE_READ_STREAM);
 
 	
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
 		try{
-			cout << seperator_maunuell.str() << endl << *linListe << endl << manuell_dialog.str();
+			cout << seperator_maunuell << endl << *linListe << endl << manuell_dialog;
 			cout.clear();
 			cin >> answer;
 			clearInput();
 			switch (answer) {
 			case BACK:
-				cout << seperator_push.str() << endl << phrase_element_delete_back_confirmation.str();
+				cout << seperator_push << endl << phrase_element_delete_back_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -293,21 +293,21 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << endl;
 				break;
 			case PUSH_BACK:
-				cout << seperator_push.str() << endl;
-				cout << phrase_name.str();
+				cout << seperator_push << endl;
+				cout << phrase_name;
 				cin >> name;
 				clearInput();
 				linListe->push_back(name);
 				break;
 			case PUSH_FRONT:
-				cout << seperator_push.str() << endl;
-				cout << phrase_name.str();
+				cout << seperator_push << endl;
+				cout << phrase_name;
 				cin >> name;
 				clearInput();
 				linListe->push_front(name);
 				break;
 			case POP_BACK:
-				cout << seperator_pop.str() << endl << phrase_element_delete_confirmation.str();
+				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -318,7 +318,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				}
 				break;
 			case POP_FRONT:
-				cout << seperator_pop.str() << endl << phrase_element_delete_confirmation.str();
+				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -329,20 +329,20 @@ void ListenDialog::manuellDialog(string &fileName){
 				}
 				break;
 			case INSERT_ELEMENT:
-				cout << seperator_insert.str() << endl;
-				cout << phrase_name.str();
+				cout << seperator_insert << endl;
+				cout << phrase_name;
 				cin >> name;
 				clearInput();
-				cout << phrase_position.str();
+				cout << phrase_position;
 				cin >> position;
 				clearInput();
 				linListe->insert(position, name);
 				break;
 			case ERASE_ELEMENT:
-				cout << phrase_position.str();
+				cout << phrase_position;
 				cin >> position;
 				clearInput();
-				cout << seperator_erase.str() << endl << phrase_element_delete_confirmation.str();
+				cout << seperator_erase << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -354,7 +354,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << endl;
 				break;
 			case CLEAR:
-				cout << seperator_delete.str() << endl << phrase_clear_confirmation.str();
+				cout << seperator_delete << endl << phrase_clear_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -366,21 +366,21 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << endl;
 				break;
 			case STREAM:
-				cout << seperator_delete.str() << endl << phrase_load_confirmation.str();
+				cout << seperator_delete << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
 					answer = ABORT;
 				}
 				else {
-					cout << phrase_read_stream.str();
+					cout << phrase_read_stream;
 					cin >> *linListe;
 				}
 				break;
 			case SAVE_BACKUP:
-				cout << seperator_backup.str() << endl;
+				cout << seperator_backup << endl;
 				cout << *linListeCopy << endl;
-				cout << seperator_delete_liste.str() << endl << phrase_save_confirmation.str();
+				cout << seperator_delete_liste << endl << phrase_save_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -394,9 +394,9 @@ void ListenDialog::manuellDialog(string &fileName){
 
 				break;
 			case LOAD_BACKUP:
-				cout << seperator_backup.str() << endl;
+				cout << seperator_backup << endl;
 				cout << *linListeCopy << endl;
-				cout << seperator_delete_liste.str() << endl << phrase_load_confirmation.str();
+				cout << seperator_delete_liste << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
 				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
@@ -411,7 +411,7 @@ void ListenDialog::manuellDialog(string &fileName){
 			case ABORT:
 				break;
 			default:
-				cout << error_input.str() << endl;
+				cout << error_input << endl;
 				cout.clear();
 				break;
 			}
@@ -420,10 +420,10 @@ void ListenDialog::manuellDialog(string &fileName){
 			}
 		}
 		catch (LinListException& e) {
-			cout << error_std.str() << e.what() << endl;
+			cout << error_std << e.what() << endl;
 		}
 		catch (ElementException& e){
-			cout << error_std.str() << e.what() << endl;
+			cout << error_std << e.what() << endl;
 		}
 	} while (answer != BACK);
 	delete linListe;
@@ -467,7 +467,7 @@ void ListenDialog::initLanguage(){
 	}
 }
 
-stringstream ListenDialog::readVariables(string fileName, int lowerBorder){
+string ListenDialog::readVariables(string fileName, int lowerBorder){
 	fstream file;
 	stringstream is;
 	string cache;
@@ -494,7 +494,7 @@ stringstream ListenDialog::readVariables(string fileName, int lowerBorder){
 		lines++;
 	}
 	file.close();
-	return is;
+	return is.str();
 }
 void ListenDialog::clearInput(){
 	cin.clear();

@@ -171,7 +171,7 @@ public:
 	void clearInput();
 	void initLanguage();
 	bool fileExists(string fileName);
-	stringstream readVariables(string fileName, int lowerBorder);
+	string readVariables(string fileName, int lowerBorder);
 
 	/**
 	* @brief Konstruktor
