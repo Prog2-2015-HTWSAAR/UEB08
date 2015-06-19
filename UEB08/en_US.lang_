@@ -1,61 +1,62 @@
-﻿<SEPERATOR>
-<SEPERATOR_STD>
+#####SEPERATOREN BEGIN#####
+##BEGIN
 -------------------------------
-<END>
-<SEPERATOR_LINLIST_BLOCK>
+##END
+##BEGIN
 -------------------------------
 ------------linListe-----------
 -------------------------------
-<END>
-<SEPERATOR_AUTOMATIC_TEST_BLOCK>
+##END
+##BEGIN
 -------------------------------
 ---------AUTOMATIC-TEST--------
 -------------------------------
-<END>
-<SEPERATOR_MANUELL_BLOCK>
+##END
+##BEGIN
 -------------------------------
 ------------MANUELL------------
 -------------------------------
-<END>
-<SEPERATOR_DELETE_LISTE>
+##END
+##BEGIN
 ---------DELETE-LISTE----------
-<END>
-<SEPERATOR_INSERT>
+##END
+##BEGIN
 ------------INSERT-------------
-<END>
-<SEPERATOR_ERASE>
+##END
+##BEGIN
 ------------ERASE--------------
-<END>
-<SEPERATOR_CLEAR>
+##END
+##BEGIN
 ------------CLEAR--------------
-<END>
-<SEPERATOR_PUSH>
+##END
+##BEGIN
 -------------PUSH--------------
-<END>
-<SEPERATOR_POP>
+##END
+##BEGIN
 -------------POP---------------
-<END>
-<SEPERATOR_BACKUP>
+##END
+##BEGIN
 -------------BACKUP------------
-<END>
-</SEPERATOR>
-<ERROR>
-<INPUT_ERROR>
--> INVAILD INPUT <-
-<END>
-<STD_ERROR>
-ERROR!!
-<END>
-</ERROR>
-<DIALOG>
-<MAINDIALOG>
+##END
+####SEPERATOR END####
+####ERROR BEGIN ####
+##BEGIN
+-> FEHLERHAFTE EINGABE <-
+##END
+##BEGIN
+FEHLER!!
+##END
+####ERROR END####
+####MAINDIALOG BEGIN####
+##BEGIN
 (1) Automatic Test
 (2) Manual Test
 (0) Back to Language Settings
 
 Your Choice: 
-<END>
-<MANUELLDIALOG>
+##END
+####MAINDIALOG END####
+####MANUELLDIALOG BEGIN####
 (1 )  Push back
 (2 )  Push front
 (3 )  Pop back
@@ -69,33 +70,40 @@ Your Choice:
 (0 )  BACK to Main Menue
 
 Your Choice: 
-<END>
-</DIALOG>
-<ADDITIONAL_PHRASES>
-<PHRASE_NAME>
-NAME:
-<END>
-<PHRASE_POSITION>
-Position:
-<END>
-<PHRASE_READ_STREAM>
+##END
+####MANUELLDIALOG END####
+####ADDITIONAL PHRASES BEGIN####
+##BEGIN
+NAME: 
+##END
+##BEGIN
+Position: 
+##END
+##BEGIN
 Enter Multible Elements seperated by space. Enter NIL for stop reading!!
 -> 
-<END>
-<PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+##END
+##BEGIN
 DELETE DATA! continuo? (y)=yes: 
-<END>
-<PHRASE_ELEMENT_DELETE_CONFIRMATION>
+##END
+##BEGIN
 ELEMENT delete. sure? (y)=yes: 
-<END>
-<PHRASE_CLEAR_CONFIRMATION>
+##END
+##BEGIN
 linListe clear. sure? (y)=yes: 
-<END>
-<PHRASE_LOAD_CONFIRMATION>
+##END
+##BEGIN
 drop list? (y)=yes: 
-<END>
-<PHRASE_SAVE_CONFIRMATION>
+##END
+##BEGIN
 Overwride Backup? (y)=yes: 
-<END>
-</ADDITIONAL_PHRASES>
+##END
+##BEGIN
+##END
+##BEGIN
+##END
+##BEGIN
+##END
+
+####ADDITIONAL PHRASES END####
 

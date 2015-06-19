@@ -24,58 +24,17 @@ class ListenDialog {
 public:
 	//Konstanten 
 	//Seperators
-	static const char* SEPERATOR;
-	static const char* SEPERATOR_LISTE;
-	static const char* SEPERATOR_DELETE_LISTE;
-	static const char* SEPERATOR_AUTOMATIC_TEST;
-	static const char* SEPERATOR_MANUELL;
-	static const char* SEPERATOR_INSERT;
-	static const char* SEPERATOR_ERASE;
-	static const char* SEPERATOR_CLEAR;
-	static const char* SEPERATOR_PUSH;
-	static const char* SEPERATOR_POP;
-	static const char* SEPERATOR_BACKUP;
-	static const char* SEPERATOR_LOAD;
-	static const char* SEPERATOR_SAVE;
-	static const char* SEPERATOR_FILE_EDIT;
 	static const char* SPACER;
 	//Errorphrasses
 	static const char* INPUTERRORPHRASE;
-	static const char* ERRORPHRASE;
 	//STD Phrases
 	static const char* STANDARDCHOICEPHRASE;
 	//Main Dialog
-	static const char* MAINDIALOG_OPTION_EXIT;
-	static const char* MAINDIALOG_OPTION_AUTO_TEST;
-	static const char* MAINDIALOG_OPTION_MANUELL;
 	//Manuell Dialog
-	static const char* MANUELLDIALOG_ELEMENT_NEU_NAME;
-	static const char* MANUELLDIALOG_ELEMENT_NEU_POSITION;
-	static const char* MANUELLDIALOG_OPTION_BACK;
-	static const char* MANUELLDIALOG_OPTION_PUSH_BACK;
-	static const char* MANUELLDIALOG_OPTION_PUSH_FRONT;
-	static const char* MANUELLDIALOG_OPTION_POP_BACK;
-	static const char* MANUELLDIALOG_OPTION_POP_FRONT;
-	static const char* MANUELLDIALOG_OPTION_INSERT;
-	static const char* MANUELLDIALOG_OPTION_ERASE;
-	static const char* MANUELLDIALOG_OPTION_CLEAR;
-	static const char* MANUELLDIALOG_OPTION_STREAM;
-	static const char* MANUELLDIALOG_OPTION_SAVE_BACKUP;
-	static const char* MANUELLDIALOG_OPTION_LOAD_BACKUP;
-	static const char* MANUELLDIALOG_OPTION_FILE_BACKUP;
-	static const char* MANUELLDIALOG_STREAM_EINGABE;
-	static const char* MANUELLDIALOG_EINGABESYMBOL;
-	static const char* BACK_CONFIRMATION;
-	static const char* ELEMENT_DELETE_CONFIRMATION;
-	static const char* CLEAR_CONFIRMATION;
-	static const char* LOAD_CONFIRMATION;
-	static const char* SAVE_CONFIRMATION;
-	static const char* OVERRRIDE_CONFIRMATION;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_EN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR;
-	static const char* MANUELLDIALOF_FILE_NAME;
 	//FILE_DIALOG
 //	static const char* FILEDIALOG_OPTION_SAVE;
 //	static const char* FILEDIALOG_OPTION_LOAD;
@@ -113,6 +72,28 @@ public:
 	// Maindialog
 	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
 	static const string PARSE_MAINDIALOG;
+	//ManuellDialog
+	static const string PARSE_MANUELLDIALOG;
+	static const string PARSE_SEPERATOR_DELETE_LISTE;
+	static const string PARSE_SEPERATOR_MANUELL_BLOCK;
+	static const string PARSE_SEPERATOR_INSERT;
+	static const string PARSE_SEPERATOR_ERASE;
+	static const string PARSE_SEPERATOR_CLEAR;
+	static const string PARSE_SEPERATOR_PUSH ;
+	static const string PARSE_SEPERATOR_POP;
+	static const string PARSE_SEPERATOR_BACKUP;
+	static const string PARSE_PHRASE_NAME;
+	static const string PARSE_PHRASE_POSITION;
+	static const string PARSE_PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION;
+	static const string PARSE_PHRASE_ELEMENT_DELETE_CONFIRMATION;
+	static const string PARSE_PHRASE_CLEAR_CONFIRMATION;
+	static const string PARSE_PHRASE_LOAD_CONFIRMATION;
+	static const string PARSE_PHRASE_SAVE_CONFIRMATION;
+	static const string PARSE_PHRASE_READ_STREAM;
+	
+	// Automatic Dialog
+	static const string PARSE_AUTOMATICTEST;
+
 	// Allgemein
 	static const string PARSE_INPUT_ERROR;
 	static const string PARSE_STD_ERROR;
@@ -120,29 +101,8 @@ public:
 
 
 	//const Int
-	static const int SEPERATOR_POSITION;
-	static const int SEPERATOR_LINLISTE_POSITION;
-	static const int SEPERATOR_MANUELL_POSITION;
-	static const int SEPERATOR_PUSH_POSITION;
-	static const int SEPERATOR_POP_POSITION;
-	static const int MAINDIALOG_POSITION;
-	static const int MANUELLDIALOG_POSITION;
-	static const int ERROR_INVAILD_INPUT_POSITION;
+
 	static const int STD_ANSWER_VALUE;
-	static const int SEPERATOR_DELETE_LISTE_POSITION;
-	static const int SEPERATOR_CLEAR_POSITION;
-	static const int ERROR_STD_POSITION;
-	static const int SEPERATOR_BACKUP_POSITION;
-	static const int SEPERATOR_INSERT_POSITION;
-	static const int SEPERATOR_ERASE_POSITION;
-	static const int PHRASE_NAME_POSITION;
-	static const int PHRASE_POSITION_POSITION;
-	static const int PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION_POITION;
-	static const int PHRASE_ELEMENT_DELETE_CONFIRMATION_POSITION;
-	static const int PHRASE_CLEAR_CONFIRMATION_POSITION;
-	static const int PHRASE_LOAD_CONFIRMATION_POITION;
-	static const int PHRASE_SAVE_CONFIRMATION_POITION;
-	static const int PHRASE_READ_STREAM;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
 	static const int INPUT_VALUE;
@@ -162,7 +122,7 @@ public:
 	* @brief automaticTest()
 	* @details Automatischer Test
 	*/
-	void automaticTest();
+	void automaticTest(string &fileName);
 	/**
 	* @brief manuellDialog()
 	* @details Manuelle Steuerung Des Programmes

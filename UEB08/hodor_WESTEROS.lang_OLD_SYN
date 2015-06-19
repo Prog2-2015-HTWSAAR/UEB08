@@ -1,61 +1,62 @@
-﻿<SEPERATOR>
-<SEPERATOR_STD>
+﻿#####SEPERATOREN BEGIN#####
+##BEGIN
 -------------------------------
-<END>
-<SEPERATOR_LINLIST_BLOCK>
--------------------------------
--------------HODOR-------------
--------------------------------
-<END>
-<SEPERATOR_AUTOMATIC_TEST_BLOCK>
+##END
+##BEGIN
 -------------------------------
 -------------HODOR-------------
 -------------------------------
-<END>
-<SEPERATOR_MANUELL_BLOCK>
+##END
+##BEGIN
 -------------------------------
 -------------HODOR-------------
 -------------------------------
-<END>
-<SEPERATOR_DELETE_LISTE>
+##END
+##BEGIN
+-------------------------------
 -------------HODOR-------------
-<END>
-<SEPERATOR_INSERT>
+-------------------------------
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-<SEPERATOR_ERASE>
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-<SEPERATOR_CLEAR>
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-<SEPERATOR_PUSH>
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-<SEPERATOR_POP>
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-<SEPERATOR_BACKUP>
+##END
+##BEGIN
 -------------HODOR-------------
-<END>
-</SEPERATOR>
-<ERROR>
-<INPUT_ERROR>
+##END
+##BEGIN
+-------------HODOR-------------
+##END
+####SEPERATOR END####
+####ERROR BEGIN ####
+##BEGIN
 -> HODOR HODOR <-
-<END>
-<STD_ERROR>
+##END
+##BEGIN
 HODOR!!
-<END>
-</ERROR>
-<DIALOG>
-<MAINDIALOG>
+##END
+####ERROR END####
+####MAINDIALOG BEGIN####
+##BEGIN
 (1) HODOR HODOR
 (2) HODOR HODOR
 (0) HODOR HODOR HODOR
 
 HODOR HODOR: 
-<END>
-<MANUELLDIALOG>
+##END
+####MAINDIALOG END####
+####MANUELLDIALOG BEGIN####
 (1 )  HODOR HODOR
 (2 )  HODOR HODOR
 (3 )  HODOR HODOR
@@ -69,39 +70,40 @@ HODOR HODOR:
 (0 )  HODOR HODOR HODOR
 
 HODOR HODOR: 
-<END>
-</DIALOG>
-<ADDITIONAL_PHRASES>
-<PHRASE_NAME>
+##END
+####MANUELLDIALOG END####
+####ADDITIONAL PHRASES BEGIN####
+##BEGIN
 HODOR: 
-<END>
-<PHRASE_POSITION>
+##END
+##BEGIN
 HODOR: 
-<END>
-<PHRASE_READ_STREAM>
+##END
+##BEGIN
 HODOR HODOR HODOR NIL HODOR HODOR HODOR!!
 -> 
-<END>
-<PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+##END
+##BEGIN
 HODOR HODOR HODOR! HODOR? (HODOR)=HODOR: 
-<END>
-<PHRASE_ELEMENT_DELETE_CONFIRMATION>
+##END
+##BEGIN
 HODOR HODOR HODOR? (HODOR)=HODOR: 
-<END>
-<PHRASE_CLEAR_CONFIRMATION>
+##END
+##BEGIN
 HODOR HODOR HODOR? (HODOR)=HODOR: 
-<END>
-<PHRASE_LOAD_CONFIRMATION>
+##END
+##BEGIN
 HODOR HODOR HODOR? (HODOR)=HODOR: 
-<END>
-<PHRASE_SAVE_CONFIRMATION>
+##END
+##BEGIN
 HODOR HODOR? (HODOR)=HODOR: 
-<END>
+##END
 ##BEGIN
-<END>
+##END
 ##BEGIN
-<END>
+##END
 ##BEGIN
-<END>
-</ADDITIONAL_PHRASES>
+##END
+
+####ADDITIONAL PHRASES END####
 
