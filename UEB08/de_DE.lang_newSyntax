@@ -1,62 +1,61 @@
-#####SEPERATOREN BEGIN#####
-##BEGIN
+<SEPERATOR>
+<SEPERATOR_STD>
 -------------------------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_LINLIST_BLOCK>
 -------------------------------
 ------------linListe-----------
 -------------------------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_AUTOMATIC_TEST_BLOCK>
 -------------------------------
 ---------AUTOMATIC-TEST--------
 -------------------------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_MANUELL_BLOCK>
 -------------------------------
 ------------MANUELL------------
 -------------------------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_DELETE_LISTE>
 ---------DELETE-LISTE----------
-##END
-##BEGIN
+<END>
+<SEPERATOR_INSERT>
 ------------INSERT-------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_ERASE>
 ------------ERASE--------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_CLEAR>
 ------------CLEAR--------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_PUSH>
 -------------PUSH--------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_POP>
 -------------POP---------------
-##END
-##BEGIN
+<END>
+<SEPERATOR_BACKUP>
 -------------BACKUP------------
-##END
-####SEPERATOR END####
-####ERROR BEGIN ####
-##BEGIN
+<END>
+<SEPERATOR_END>
+<ERROR_BEGIN>
+<INPUT_ERROR>
 -> FEHLERHAFTE EINGABE <-
-##END
-##BEGIN
+<END>
+<STD_ERROR>
 FEHLER!!
-##END
-####ERROR END####
-####MAINDIALOG BEGIN####
-##BEGIN
+<END>
+<ERROR_END>
+<DIALOG_BEGIN>
+<MAINDIALOG>
 (1) Automatischer Test
 (2) Manueller Test
 (0) Zurueck zur Sprachauswahl
 
 Ihre Wahl: 
-##END
-####MAINDIALOG END####
-####MANUELLDIALOG BEGIN####
+<END>
+<MANUELLDIALOG>
 (1 )  Push back
 (2 )  Push front
 (3 )  Pop back
@@ -70,40 +69,40 @@ Ihre Wahl:
 (0 )  Zurueck zum Main Dialog
 
 Ihre Wahl: 
-##END
-####MANUELLDIALOG END####
+<END>
+<DIALOG_END>
 ####ADDITIONAL PHRASES BEGIN####
 ##BEGIN
 NAME: 
-##END
+<END>
 ##BEGIN
 Position: 
-##END
+<END>
 ##BEGIN
 Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
 -> 
-##END
+<END>
 ##BEGIN
 Daten gehen verloren! Weiter? (j)=Ja: 
-##END
+<END>
 ##BEGIN
 ELEMENT wirklich loeschen? (j)=Ja: 
-##END
+<END>
 ##BEGIN
 linListe wirklich leeren? (j)=Ja: 
-##END
+<END>
 ##BEGIN
 aktuelle Liste verwerfen? (j)=Ja: 
-##END
+<END>
 ##BEGIN
 Backup ueberschreiben? (j)=Ja: 
-##END
+<END>
 ##BEGIN
-##END
+<END>
 ##BEGIN
-##END
+<END>
 ##BEGIN
-##END
+<END>
 
 ####ADDITIONAL PHRASES END####
 <TEST-BEGIN>
@@ -112,4 +111,4 @@ adfa
 afasd
 afaf
 asfdasf
-##END
+<END>

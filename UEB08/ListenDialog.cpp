@@ -3,7 +3,7 @@
 * compile: g++ -o ueb08 *.o
 * @file  ListenDialog.cpp
 * @author Andreas Schreiner & Simon Bastian
-* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!ADga77ITv24PTtU 
+* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!AFE0aRW5WKEHg3Q 
 *
 * @date 14.06.2015
 */
@@ -76,7 +76,9 @@ const char* ListenDialog::LANGUAGE_OPTION_ENGLISH = "(2) ENGLISH";
 const char* ListenDialog::LANGUAGE_OPTION_HODOR = "(3) HODOR";
 
 
-const string ListenDialog::READ_END = "##END";
+const string ListenDialog::READ_END = "##END"; 
+const string ListenDialog::PARSER_READ_END = "<END>";
+
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
@@ -128,6 +130,8 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
+	string test = "<TEST-BEGIN>" ;
+	string testMe;
 	string error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
 	string seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION);
 	string main_dialog = readVariables(fileName, MAINDIALOG_POSITION);
@@ -145,7 +149,11 @@ void ListenDialog::mainDialog(string &fileName){
 		case MANUELLDIALOG:
 			//manuellDialog("de_DE.lang");
 			manuellDialog(fileName);
-
+			break;
+		case 4:
+			testMe = parsePhrases("de_DE.lang", test);
+			cout << testMe;
+			cin >> test;
 			break;
 		default:
 			cout << error_input << endl;
@@ -495,6 +503,44 @@ string ListenDialog::readVariables(string fileName, int lowerBorder){
 		lines++;
 	}
 	file.close();
+	return is.str();
+}
+string ListenDialog::parsePhrases(string fileName, string begin){
+	fstream file;
+	stringstream is;
+	string cache;
+	string line;
+	string ausgabe;
+	bool found = false;
+	bool firstRun = true;
+	bool stop = false;
+	const char* constName = fileName.c_str();
+	file.open(constName);
+	while (getline(file, line)){
+		if (!stop && found){
+			if (!firstRun){
+				is << cache;
+				
+			}
+			if (firstRun){
+				firstRun = false;
+			}
+		}
+		if (found && !stop){
+			if (line == PARSER_READ_END){
+				stop = true;
+			}
+			else{
+				cache = line;
+				is << endl;
+			}
+		}
+		if (begin == line){
+			found = true;
+		}
+	}
+	file.close();
+	ausgabe = is.str();
 	return is.str();
 }
 void ListenDialog::clearInput(){

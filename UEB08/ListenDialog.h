@@ -3,7 +3,7 @@
 * compile: g++ -o ueb08 *.o
 * @file  ListenDialog.h
 * @author Andreas Schreiner & Simon Bastian
-* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!ADga77ITv24PTtU
+* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!AFE0aRW5WKEHg3Q
 *
 * @date 14.06.2015
 */
@@ -108,6 +108,7 @@ public:
 	static const char* LANGUAGE_OPTION_HODOR;
 
 	static const string READ_END;
+	static const string PARSER_READ_END;
 
 	//const Int
 	static const int SEPERATOR_POSITION;
@@ -173,6 +174,7 @@ public:
 	void initLanguage();
 	bool fileExists(string fileName);
 	string readVariables(string fileName, int lowerBorder);
+	string parsePhrases(string fileName, string begin);
 
 	/**
 	* @brief Konstruktor

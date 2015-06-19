@@ -3,7 +3,7 @@
 * compile: g++ -o ueb08 *.o
 * @file	LinList.h
 * @author Andreas Schreiner & Simon Bastian
-* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!ADga77ITv24PTtU
+* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!AFE0aRW5WKEHg3Q
 *
 * @details Basierend auf Folz Klasse
 * @date 14.06.2015
