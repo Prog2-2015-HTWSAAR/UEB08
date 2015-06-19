@@ -1,4 +1,4 @@
-<SEPERATOR>
+﻿<SEPERATOR>
 <SEPERATOR_STD>
 -------------------------------
 <END>
@@ -73,14 +73,14 @@ Ihre Wahl:
 <DIALOG_END>
 ####ADDITIONAL PHRASES BEGIN####
 ##BEGIN
-NAME: 
+NAME:
 <END>
 ##BEGIN
-Position: 
+Position:
 <END>
 ##BEGIN
 Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
--> 
+->
 <END>
 ##BEGIN
 Daten gehen verloren! Weiter? (j)=Ja: 

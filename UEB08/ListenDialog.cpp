@@ -3,14 +3,14 @@
 * compile: g++ -o ueb08 *.o
 * @file  ListenDialog.cpp
 * @author Andreas Schreiner & Simon Bastian
-* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!AFE0aRW5WKEHg3Q 
+* Changelog: https://onedrive.live.com/redir?page=view&resid=A24EC16A1F3E72AA!4270&authkey=!AFE0aRW5WKEHg3Q
 *
 * @date 14.06.2015
 */
 #include "ListenDialog.h"
 #include <string>
 #include <iostream>
-
+#include <cstring>
 #include <fstream>
 
 //Konstanten 
@@ -76,7 +76,7 @@ const char* ListenDialog::LANGUAGE_OPTION_ENGLISH = "(2) ENGLISH";
 const char* ListenDialog::LANGUAGE_OPTION_HODOR = "(3) HODOR";
 
 
-const string ListenDialog::READ_END = "##END"; 
+const string ListenDialog::READ_END = "##END";
 const string ListenDialog::PARSER_READ_END = "<END>";
 // const strings
 // Maindialog
@@ -139,7 +139,7 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
-	string testFile = "de_DE.lang_newSyntax" ;
+	string testFile = "de_DE.lang_newSyntax";
 	string testMe;
 	string error_input = parsePhrases(testFile, PARSE_INPUT_ERROR);
 	string seperator_LinListe = parsePhrases(testFile, PARSE_SEPERATOR_LINLIST_BLOCK);
@@ -286,7 +286,7 @@ void ListenDialog::manuellDialog(string &fileName){
 	string phrase_save_confirmation = readVariables(fileName, PHRASE_SAVE_CONFIRMATION_POITION);
 	string phrase_read_stream = readVariables(fileName, PHRASE_READ_STREAM);
 
-	
+
 	int position = STD_ANSWER_VALUE;
 	int answer = STD_ANSWER_VALUE;
 	do{
@@ -490,7 +490,7 @@ string ListenDialog::readVariables(string fileName, int lowerBorder){
 	int lines = ZERO_VALUE;
 	int stop = ZERO_VALUE;
 	while (getline(file, line)){
-		if (stop != INPUT_ONE && lowerBorder<lines){
+		if (stop != INPUT_ONE && lowerBorder < lines){
 			if (lowerBorder + 1 < lines){
 				is << endl;
 			}
@@ -522,6 +522,7 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 	const char* constName = fileName.c_str();
 	file.open(constName);
 	while (getline(file, line)){
+
 		if (!stop && found){
 			if (!firstRun){
 				is << cache;
@@ -532,7 +533,7 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 			}
 		}
 		if (found && !stop){
-			if (line == PARSER_READ_END){
+			if (strcmp(PARSER_READ_END.c_str(), line.c_str()) == 0){
 				stop = true;
 			}
 			else{
@@ -542,7 +543,7 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 				}
 			}
 		}
-		if (begin == line){
+		if (strcmp(begin.c_str(), line.c_str()) == 0 && !found){
 			found = true;
 		}
 	}
