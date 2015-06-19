@@ -109,6 +109,15 @@ public:
 
 	static const string READ_END;
 	static const string PARSER_READ_END;
+	// const strings
+	// Maindialog
+	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
+	static const string PARSE_MAINDIALOG;
+	// Allgemein
+	static const string PARSE_INPUT_ERROR;
+	static const string PARSE_STD_ERROR;
+	static const string PARSE_SEPERATOR;
+
 
 	//const Int
 	static const int SEPERATOR_POSITION;

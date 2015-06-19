@@ -78,6 +78,15 @@ const char* ListenDialog::LANGUAGE_OPTION_HODOR = "(3) HODOR";
 
 const string ListenDialog::READ_END = "##END"; 
 const string ListenDialog::PARSER_READ_END = "<END>";
+// const strings
+// Maindialog
+const string ListenDialog::PARSE_SEPERATOR_LINLIST_BLOCK = "<SEPERATOR_LINLIST_BLOCK>";
+const string ListenDialog::PARSE_MAINDIALOG = "<MAINDIALOG>";
+// Allgemein
+const string ListenDialog::PARSE_INPUT_ERROR = "<INPUT_ERROR>";
+const string ListenDialog::PARSE_STD_ERROR = "<STD_ERROR>";
+const string ListenDialog::PARSE_SEPERATOR = "<SEPERATOR_STD>";
+
 
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
@@ -130,11 +139,11 @@ ListenDialog::~ListenDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void ListenDialog::mainDialog(string &fileName){
-	string test = "<TEST-BEGIN>" ;
+	string testFile = "de_DE.lang_newSyntax" ;
 	string testMe;
-	string error_input = readVariables(fileName, ERROR_INVAILD_INPUT_POSITION);
-	string seperator_LinListe = readVariables(fileName, SEPERATOR_LINLISTE_POSITION);
-	string main_dialog = readVariables(fileName, MAINDIALOG_POSITION);
+	string error_input = parsePhrases(testFile, PARSE_INPUT_ERROR);
+	string seperator_LinListe = parsePhrases(testFile, PARSE_SEPERATOR_LINLIST_BLOCK);
+	string main_dialog = parsePhrases(testFile, PARSE_MAINDIALOG);
 	int answer = STD_ANSWER_VALUE;
 	do{
 		cout << seperator_LinListe << endl << main_dialog;
@@ -149,11 +158,6 @@ void ListenDialog::mainDialog(string &fileName){
 		case MANUELLDIALOG:
 			//manuellDialog("de_DE.lang");
 			manuellDialog(fileName);
-			break;
-		case 4:
-			testMe = parsePhrases("de_DE.lang", test);
-			cout << testMe;
-			cin >> test;
 			break;
 		default:
 			cout << error_input << endl;
@@ -514,13 +518,14 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 	bool found = false;
 	bool firstRun = true;
 	bool stop = false;
+	bool streamWritten = false;
 	const char* constName = fileName.c_str();
 	file.open(constName);
 	while (getline(file, line)){
 		if (!stop && found){
 			if (!firstRun){
 				is << cache;
-				
+				streamWritten = true;
 			}
 			if (firstRun){
 				firstRun = false;
@@ -532,7 +537,9 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 			}
 			else{
 				cache = line;
-				is << endl;
+				if (streamWritten){
+					is << endl;
+				}
 			}
 		}
 		if (begin == line){
