@@ -74,6 +74,7 @@ public:
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
 	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_EN;
+	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR;
 	static const char* MANUELLDIALOF_FILE_NAME;
 	//FILE_DIALOG
 //	static const char* FILEDIALOG_OPTION_SAVE;

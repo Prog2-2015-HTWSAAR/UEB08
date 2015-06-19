@@ -44,6 +44,7 @@ const char* ListenDialog::SAVE_CONFIRMATION = "Backup ueberschreiben? (j)=Ja: ";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
 const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES_EN = "y";
+const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR = "HODOR";
 
 //AUTO_TEST
 const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "- ";
@@ -287,7 +288,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_push << endl << phrase_element_delete_back_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				cout << endl;
@@ -310,7 +311,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -321,7 +322,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -345,7 +346,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_erase << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -357,7 +358,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete << endl << phrase_clear_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -369,7 +370,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -383,7 +384,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete_liste << endl << phrase_save_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
@@ -399,7 +400,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete_liste << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN){
+				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
 					answer = ABORT;
 				}
 				else {
