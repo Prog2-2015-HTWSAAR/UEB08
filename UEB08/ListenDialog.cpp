@@ -14,6 +14,7 @@
 #include <fstream>
 #include <math.h>
 
+
 //Konstanten 
 //Seperators
 const char* ListenDialog::SPACER = " ";
@@ -112,7 +113,7 @@ ListenDialog::~ListenDialog() {}
 void ListenDialog::mainDialog(string &fileName){
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string seperator_LinListe = parsePhrases(fileName, PARSE_SEPERATOR_LINLIST_BLOCK);
-	string main_dialog = parsePhrases(fileName, PARSE_MAINDIALOG);
+	string main_dialog = parsePhrases(fileName, PARSE_MAINDIALOG) + SPACER;
 	int answer;
 	do{
 		cout << seperator_LinListe << endl << main_dialog;
@@ -124,7 +125,6 @@ void ListenDialog::mainDialog(string &fileName){
 			automaticTest(fileName);
 			break;
 		case MANUELLDIALOG:
-			//manuellDialog("de_DE.lang");
 			manuellDialog(fileName);
 			break;
 		default:
@@ -138,22 +138,21 @@ void ListenDialog::mainDialog(string &fileName){
 * @details Automatischer Test
 */
 void ListenDialog::automaticTest(string &fileName){
-	string phrase_position = parsePhrases(fileName, PARSE_PHRASE_POSITION);
-	string phrase_Init_Push = parsePhrases(fileName, PARSE_A_INIT_PUSH);
-	string phrase_Push_Back = parsePhrases(fileName, PARSE_A_PUSH_BACK);
-	string phrase_Push_Front = parsePhrases(fileName, PARSE_A_PUSH_FRONT);
+	string phrase_position = parsePhrases(fileName, PARSE_PHRASE_POSITION) + SPACER;
+	string phrase_Init_Push = parsePhrases(fileName, PARSE_A_INIT_PUSH) + SPACER;
+	string phrase_Push_Back = parsePhrases(fileName, PARSE_A_PUSH_BACK) + SPACER;
+	string phrase_Push_Front = parsePhrases(fileName, PARSE_A_PUSH_FRONT) + SPACER;
 	string phrase_Pop_Back = parsePhrases(fileName, PARSE_A_POP_BACK);
 	string phrase_Pop_Front = parsePhrases(fileName, PARSE_A_POP_FRONT);
-	string phrase_Insert = parsePhrases(fileName, PARSE_A_INSERT);
+	string phrase_Insert = parsePhrases(fileName, PARSE_A_INSERT) + SPACER;
 	string phrase_IMHERE = parsePhrases(fileName, PARSE_A_IMHERE);
 	string phrase_High = parsePhrases(fileName, PARSE_A_HIGH);
 	string phrase_Init = parsePhrases(fileName, PARSE_A_INIT);
 	string phrase_Front = parsePhrases(fileName, PARSE_A_FRONT);
 	string phrase_Back = parsePhrases(fileName, PARSE_A_BACK);
-
 	string phrase_Low = parsePhrases(fileName, PARSE_A_LOW);
-	string phrase_Erase = parsePhrases(fileName, PARSE_A_ERASE);
-	string phrase_Input_Stream = parsePhrases(fileName, PARSE_A_INPUT_STREAM);
+	string phrase_Erase = parsePhrases(fileName, PARSE_A_ERASE) + SPACER;
+	string phrase_Input_Stream = parsePhrases(fileName, PARSE_A_INPUT_STREAM) + SPACER;
 	string phrase_Clear = parsePhrases(fileName, PARSE_A_CLEAR);
 	string phrase_Pop_Empty = parsePhrases(fileName, PARSE_A_POP_EMPTY);
 	string phrase_Input_Stream_Value = parsePhrases(fileName, PARSE_A_INPUT_STREAM_VALUE);
@@ -193,15 +192,17 @@ void ListenDialog::automaticTest(string &fileName){
 				linListe->pop_front();
 				break;
 			case AUTO_INSERT:
-				cout << phrase_Insert << phrase_IMHERE << phrase_position << INPUT_ONE << endl;
+				cout << phrase_Insert << phrase_IMHERE << SPACER 
+					<< phrase_position << INPUT_ONE << endl;
 				linListe->insert(INPUT_ONE, phrase_IMHERE);
 				break;
 			case AUTO_INSERT_HIGH_VALUE:
-				cout << phrase_Insert << phrase_High << phrase_position << HIGH_VALUE << endl;
+				cout << phrase_Insert << phrase_High << SPACER 
+					<< phrase_position << HIGH_VALUE << endl;
 				linListe->insert(HIGH_VALUE, phrase_High);
 				break;
 			case AUTO_INSERT_LOW_VALUE:
-				cout << phrase_Insert << phrase_Low << phrase_position << ZERO_VALUE << endl;
+				cout << phrase_Insert << phrase_Low << SPACER << phrase_position << ZERO_VALUE << endl;
 				linListe->insert(ZERO_VALUE, phrase_Low);
 				break;
 			case AUTO_ERASE:
@@ -257,7 +258,7 @@ void ListenDialog::manuellDialog(string &fileName){
 	string name;
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string error_std = parsePhrases(fileName, PARSE_STD_ERROR);
-	string manuell_dialog = parsePhrases(fileName, PARSE_MANUELLDIALOG);
+	string manuell_dialog = parsePhrases(fileName, PARSE_MANUELLDIALOG) + SPACER;
 	string seperator_delete_liste = parsePhrases(fileName, PARSE_SEPERATOR_DELETE_LISTE);
 	string seperator_maunuell = parsePhrases(fileName, PARSE_SEPERATOR_MANUELL_BLOCK);
 	string seperator_insert = parsePhrases(fileName, PARSE_SEPERATOR_INSERT);
@@ -267,15 +268,15 @@ void ListenDialog::manuellDialog(string &fileName){
 	string seperator_pop = parsePhrases(fileName, PARSE_SEPERATOR_POP);
 	string seperator_backup = parsePhrases(fileName, PARSE_SEPERATOR_BACKUP);
 	string seperator_delete = parsePhrases(fileName, PARSE_SEPERATOR_DELETE_LISTE);
-	string phrase_name = parsePhrases(fileName, PARSE_PHRASE_NAME);
-	string phrase_position = parsePhrases(fileName, PARSE_PHRASE_POSITION);
-	string phrase_element_delete_back_confirmation = parsePhrases(fileName, PARSE_PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION);
-	string phrase_element_delete_confirmation = parsePhrases(fileName, PARSE_PHRASE_ELEMENT_DELETE_CONFIRMATION);
-	string phrase_clear_confirmation = parsePhrases(fileName, PARSE_PHRASE_CLEAR_CONFIRMATION);
-	string phrase_load_confirmation = parsePhrases(fileName, PARSE_PHRASE_LOAD_CONFIRMATION);
-	string phrase_save_confirmation = parsePhrases(fileName, PARSE_PHRASE_SAVE_CONFIRMATION);
-	string phrase_read_stream = parsePhrases(fileName, PARSE_PHRASE_READ_STREAM);
-	string confirm_Delete = parsePhrases(fileName, CONFIRM_DELETE);
+	string phrase_name = parsePhrases(fileName, PARSE_PHRASE_NAME) + SPACER;
+	string phrase_position = parsePhrases(fileName, PARSE_PHRASE_POSITION) + SPACER;
+	string phrase_element_delete_back_confirmation = parsePhrases(fileName, PARSE_PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION) + SPACER;
+	string phrase_element_delete_confirmation = parsePhrases(fileName, PARSE_PHRASE_ELEMENT_DELETE_CONFIRMATION) + SPACER;
+	string phrase_clear_confirmation = parsePhrases(fileName, PARSE_PHRASE_CLEAR_CONFIRMATION) + SPACER;
+	string phrase_load_confirmation = parsePhrases(fileName, PARSE_PHRASE_LOAD_CONFIRMATION) + SPACER;
+	string phrase_save_confirmation = parsePhrases(fileName, PARSE_PHRASE_SAVE_CONFIRMATION) + SPACER;
+	string phrase_read_stream = parsePhrases(fileName, PARSE_PHRASE_READ_STREAM) + SPACER;
+	string confirm_Delete = parsePhrases(fileName, CONFIRM_DELETE) + SPACER;
 	string phrase_Copy = parsePhrases(fileName, PARSE_COPY);
 
 	int position;
@@ -428,7 +429,7 @@ void ListenDialog::initLanguage(){
 	string error_de_DE_Not_Found = parsePhrases(LANGUAGE_STD, DE_DE_LANG_NOT_FOUND);
 	string error_en_US_Not_Found = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
 	string error_hodor_WESTEROS_Not_Found = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
-	string language_dialog = parsePhrases(LANGUAGE_STD, PARSE_LANGUAGEDIALOG);
+	string language_dialog = parsePhrases(LANGUAGE_STD, PARSE_LANGUAGEDIALOG) + SPACER;
 	string chosenLanguage = LANGUAGE_GERMAN;
 	if (fileExists(LANGUAGE_STD)){
 		int answer = STD_ANSWER_VALUE;
@@ -506,7 +507,7 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 	const char* constName = fileName.c_str();
 	file.open(constName);
 	while (getline(file, line)){
-
+		trim(line);
 		if (!stop && found){
 			if (!firstRun){
 				ausgabe = ausgabe + cache;
@@ -565,4 +566,16 @@ bool ListenDialog::fileExists(string fileName) {
 	const char* constName = fileName.c_str();
 	ifstream infile(constName);
 	return infile.good();
+}
+
+void ListenDialog::trim(string& str) {
+	string trim_chars = " \t";
+	string::size_type pos = str.find_last_not_of(trim_chars);
+	if (pos != std::string::npos) {
+		str.erase(pos + 1);
+		pos = str.find_first_not_of(trim_chars);
+		if (pos != std::string::npos) str.erase(0, pos);
+	}
+	else
+		str.erase(str.begin(), str.end());
 }

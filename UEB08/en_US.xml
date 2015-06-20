@@ -1,168 +1,168 @@
 ﻿<?xml version="1.0"?>
 <EN_US>
-<SEPERATOR>
-<SEPERATOR_STD>
--------------------------------
-</SEPERATOR_STD>
-<SEPERATOR_LINLIST_BLOCK>
--------------------------------
-------------linListe-----------
--------------------------------
-</SEPERATOR_LINLIST_BLOCK>
-<SEPERATOR_AUTOMATIC_TEST_BLOCK>
--------------------------------
----------AUTOMATIC-TEST--------
--------------------------------
-</SEPERATOR_AUTOMATIC_TEST_BLOCK>
-<SEPERATOR_MANUELL_BLOCK>
--------------------------------
-------------MANUELL------------
--------------------------------
-</SEPERATOR_MANUELL_BLOCK>
-<SEPERATOR_DELETE_LISTE>
----------DELETE-LISTE----------
-</SEPERATOR_DELETE_LISTE>
-<SEPERATOR_INSERT>
-------------INSERT-------------
-</SEPERATOR_INSERT>
-<SEPERATOR_ERASE>
-------------ERASE--------------
-</SEPERATOR_ERASE>
-<SEPERATOR_CLEAR>
-------------CLEAR--------------
-</SEPERATOR_CLEAR>
-<SEPERATOR_PUSH>
--------------PUSH--------------
-</SEPERATOR_PUSH>
-<SEPERATOR_POP>
--------------POP---------------
-</SEPERATOR_POP>
-<SEPERATOR_BACKUP>
--------------BACKUP------------
-</SEPERATOR_BACKUP>
-</SEPERATOR>
-<ERROR_SECTION>
-<INPUT_E>
--! INVAILD INPUT !-
-</INPUT_E>
-<STD_E>
-ERROR!!
-</STD_E>
-</ERROR_SECTION>
-<DIALOG>
-<MAINDIALOG>
-(1) Automatic Test
-(2) Manual Test
-(0) Back to Language Settings
+  <SEPERATOR>
+    <SEPERATOR_STD>
+      -------------------------------
+    </SEPERATOR_STD>
+    <SEPERATOR_LINLIST_BLOCK>
+      -------------------------------
+      ------------linListe-----------
+      -------------------------------
+    </SEPERATOR_LINLIST_BLOCK>
+    <SEPERATOR_AUTOMATIC_TEST_BLOCK>
+      -------------------------------
+      ---------AUTOMATIC-TEST--------
+      -------------------------------
+    </SEPERATOR_AUTOMATIC_TEST_BLOCK>
+    <SEPERATOR_MANUELL_BLOCK>
+      -------------------------------
+      ------------MANUELL------------
+      -------------------------------
+    </SEPERATOR_MANUELL_BLOCK>
+    <SEPERATOR_DELETE_LISTE>
+      ---------DELETE-LISTE----------
+    </SEPERATOR_DELETE_LISTE>
+    <SEPERATOR_INSERT>
+      ------------INSERT-------------
+    </SEPERATOR_INSERT>
+    <SEPERATOR_ERASE>
+      ------------ERASE--------------
+    </SEPERATOR_ERASE>
+    <SEPERATOR_CLEAR>
+      ------------CLEAR--------------
+    </SEPERATOR_CLEAR>
+    <SEPERATOR_PUSH>
+      -------------PUSH--------------
+    </SEPERATOR_PUSH>
+    <SEPERATOR_POP>
+      -------------POP---------------
+    </SEPERATOR_POP>
+    <SEPERATOR_BACKUP>
+      -------------BACKUP------------
+    </SEPERATOR_BACKUP>
+  </SEPERATOR>
+  <ERROR_SECTION>
+    <INPUT_E>
+      -! INVAILD INPUT !-
+    </INPUT_E>
+    <STD_E>
+      ERROR!!
+    </STD_E>
+  </ERROR_SECTION>
+  <DIALOG>
+    <MAINDIALOG>
+      (1) Automatic Test
+      (2) Manual Test
+      (0) Back to Language Settings
 
-Your Choice: 
-</MAINDIALOG>
-<MANUELLDIALOG>
-(1 )  Push back
-(2 )  Push front
-(3 )  Pop back
-(4 )  Pop front
-(5 )  Insert before position
-(6 )  Delete position
-(7 )  Clear
-(8 )  Read multible elements 
-(9 )  Save list Backup
-(10)  Load list Backup
-(0 )  BACK to Main Menue
+      Your Choice:
+    </MAINDIALOG>
+    <MANUELLDIALOG>
+      (1 )  Push back
+      (2 )  Push front
+      (3 )  Pop back
+      (4 )  Pop front
+      (5 )  Insert before position
+      (6 )  Delete position
+      (7 )  Clear
+      (8 )  Read multible elements
+      (9 )  Save list Backup
+      (10)  Load list Backup
+      (0 )  BACK to Main Menue
 
-Your Choice: 
-</MANUELLDIALOG>
-</DIALOG>
-<AUTOMATIC_TEST_PHRASES>
-<HYPHEN>
-- 
-</HYPHEN>
-<A_INIT_PUSH>
--INIT- VALUE: "
-</A_INIT_PUSH>
-<A_PUSH_BACK>
--PUSH- BACK VALUE: 
-</A_PUSH_BACK>
-<A_PUSH_FRONT>
--PUSH- FRONT VALUE: 
-</A_PUSH_FRONT>
-<A_POP_BACK>
--POP BACK-
-</A_POP_BACK>
-<A_POP_FRONT>
--POP FRONT-
-</A_POP_FRONT>
-<A_INSERT>
--INSERT- VALUE:
-</A_INSERT>
-<A_ERASE>
--ERASE- POSITION:
-</A_ERASE>
-<A_READ_INPUT_STREAM>
--READ INPUT STREAM-
-</A_READ_INPUT_STREAM>
-<A_CLEAR>
--CLEAR-
-</A_CLEAR>
-<A_POP_EMPTY>
--POP EMPTY LIST-
-</A_POP_EMPTY>
-<A_INIT>
-INIT
-</A_INIT>
-<A_BACK>
-BACK
-</A_BACK>
-<A_FRONT>
-FRONT
-</A_FRONT>
-<A_IMHERE>
-IMHERE
-</A_IMHERE>
-<A_HIGH>
-HIGH
-</A_HIGH>
-<A_LOW>
-LOW
-</A_LOW>
-<A_INPUT_STREAM>
--INPUT- STREAM VALUE:
-</A_INPUT_STREAM>
-<A_INPUT_STREAM_VALUE>
-A B C D NIL
-</A_INPUT_STREAM_VALUE>
-</AUTOMATIC_TEST_PHRASES>
-<ADDITIONAL_PHRASES>
-<COPY>
-FIRST VALUE linListe SECOND VALUE linListeCopy
-</COPY>
-<PHRASE_NAME>
-NAME: 
-</PHRASE_NAME>
-<PHRASE_POSITION>
-Position: 
-</PHRASE_POSITION>
-<PHRASE_READ_STREAM>
-Enter Multible Elements seperated by space. Enter NIL for stop reading!!
--> 
-</PHRASE_READ_STREAM>
-<PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
-DELETE DATA! continuo? (y)=yes: 
-</PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
-<PHRASE_ELEMENT_DELETE_CONFIRMATION>
-ELEMENT delete. sure? (y)=yes: 
-</PHRASE_ELEMENT_DELETE_CONFIRMATION>
-<PHRASE_CLEAR_CONFIRMATION>
-linListe clear. sure? (y)=yes: 
-</PHRASE_CLEAR_CONFIRMATION>
-<PHRASE_LOAD_CONFIRMATION>
-drop list? (y)=yes: 
-</PHRASE_LOAD_CONFIRMATION>
-<PHRASE_SAVE_CONFIRMATION>
-Overwride Backup? (y)=yes: 
-</PHRASE_SAVE_CONFIRMATION>
-<CONFIRM_DELETE>
-y
-</CONFIRM_DELETE>
-</ADDITIONAL_PHRASES>
+      Your Choice:
+    </MANUELLDIALOG>
+  </DIALOG>
+  <AUTOMATIC_TEST_PHRASES>
+    <HYPHEN>
+      -
+    </HYPHEN>
+    <A_INIT_PUSH>
+      -INIT- VALUE: "
+    </A_INIT_PUSH>
+    <A_PUSH_BACK>
+      -PUSH- BACK VALUE:
+    </A_PUSH_BACK>
+    <A_PUSH_FRONT>
+      -PUSH- FRONT VALUE:
+    </A_PUSH_FRONT>
+    <A_POP_BACK>
+      -POP BACK-
+    </A_POP_BACK>
+    <A_POP_FRONT>
+      -POP FRONT-
+    </A_POP_FRONT>
+    <A_INSERT>
+      -INSERT- VALUE:
+    </A_INSERT>
+    <A_ERASE>
+      -ERASE- POSITION:
+    </A_ERASE>
+    <A_READ_INPUT_STREAM>
+      -READ INPUT STREAM-
+    </A_READ_INPUT_STREAM>
+    <A_CLEAR>
+      -CLEAR-
+    </A_CLEAR>
+    <A_POP_EMPTY>
+      -POP EMPTY LIST-
+    </A_POP_EMPTY>
+    <A_INIT>
+      INIT
+    </A_INIT>
+    <A_BACK>
+      BACK
+    </A_BACK>
+    <A_FRONT>
+      FRONT
+    </A_FRONT>
+    <A_IMHERE>
+      IMHERE
+    </A_IMHERE>
+    <A_HIGH>
+      HIGH
+    </A_HIGH>
+    <A_LOW>
+      LOW
+    </A_LOW>
+    <A_INPUT_STREAM>
+      -INPUT- STREAM VALUE:
+    </A_INPUT_STREAM>
+    <A_INPUT_STREAM_VALUE>
+      A B C D NIL
+    </A_INPUT_STREAM_VALUE>
+  </AUTOMATIC_TEST_PHRASES>
+  <ADDITIONAL_PHRASES>
+    <COPY>
+      FIRST VALUE linListe SECOND VALUE linListeCopy
+    </COPY>
+    <PHRASE_NAME>
+      NAME:
+    </PHRASE_NAME>
+    <PHRASE_POSITION>
+      Position:
+    </PHRASE_POSITION>
+    <PHRASE_READ_STREAM>
+      Enter Multible Elements seperated by space. Enter NIL for stop reading!!
+      ->
+    </PHRASE_READ_STREAM>
+    <PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+      DELETE DATA! continuo? (y)=yes:
+    </PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+    <PHRASE_ELEMENT_DELETE_CONFIRMATION>
+      ELEMENT delete. sure? (y)=yes:
+    </PHRASE_ELEMENT_DELETE_CONFIRMATION>
+    <PHRASE_CLEAR_CONFIRMATION>
+      linListe clear. sure? (y)=yes:
+    </PHRASE_CLEAR_CONFIRMATION>
+    <PHRASE_LOAD_CONFIRMATION>
+      drop list? (y)=yes:
+    </PHRASE_LOAD_CONFIRMATION>
+    <PHRASE_SAVE_CONFIRMATION>
+      Overwride Backup? (y)=yes:
+    </PHRASE_SAVE_CONFIRMATION>
+    <CONFIRM_DELETE>
+      y
+    </CONFIRM_DELETE>
+  </ADDITIONAL_PHRASES>
 </EN_US>

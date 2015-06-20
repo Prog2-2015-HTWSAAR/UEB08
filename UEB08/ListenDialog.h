@@ -125,7 +125,7 @@ public:
 	string readStringInput();
 	string readVariables(string fileName, int lowerBorder);
 	string parsePhrases(string fileName, string begin);
-
+	void trim(std::string& str);
 	/**
 	* @brief Konstruktor
 	*/
