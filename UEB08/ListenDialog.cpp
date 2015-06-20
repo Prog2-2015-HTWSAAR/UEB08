@@ -542,6 +542,7 @@ double ListenDialog::readDoubleInput(){
 }
 string ListenDialog::readStringInput(){
 	string input;
+	cin >> input;
 	clearInput();
 	return input;
 }
