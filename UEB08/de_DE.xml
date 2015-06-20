@@ -182,5 +182,8 @@
     <CHECK_EQUAL>
       Pruefe Gleichheit
     </CHECK_EQUAL>
+    <CHECK_NON_EQUAL>
+      Pruefe Ungleichheit
+    </CHECK_NON_EQUAL>
   </ADDITIONAL_PHRASES>
 </DE_DE>

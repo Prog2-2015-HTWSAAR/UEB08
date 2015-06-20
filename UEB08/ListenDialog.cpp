@@ -91,6 +91,7 @@ const string ListenDialog::PARSE_APPEND_LIST = "APPEND_LIST";
 const string ListenDialog::PARSE_COMBINE_LIST = "COMBINE_LIST";
 const string ListenDialog::PARSE_ELEMENT_AT_POSITION = "ELEMENT_AT_POSITION";
 const string ListenDialog::CHECK_EQUAL = "CHECK_EQUAL";
+const string ListenDialog::CHECK_NON_EQUAL = "CHECK_NON_EQUAL";
 //const Int
 const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
@@ -98,7 +99,8 @@ const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
 const int ListenDialog::MAX_RUNS_FILE_READ = 4;
 const int ListenDialog::HIGH_VALUE = 1000;
-const int ListenDialog::TEST_QUANTITY = 20;
+const int ListenDialog::TEST_QUANTITY = 21;
+const int ListenDialog::A_REGULAR_OUTPUT_STOPER = 13;
 //TODO Implement me Senpai
 
 /**
@@ -172,7 +174,7 @@ void ListenDialog::automaticTest(string &fileName){
 	string phrase_Combine = parsePhrases(fileName, PARSE_COMBINE_LIST);
 	string phrase_Element_At_Position = parsePhrases(fileName, PARSE_ELEMENT_AT_POSITION);
 	string phrase_Check_Equal = parsePhrases(fileName, CHECK_EQUAL);
-	
+	string phrase_Check_Non_Equal = parsePhrases(fileName, CHECK_NON_EQUAL);
 	LinList* linListe = NULL;
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
@@ -181,7 +183,9 @@ void ListenDialog::automaticTest(string &fileName){
 	cout << seperator_Automatic_Test << endl << endl;
 	do{
 		try{
-			cout << *linListe << endl;
+			if (runCounter < A_REGULAR_OUTPUT_STOPER){
+				cout << *linListe << endl;
+			}
 			switch (runCounter) {
 			case AUTO_INIT:
 				cout << phrase_Init_Push << phrase_Init << endl;
@@ -240,55 +244,55 @@ void ListenDialog::automaticTest(string &fileName){
 				break;
 			case AUTO_TEST_EQUAL_ONE:
 				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
-				if (linListe == linListeCopy){
-					cout << phrase_Equal;
+				if (*linListe == *linListeCopy){
+					cout << phrase_Equal << endl << endl;
 				}
 				else {
-					cout << phrase_NON_Equal;
+					cout << phrase_NON_Equal << endl << endl;
 				}
 				break;
 			case AUTO_TEST_NON_EQUAL_ONE:
-				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
-				if (!(linListe != linListeCopy)){
-					cout << phrase_Equal;
+				cout << phrase_Check_Non_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				if (!(*linListe != *linListeCopy)){
+					cout << phrase_Equal << endl << endl;
 				}
 				else {
-					cout << phrase_NON_Equal;
+					cout << phrase_NON_Equal << endl << endl;
 				}
 				break;
 			case AUTO_APPEND:
 				cout << phrase_Append << endl;
-				//linListe += linListeCopy;
-				cout << *linListe;
+				*linListe += *linListeCopy;
 				break;
 			case AUTO_TEST_EQUAL_TWO:
-				linListe->push_back(phrase_Init);
-
 				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
-				if (linListe == linListeCopy){
-					cout << phrase_Equal;
+				if (*linListe == *linListeCopy){
+					cout << phrase_Equal << endl << endl;
 				}
 				else {
-					cout << phrase_NON_Equal;
+					cout << phrase_NON_Equal << endl << endl;
 				}
 				break;
 			case AUTO_TEST_NON_EQUAL_TWO:
-				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
-				if (!(linListe != linListeCopy)){
-					cout << phrase_Equal;
+				cout << phrase_Check_Non_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				if (!(*linListe != *linListeCopy)){
+					cout << phrase_Equal << endl << endl;
 				}
 				else {
-					cout << phrase_NON_Equal;
+					cout << phrase_NON_Equal << endl << endl;
 				}
 				break;
 			case AUTO_COMBINE:
 				cout << phrase_Append << endl;
-			//	linListe = linListe + linListeCopy;
+				*linListe = *linListe + *linListeCopy;
 				cout << *linListe;
 				break;
 			case AUTO_CLEAR:
 				cout << phrase_Clear << endl;
 				linListe->clear();
+				break;
+			case ELEMENT_AT_POSITION:
+				cout << linListe[3] << endl;
 				break;
 			case POP_EMPTY:
 				cout << phrase_Pop_Empty << endl;
