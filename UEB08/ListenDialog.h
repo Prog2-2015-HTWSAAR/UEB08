@@ -136,7 +136,9 @@ public:
 	void clearInput();
 	void initLanguage();
 	bool fileExists(string fileName);
-	int readNumericInput();
+	int readIntegerInput();
+	double readDoubleInput();
+	string readStringInput();
 	string readVariables(string fileName, int lowerBorder);
 	string parsePhrases(string fileName, string begin);
 

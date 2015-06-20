@@ -12,6 +12,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <math.h>
 
 //Konstanten 
 //Seperators
@@ -47,7 +48,7 @@ const string ListenDialog::PARSER_READ_END = "<END>";
 // const strings
 // Languagedialog
 const string ListenDialog::STD_LANG_NOT_FOUND = "Language std NOT Found";
-const string ListenDialog::DE_DE_LANG_NOT_FOUND ="<DE_DE_LANG_NOT_FOUND>";
+const string ListenDialog::DE_DE_LANG_NOT_FOUND = "<DE_DE_LANG_NOT_FOUND>";
 const string ListenDialog::EN_US_LANG_NOT_FOUND = "<EN_US_LANG_NOT_FOUND>";
 const string ListenDialog::HODOR_WESTEROS_LANG_NOT_FOUND = "<HODOR_WESTEROS_LANG_NOT_FOUND>";
 const string ListenDialog::PARSE_LANGUAGEDIALOG = "<LANGUAGE_DIALOGE>";
@@ -121,7 +122,7 @@ void ListenDialog::mainDialog(string &fileName){
 	int answer;
 	do{
 		cout << seperator_LinListe << endl << main_dialog;
-		answer = readNumericInput();
+		answer = readIntegerInput();
 		switch (answer) {
 		case EXIT:
 			break;
@@ -269,12 +270,11 @@ void ListenDialog::manuellDialog(string &fileName){
 		try{
 			cout << seperator_maunuell << endl << *linListe << endl << manuell_dialog;
 			cout.clear();
-			answer = readNumericInput();
+			answer = readIntegerInput();
 			switch (answer) {
 			case BACK:
 				cout << seperator_push << endl << phrase_element_delete_back_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -283,21 +283,18 @@ void ListenDialog::manuellDialog(string &fileName){
 			case PUSH_BACK:
 				cout << seperator_push << endl;
 				cout << phrase_name;
-				cin >> name;
-				clearInput();
+				name = readStringInput();;
 				linListe->push_back(name);
 				break;
 			case PUSH_FRONT:
 				cout << seperator_push << endl;
 				cout << phrase_name;
-				cin >> name;
-				clearInput();
+				name = readStringInput();;
 				linListe->push_front(name);
 				break;
 			case POP_BACK:
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -307,8 +304,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				break;
 			case POP_FRONT:
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -319,18 +315,16 @@ void ListenDialog::manuellDialog(string &fileName){
 			case INSERT_ELEMENT:
 				cout << seperator_insert << endl;
 				cout << phrase_name;
-				cin >> name;
-				clearInput();
+				name = readStringInput();
 				cout << phrase_position;
-				position = readNumericInput();
+				position = readIntegerInput();
 				linListe->insert(position, name);
 				break;
 			case ERASE_ELEMENT:
 				cout << phrase_position;
-				position = readNumericInput();
+				position = readIntegerInput();
 				cout << seperator_erase << endl << phrase_element_delete_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -341,8 +335,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				break;
 			case CLEAR:
 				cout << seperator_delete << endl << phrase_clear_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -353,8 +346,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				break;
 			case STREAM:
 				cout << seperator_delete << endl << phrase_load_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -367,8 +359,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_backup << endl;
 				cout << *linListeCopy << endl;
 				cout << seperator_delete_liste << endl << phrase_save_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -383,8 +374,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_backup << endl;
 				cout << *linListeCopy << endl;
 				cout << seperator_delete_liste << endl << phrase_load_confirmation;
-				cin >> wirklichLoeschen;
-				clearInput();
+				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
@@ -432,7 +422,7 @@ void ListenDialog::initLanguage(){
 
 			if (answer != START_MAINDIALOG){
 				cout << language_dialog;
-				answer = readNumericInput();
+				answer = readIntegerInput();
 				if (answer == START_MAINDIALOG || answer == runAgain){
 					answer = STD_ANSWER_VALUE;
 				}
@@ -444,7 +434,7 @@ void ListenDialog::initLanguage(){
 				if (fileExists(LANGUAGE_GERMAN)){
 					chosenLanguage = LANGUAGE_GERMAN;
 					answer = START_MAINDIALOG;
-					
+
 				}
 				else{
 					cout << error_de_DE_Not_Found << endl;
@@ -536,8 +526,15 @@ void ListenDialog::clearInput(){
 	cin.ignore(HIGH_VALUE, '\n');
 }
 
-int ListenDialog::readNumericInput(){
-	int number;
+int ListenDialog::readIntegerInput(){
+	double number = readDoubleInput();
+	if (!(fmod(number, INPUT_ONE) == ZERO_VALUE)){
+		number = STD_ANSWER_VALUE;
+	}
+	return (int)number;
+}
+double ListenDialog::readDoubleInput(){
+	double number;
 	if (cin >> number){
 	}
 	else {
@@ -546,6 +543,12 @@ int ListenDialog::readNumericInput(){
 	clearInput();
 	return number;
 }
+string ListenDialog::readStringInput(){
+	string input;
+	clearInput();
+	return input;
+}
+
 bool ListenDialog::fileExists(string fileName) {
 	const char* constName = fileName.c_str();
 	ifstream infile(constName);
