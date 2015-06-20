@@ -1,0 +1,29 @@
+﻿<SEPERATOR>
+<SEPERATOR_STD>
+-------------------------------
+<END>
+<SEPERATOR_LANGUAGE_SELECT>
+-------------------------------
+--------Language-Select--------
+-------------------------------
+<END>
+</SEPERATOR>
+<ERROR>
+<INPUT_ERROR>
+-> INPUT ERROR <-
+<END>
+<STD_ERROR>
+ERROR!!
+<END>
+</ERROR>
+<DIALOG>
+<LANGUAGE_DIALOGE>
+Please chose Language
+(1) GERMAN
+(2) ENGLISH
+(3) HODOR
+(0) EXIT
+
+-> 
+<END>
+</DIALOG>

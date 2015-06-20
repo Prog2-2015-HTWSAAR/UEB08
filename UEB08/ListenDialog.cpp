@@ -434,6 +434,8 @@ void ListenDialog::initLanguage(){
 	string LANGUAGE_GERMAN = "de_DE.lang";
 	string LANGUAGE_ENGLISH = "en_US.lang";
 	string LANGUAGE_HODOR = "hodor_WESTEROS.lang";
+	string LANGUAGE_STD = "std.lang";
+	if (fileExists(LANGUAGE_STD)){
 	int answer = STD_ANSWER_VALUE;
 	do{
 		cout << LANGUAGE_OPTION_OVERVIEW << endl << LANGUAGE_OPTION_GERMAN << endl << LANGUAGE_OPTION_ENGLISH << endl << LANGUAGE_OPTION_HODOR << endl << STANDARDCHOICEPHRASE;
@@ -473,7 +475,12 @@ void ListenDialog::initLanguage(){
 			cout << INPUTERRORPHRASE << endl;
 			break;
 		}
+	
 	} while (answer != EXIT);
+} else{
+		cout << "Language std NOT Found" << endl;
+		clearInput();
+	}
 }
 
 string ListenDialog::parsePhrases(string fileName, string begin){
