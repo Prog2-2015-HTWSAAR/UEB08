@@ -17,7 +17,8 @@ enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR, START_MAINDIALO
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
 enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, SAVE_BACKUP, LOAD_BACKUP, FILE_DIALOG, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
-						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_COPY_TEST, AUTO_CLEAR, POP_EMPTY };
+						AUTO_INSERT_LOW_VALUE, AUTO_ERASE, AUTO_ERASE_ZERO, AUTO_ERASE_NON_EXISTENT_ELEMENT, AUTO_INPUT_STREAM, AUTO_COPY_TEST, 
+						AUTO_TEST_EQUAL_ONE, AUTO_TEST_NON_EQUAL_ONE, AUTO_APPEND, AUTO_TEST_EQUAL_TWO, AUTO_TEST_NON_EQUAL_TWO, AUTO_COMBINE, AUTO_CLEAR, POP_EMPTY };
 //enum FileDialogOption{ CLOSE_FILE_DIALOG, SAVE, LOAD };
 
 class ListenDialog {
@@ -82,7 +83,14 @@ public:
 	static const string PARSE_A_INPUT_STREAM_VALUE;
 	// Allgemein
 	static const string PARSE_INPUT_ERROR;
-	static const string PARSE_STD_ERROR;	//const Int
+	static const string PARSE_STD_ERROR;	
+	static const string PARSE_EQUAL;
+	static const string PARSE_NON_EQUAL;
+	static const string PARSE_APPEND_LIST;
+	static const string PARSE_COMBINE_LIST;
+	static const string PARSE_ELEMENT_AT_POSITION;
+	static const string CHECK_EQUAL;
+	//const Int
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
@@ -90,6 +98,7 @@ public:
 	static const int HIGH_VALUE;
 	static const int TEST_QUANTITY;
 	static const int MAX_RUNS_FILE_READ;
+
 	//FKT
 	/**
 	* @brief mainDialog()

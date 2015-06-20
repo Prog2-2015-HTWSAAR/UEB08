@@ -164,6 +164,23 @@
     <CONFIRM_DELETE>
       j
     </CONFIRM_DELETE>
-
+    <EQUAL>
+      Listen Sind Gleich
+    </EQUAL>
+    <NON_EQUAL>
+      Listen sind Ungleich
+    </NON_EQUAL>
+    <APPEND_LIST>
+      Listen aneinander angehaengen
+    </APPEND_LIST>
+    <COMBINE_LIST>
+      Listen kombinieren
+    </COMBINE_LIST>
+    <ELEMENT_AT_POSITION>
+      ELEMENT an POSITION:
+    </ELEMENT_AT_POSITION>
+    <CHECK_EQUAL>
+      Pruefe Gleichheit
+    </CHECK_EQUAL>
   </ADDITIONAL_PHRASES>
 </DE_DE>

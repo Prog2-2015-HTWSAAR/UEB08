@@ -164,5 +164,23 @@
     <CONFIRM_DELETE>
       y
     </CONFIRM_DELETE>
+    <EQUAL>
+      Lists are Equal
+    </EQUAL>
+    <NON_EQUAL>
+      Lists are NOT Equal 
+    </NON_EQUAL>
+    <APPEND_LIST>
+      Lists append
+    </APPEND_LIST>
+    <COMBINE_LIST>
+      Lists Combin
+    </COMBINE_LIST>
+    <ELEMENT_AT_POSITION>
+      ELEMENT at POSITION:
+    </ELEMENT_AT_POSITION>
+    <CHECK_EQUAL>
+      Check for equal
+    </CHECK_EQUAL>
   </ADDITIONAL_PHRASES>
 </EN_US>
