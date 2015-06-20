@@ -1,104 +1,106 @@
-﻿<SEPERATOR>
+﻿<?xml version="1.0"?>
+<EN_US>
+<SEPERATOR>
 <SEPERATOR_STD>
 -------------------------------
-<END>
+</SEPERATOR_STD>
 <SEPERATOR_LINLIST_BLOCK>
 -------------------------------
 ------------linListe-----------
 -------------------------------
-<END>
+</SEPERATOR_LINLIST_BLOCK>
 <SEPERATOR_AUTOMATIC_TEST_BLOCK>
 -------------------------------
 ---------AUTOMATIC-TEST--------
 -------------------------------
-<END>
+</SEPERATOR_AUTOMATIC_TEST_BLOCK>
 <SEPERATOR_MANUELL_BLOCK>
 -------------------------------
 ------------MANUELL------------
 -------------------------------
-<END>
+</SEPERATOR_MANUELL_BLOCK>
 <SEPERATOR_DELETE_LISTE>
 ---------DELETE-LISTE----------
-<END>
+</SEPERATOR_DELETE_LISTE>
 <SEPERATOR_INSERT>
 ------------INSERT-------------
-<END>
+</SEPERATOR_INSERT>
 <SEPERATOR_ERASE>
 ------------ERASE--------------
-<END>
+</SEPERATOR_ERASE>
 <SEPERATOR_CLEAR>
 ------------CLEAR--------------
-<END>
+</SEPERATOR_CLEAR>
 <SEPERATOR_PUSH>
 -------------PUSH--------------
-<END>
+</SEPERATOR_PUSH>
 <SEPERATOR_POP>
 -------------POP---------------
-<END>
+</SEPERATOR_POP>
 <SEPERATOR_BACKUP>
 -------------BACKUP------------
-<END>
+</SEPERATOR_BACKUP>
 </SEPERATOR>
-<ERROR>
-<INPUT_ERROR>
--> FEHLERHAFTE EINGABE <-
-<END>
-<STD_ERROR>
-FEHLER!!
-<END>
-</ERROR>
+<ERROR_SECTION>
+<INPUT_E>
+-! INVAILD INPUT !-
+</INPUT_E>
+<STD_E>
+ERROR!!
+</STD_E>
+</ERROR_SECTION>
 <DIALOG>
 <MAINDIALOG>
-(1) Automatischer Test
-(2) Manueller Test
-(0) Zurueck zur Sprachauswahl
+(1) Automatic Test
+(2) Manual Test
+(0) Back to Language Settings
 
-Ihre Wahl: 
-<END>
+Your Choice: 
+</MAINDIALOG>
 <MANUELLDIALOG>
 (1 )  Push back
 (2 )  Push front
 (3 )  Pop back
 (4 )  Pop front
-(5 )  Vor Position Einfuegen
-(6 )  Position Loeschen
-(7 )  Aufraumen
-(8 )  Liste Einlesen
-(9 )  Listen Backup speichern
-(10)  Listen Backup laden
-(0 )  Zurueck zum Main Dialog
+(5 )  Insert before position
+(6 )  Delete position
+(7 )  Clear
+(8 )  Read multible elements 
+(9 )  Save list Backup
+(10)  Load list Backup
+(0 )  BACK to Main Menue
 
-Ihre Wahl: 
-<END>
+Your Choice: 
+</MANUELLDIALOG>
 </DIALOG>
 <ADDITIONAL_PHRASES>
 <PHRASE_NAME>
 NAME: 
-<END>
+</PHRASE_NAME>
 <PHRASE_POSITION>
 Position: 
-<END>
+</PHRASE_POSITION>
 <PHRASE_READ_STREAM>
-Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
-->
-<END>
+Enter Multible Elements seperated by space. Enter NIL for stop reading!!
+-> 
+</PHRASE_READ_STREAM>
 <PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
-Daten gehen verloren! Weiter? (j)=Ja: 
-<END>
+DELETE DATA! continuo? (y)=yes: 
+</PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
 <PHRASE_ELEMENT_DELETE_CONFIRMATION>
-ELEMENT wirklich loeschen? (j)=Ja: 
-<END>
+ELEMENT delete. sure? (y)=yes: 
+</PHRASE_ELEMENT_DELETE_CONFIRMATION>
 <PHRASE_CLEAR_CONFIRMATION>
-linListe wirklich leeren? (j)=Ja: 
-<END>
+linListe clear. sure? (y)=yes: 
+</PHRASE_CLEAR_CONFIRMATION>
 <PHRASE_LOAD_CONFIRMATION>
-aktuelle Liste verwerfen? (j)=Ja: 
-<END>
+drop list? (y)=yes: 
+</PHRASE_LOAD_CONFIRMATION>
 <PHRASE_SAVE_CONFIRMATION>
-Backup ueberschreiben? (j)=Ja: 
-<END>
+Overwride Backup? (y)=yes: 
+</PHRASE_SAVE_CONFIRMATION>
 <CONFIRM_DELETE>
-j
-<END>
+y
+</CONFIRM_DELETE>
 </ADDITIONAL_PHRASES>
-
+</EN_US>

@@ -19,7 +19,6 @@
 const char* ListenDialog::SPACER = " ";
 //AUTO_TEST
 const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "- ";
-const char* ListenDialog::AUTOMATIC_TEST_POSITION = " POSITION: ";
 const char* ListenDialog::AUTOMATIC_TEST_INIT = "-PUSH BACK(INIT)VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_BACK = "-PUSH BACK VALUE: ";
 const char* ListenDialog::AUTOMATIC_TEST_PUSH_FRONT = "-PUSH FRONT VALUE: ";
@@ -40,53 +39,52 @@ const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "-INPUT STREAM VALUE: 
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM_VALUE = "A B C D NIL";
 
 
-const string ListenDialog::LANGUAGE_GERMAN = "de_DE.lang";
-const string ListenDialog::LANGUAGE_ENGLISH = "en_US.lang";
-const string ListenDialog::LANGUAGE_HODOR = "hodor_WESTEROS.lang";
-const string ListenDialog::LANGUAGE_STD = "std.lang";
-const string ListenDialog::PARSER_READ_END = "<END>";
+const string ListenDialog::LANGUAGE_GERMAN = "de_DE.xml";
+const string ListenDialog::LANGUAGE_ENGLISH = "en_US.xml";
+const string ListenDialog::LANGUAGE_HODOR = "hodor_WESTEROS.xml";
+const string ListenDialog::LANGUAGE_STD = "std.xml";
 // const strings
 // Languagedialog
 const string ListenDialog::STD_LANG_NOT_FOUND = "Language std NOT Found";
-const string ListenDialog::DE_DE_LANG_NOT_FOUND = "<DE_DE_LANG_NOT_FOUND>";
-const string ListenDialog::EN_US_LANG_NOT_FOUND = "<EN_US_LANG_NOT_FOUND>";
-const string ListenDialog::HODOR_WESTEROS_LANG_NOT_FOUND = "<HODOR_WESTEROS_LANG_NOT_FOUND>";
-const string ListenDialog::PARSE_LANGUAGEDIALOG = "<LANGUAGE_DIALOGE>";
+const string ListenDialog::DE_DE_LANG_NOT_FOUND = "DE_DE_LANG_NOT_FOUND";
+const string ListenDialog::EN_US_LANG_NOT_FOUND = "EN_US_LANG_NOT_FOUND";
+const string ListenDialog::HODOR_WESTEROS_LANG_NOT_FOUND = "HODOR_WESTEROS_LANG_NOT_FOUND";
+const string ListenDialog::PARSE_LANGUAGEDIALOG = "LANGUAGE_DIALOGE";
 
 // Maindialog
-const string ListenDialog::PARSE_SEPERATOR_LINLIST_BLOCK = "<SEPERATOR_LINLIST_BLOCK>";
-const string ListenDialog::PARSE_MAINDIALOG = "<MAINDIALOG>";
+const string ListenDialog::PARSE_SEPERATOR_LINLIST_BLOCK = "SEPERATOR_LINLIST_BLOCK";
+const string ListenDialog::PARSE_MAINDIALOG = "MAINDIALOG";
 
 //ManuellDialog
-const string ListenDialog::PARSE_MANUELLDIALOG = "<MANUELLDIALOG>";
-const string ListenDialog::PARSE_SEPERATOR_MANUELL_BLOCK = "<SEPERATOR_MANUELL_BLOCK>";
-const string ListenDialog::PARSE_SEPERATOR_INSERT = "<SEPERATOR_INSERT>";
-const string ListenDialog::PARSE_SEPERATOR_ERASE = "<SEPERATOR_ERASE>";
-const string ListenDialog::PARSE_SEPERATOR_CLEAR = "<SEPERATOR_CLEAR>";
-const string ListenDialog::PARSE_SEPERATOR_PUSH = "<SEPERATOR_PUSH>";
-const string ListenDialog::PARSE_SEPERATOR_POP = "<SEPERATOR_POP>";
-const string ListenDialog::PARSE_SEPERATOR_BACKUP = "<SEPERATOR_BACKUP>";
-const string ListenDialog::PARSE_SEPERATOR_DELETE_LISTE = "<SEPERATOR_DELETE_LISTE>";
-const string ListenDialog::PARSE_PHRASE_NAME = "<PHRASE_NAME>";
-const string ListenDialog::PARSE_PHRASE_POSITION = "<PHRASE_POSITION>";
-const string ListenDialog::PARSE_PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION = "<PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>";
-const string ListenDialog::PARSE_PHRASE_ELEMENT_DELETE_CONFIRMATION = "<PHRASE_ELEMENT_DELETE_CONFIRMATION>";
-const string ListenDialog::PARSE_PHRASE_CLEAR_CONFIRMATION = "<PHRASE_CLEAR_CONFIRMATION>";
-const string ListenDialog::PARSE_PHRASE_LOAD_CONFIRMATION = "<PHRASE_LOAD_CONFIRMATION>";
-const string ListenDialog::PARSE_PHRASE_SAVE_CONFIRMATION = "<PHRASE_SAVE_CONFIRMATION>";
-const string ListenDialog::PARSE_PHRASE_READ_STREAM = "<PHRASE_READ_STREAM>";
-const string ListenDialog::CONFIRM_DELETE = "<CONFIRM_DELETE>";
+const string ListenDialog::PARSE_MANUELLDIALOG = "MANUELLDIALOG";
+const string ListenDialog::PARSE_SEPERATOR_MANUELL_BLOCK = "SEPERATOR_MANUELL_BLOCK";
+const string ListenDialog::PARSE_SEPERATOR_INSERT = "SEPERATOR_INSERT";
+const string ListenDialog::PARSE_SEPERATOR_ERASE = "SEPERATOR_ERASE";
+const string ListenDialog::PARSE_SEPERATOR_CLEAR = "SEPERATOR_CLEAR";
+const string ListenDialog::PARSE_SEPERATOR_PUSH = "SEPERATOR_PUSH";
+const string ListenDialog::PARSE_SEPERATOR_POP = "SEPERATOR_POP";
+const string ListenDialog::PARSE_SEPERATOR_BACKUP = "SEPERATOR_BACKUP";
+const string ListenDialog::PARSE_SEPERATOR_DELETE_LISTE = "SEPERATOR_DELETE_LISTE";
+const string ListenDialog::PARSE_PHRASE_NAME = "PHRASE_NAME";
+const string ListenDialog::PARSE_PHRASE_POSITION = "PHRASE_POSITION";
+const string ListenDialog::PARSE_PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION = "PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION";
+const string ListenDialog::PARSE_PHRASE_ELEMENT_DELETE_CONFIRMATION = "PHRASE_ELEMENT_DELETE_CONFIRMATION";
+const string ListenDialog::PARSE_PHRASE_CLEAR_CONFIRMATION = "PHRASE_CLEAR_CONFIRMATION";
+const string ListenDialog::PARSE_PHRASE_LOAD_CONFIRMATION = "PHRASE_LOAD_CONFIRMATION";
+const string ListenDialog::PARSE_PHRASE_SAVE_CONFIRMATION = "PHRASE_SAVE_CONFIRMATION";
+const string ListenDialog::PARSE_PHRASE_READ_STREAM = "PHRASE_READ_STREAM";
+const string ListenDialog::CONFIRM_DELETE = "CONFIRM_DELETE";
 // Automatic TEST
-const string ListenDialog::PARSE_AUTOMATICTEST = "<SEPERATOR_AUTOMATIC_TEST_BLOCK>";
+const string ListenDialog::PARSE_AUTOMATICTEST = "SEPERATOR_AUTOMATIC_TEST_BLOCK";
 
 //const string ListenDialog::PARSE_ = "";
 //const string ListenDialog::PARSE_ = "";
 //const string ListenDialog::PARSE_ = "";
 
 // Allgemein
-const string ListenDialog::PARSE_INPUT_ERROR = "<INPUT_ERROR>";
-const string ListenDialog::PARSE_STD_ERROR = "<STD_ERROR>";
-const string ListenDialog::PARSE_SEPERATOR = "<SEPERATOR_STD>";
+const string ListenDialog::PARSE_INPUT_ERROR = "INPUT_E";
+const string ListenDialog::PARSE_STD_ERROR = "STD_E";
+const string ListenDialog::PARSE_SEPERATOR = "SEPERATOR_STD";
 
 
 //const Int
@@ -145,6 +143,7 @@ void ListenDialog::mainDialog(string &fileName){
 */
 void ListenDialog::automaticTest(string &fileName){
 	istringstream is(AUTOMATIC_TEST_EINGABE_STREAM_VALUE);
+	string phrase_position = parsePhrases(fileName, PARSE_PHRASE_POSITION);
 	string seperator_Automatic_Test = parsePhrases(fileName, PARSE_AUTOMATICTEST);
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string error_std = parsePhrases(fileName, PARSE_STD_ERROR);
@@ -179,15 +178,15 @@ void ListenDialog::automaticTest(string &fileName){
 				linListe->pop_front();
 				break;
 			case AUTO_INSERT:
-				cout << AUTOMATIC_TEST_INSERT << INPUT_ONE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT << AUTOMATIC_TEST_HYPHEN << endl;
+				cout << AUTOMATIC_TEST_INSERT << INPUT_ONE << phrase_position << AUTOMATIC_TEST_ELEMENT_INSERT << AUTOMATIC_TEST_HYPHEN << endl;
 				linListe->insert(INPUT_ONE, AUTOMATIC_TEST_ELEMENT_INSERT);
 				break;
 			case AUTO_INSERT_HIGH_VALUE:
-				cout << AUTOMATIC_TEST_INSERT << HIGH_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_HIGH << AUTOMATIC_TEST_HYPHEN << endl;
+				cout << AUTOMATIC_TEST_INSERT << HIGH_VALUE << phrase_position << AUTOMATIC_TEST_ELEMENT_INSERT_HIGH << AUTOMATIC_TEST_HYPHEN << endl;
 				linListe->insert(HIGH_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_HIGH);
 				break;
 			case AUTO_INSERT_LOW_VALUE:
-				cout << AUTOMATIC_TEST_INSERT << ZERO_VALUE << AUTOMATIC_TEST_POSITION << AUTOMATIC_TEST_ELEMENT_INSERT_LOW << AUTOMATIC_TEST_HYPHEN << endl;
+				cout << AUTOMATIC_TEST_INSERT << ZERO_VALUE << phrase_position << AUTOMATIC_TEST_ELEMENT_INSERT_LOW << AUTOMATIC_TEST_HYPHEN << endl;
 				linListe->insert(ZERO_VALUE, AUTOMATIC_TEST_ELEMENT_INSERT_LOW);
 				break;
 			case AUTO_ERASE:
@@ -478,10 +477,10 @@ void ListenDialog::initLanguage(){
 		clearInput();
 	}
 }
-
 string ListenDialog::parsePhrases(string fileName, string begin){
 	fstream file;
-	stringstream is;
+	string anfang = "<" + begin + ">";
+	string ende = "</" + begin + ">";
 	string cache;
 	string line;
 	string ausgabe;
@@ -495,7 +494,7 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 
 		if (!stop && found){
 			if (!firstRun){
-				is << cache;
+				ausgabe = ausgabe + cache;
 				streamWritten = true;
 			}
 			if (firstRun){
@@ -503,29 +502,27 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 			}
 		}
 		if (found && !stop){
-			if (strcmp(PARSER_READ_END.c_str(), line.c_str()) == 0){
+			if (strcmp(ende.c_str(), line.c_str()) == 0){
 				stop = true;
 			}
 			else{
 				cache = line;
 				if (streamWritten){
-					is << endl;
+					ausgabe = ausgabe + '\n';
 				}
 			}
 		}
-		if (strcmp(begin.c_str(), line.c_str()) == 0 && !found){
+		if (strcmp(anfang.c_str(), line.c_str()) == 0 && !found){
 			found = true;
 		}
 	}
 	file.close();
-	ausgabe = is.str();
-	return is.str();
+	return ausgabe;
 }
 void ListenDialog::clearInput(){
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');
 }
-
 int ListenDialog::readIntegerInput(){
 	double number = readDoubleInput();
 	if (!(fmod(number, INPUT_ONE) == ZERO_VALUE)){
@@ -548,7 +545,6 @@ string ListenDialog::readStringInput(){
 	clearInput();
 	return input;
 }
-
 bool ListenDialog::fileExists(string fileName) {
 	const char* constName = fileName.c_str();
 	ifstream infile(constName);
