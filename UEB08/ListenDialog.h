@@ -25,39 +25,19 @@ public:
 	//Konstanten 
 	//Seperators
 	static const char* SPACER;
-	//Errorphrasses
-	//AUTO_TEST
-	static const char* AUTOMATIC_TEST_HYPHEN;
-	static const char* AUTOMATIC_TEST_POSITION;
-	static const char* AUTOMATIC_TEST_INIT;
-	static const char* AUTOMATIC_TEST_PUSH_BACK;
-	static const char* AUTOMATIC_TEST_PUSH_FRONT;
-	static const char* AUTOMATIC_TEST_POP_BACK;
-	static const char* AUTOMATIC_TEST_POP_FRONT;
-	static const char* AUTOMATIC_TEST_INSERT;
-	static const char* AUTOMATIC_TEST_ERASE;
-	static const char* AUTOMATIC_TEST_INPUT_STREAM;
-	static const char* AUTOMATIC_TEST_EINGABE_STREAM_VALUE;
-	static const char* AUTOMATIC_TEST_CLEAR;
-	static const char* AUTOMATIC_TEST_POP_EMPTY_LIST;
-	static const char* AUTOMATIC_TEST_ELEMENT_INIT;
-	static const char* AUTOMATIC_TEST_ELEMENT_BACK;
-	static const char* AUTOMATIC_TEST_ELEMENT_FRONT;
-	static const char* AUTOMATIC_TEST_ELEMENT_INSERT;
-	static const char* AUTOMATIC_TEST_ELEMENT_INSERT_HIGH;
-	static const char* AUTOMATIC_TEST_ELEMENT_INSERT_LOW;
-	static const char* AUTOMATIC_TEST_EINGABE_STREAM;
+	static const string PARSE_COPY;
 
-	static const string READ_END;
-	static const string PARSER_READ_END;
-	// const strings
+	//Errorphrasses
 	// LanguageDialog
 	static const string STD_LANG_NOT_FOUND;
 	static const string DE_DE_LANG_NOT_FOUND;
 	static const string EN_US_LANG_NOT_FOUND;
 	static const string HODOR_WESTEROS_LANG_NOT_FOUND;
 	static const string PARSE_LANGUAGEDIALOG;
-
+	static const string LANGUAGE_GERMAN;
+	static const string LANGUAGE_ENGLISH;
+	static const string LANGUAGE_HODOR;
+	static const string LANGUAGE_STD;
 	// Maindialog
 	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
 	static const string PARSE_MAINDIALOG;
@@ -80,22 +60,29 @@ public:
 	static const string PARSE_PHRASE_SAVE_CONFIRMATION;
 	static const string PARSE_PHRASE_READ_STREAM;
 	static const string CONFIRM_DELETE;
-
-	static const string LANGUAGE_GERMAN;
-	static const string LANGUAGE_ENGLISH;
-	static const string LANGUAGE_HODOR;
-	static const string LANGUAGE_STD;
-	// Automatic Dialog
+	// Automatic Test
 	static const string PARSE_AUTOMATICTEST;
-
+	static const string PARSE_A_INIT_PUSH;
+	static const string PARSE_A_PUSH_BACK;
+	static const string PARSE_A_PUSH_FRONT;
+	static const string PARSE_A_POP_BACK;
+	static const string PARSE_A_POP_FRONT;
+	static const string PARSE_A_INSERT;
+	static const string PARSE_A_ERASE;
+	static const string PARSE_A_READ;
+	static const string PARSE_A_CLEAR;
+	static const string PARSE_A_POP_EMPTY;
+	static const string PARSE_A_INIT;
+	static const string PARSE_A_BACK;
+	static const string PARSE_A_FRONT;
+	static const string PARSE_A_IMHERE;
+	static const string PARSE_A_HIGH;
+	static const string PARSE_A_LOW;
+	static const string PARSE_A_INPUT_STREAM;
+	static const string PARSE_A_INPUT_STREAM_VALUE;
 	// Allgemein
 	static const string PARSE_INPUT_ERROR;
-	static const string PARSE_STD_ERROR;
-	static const string PARSE_SEPERATOR;
-
-
-	//const Int
-
+	static const string PARSE_STD_ERROR;	//const Int
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;
 	static const int INPUT_ONE;
@@ -103,9 +90,6 @@ public:
 	static const int HIGH_VALUE;
 	static const int TEST_QUANTITY;
 	static const int MAX_RUNS_FILE_READ;
-
-	//VON BEIDEN VERWENDET
-	static const char* COPY_RESULT;
 	//FKT
 	/**
 	* @brief mainDialog()

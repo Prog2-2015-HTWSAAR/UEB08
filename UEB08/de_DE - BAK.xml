@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<EN_US>
+<DE_DE>
 <SEPERATOR>
 <SEPERATOR_STD>
 -------------------------------
@@ -43,99 +43,51 @@
 </SEPERATOR>
 <ERROR_SECTION>
 <INPUT_E>
--! INVAILD INPUT !-
+-! FEHLERHAFTE EINGABE !-
 </INPUT_E>
 <STD_E>
-ERROR!!
+FEHLER!!
 </STD_E>
 </ERROR_SECTION>
 <DIALOG>
-<MAINDIALOG>
-(1) Automatic Test
-(2) Manual Test
-(0) Back to Language Settings
-
-Your Choice: 
-</MAINDIALOG>
-<MANUELLDIALOG>
-(1 )  Push back
-(2 )  Push front
-(3 )  Pop back
-(4 )  Pop front
-(5 )  Insert before position
-(6 )  Delete position
-(7 )  Clear
-(8 )  Read multible elements 
-(9 )  Save list Backup
-(10)  Load list Backup
-(0 )  BACK to Main Menue
-
-Your Choice: 
-</MANUELLDIALOG>
-</DIALOG>
-<AUTOMATIC_TEST_PHRASES>
+</AUTOMATIC_TEST_PHRASES>
 <HYPHEN>
 - 
 </HYPHEN>
-<A_INIT_PUSH>
--INIT- VALUE: "
-</A_INIT_PUSH>
+<A_INIT>
+"-INIT- VALUE: "
+</A_INIT>
 <A_PUSH_BACK>
 -PUSH- BACK VALUE: 
 </A_PUSH_BACK>
 <A_PUSH_FRONT>
 -PUSH- FRONT VALUE: 
 </A_PUSH_FRONT>
-<A_POP_BACK>
--POP BACK-
-</A_POP_BACK>
-<A_POP_FRONT>
--POP FRONT-
-</A_POP_FRONT>
-<A_INSERT>
--INSERT- VALUE:
-</A_INSERT>
-<A_ERASE>
--ERASE- POSITION:
-</A_ERASE>
-<A_READ_INPUT_STREAM>
--READ INPUT STREAM-
-</A_READ_INPUT_STREAM>
-<A_CLEAR>
--CLEAR-
-</A_CLEAR>
-<A_POP_EMPTY>
--POP EMPTY LIST-
-</A_POP_EMPTY>
-<A_INIT>
-INIT
-</A_INIT>
-<A_BACK>
-BACK
-</A_BACK>
-<A_FRONT>
-FRONT
-</A_FRONT>
-<A_IMHERE>
-IMHERE
-</A_IMHERE>
-<A_HIGH>
-HIGH
-</A_HIGH>
-<A_LOW>
-LOW
-</A_LOW>
-<A_INPUT_STREAM>
--INPUT- STREAM VALUE:
-</A_INPUT_STREAM>
-<A_INPUT_STREAM_VALUE>
-A B C D NIL
-</A_INPUT_STREAM_VALUE>
 </AUTOMATIC_TEST_PHRASES>
+<MAINDIALOG>
+(1) Automatischer Test
+(2) Manueller Test
+(0) Zurueck zur Sprachauswahl
+
+Ihre Wahl: 
+</MAINDIALOG>
+<MANUELLDIALOG>
+(1 )  Push back
+(2 )  Push front
+(3 )  Pop back
+(4 )  Pop front
+(5 )  Vor Position Einfuegen
+(6 )  Position Loeschen
+(7 )  Aufraumen
+(8 )  Liste Einlesen
+(9 )  Listen Backup speichern
+(10)  Listen Backup laden
+(0 )  Zurueck zum Main Dialog
+
+Ihre Wahl: 
+</MANUELLDIALOG>
+</DIALOG>
 <ADDITIONAL_PHRASES>
-<COPY>
-FIRST VALUE linListe SECOND VALUE linListeCopy
-</COPY>
 <PHRASE_NAME>
 NAME: 
 </PHRASE_NAME>
@@ -143,26 +95,27 @@ NAME:
 Position: 
 </PHRASE_POSITION>
 <PHRASE_READ_STREAM>
-Enter Multible Elements seperated by space. Enter NIL for stop reading!!
--> 
+Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
+->
 </PHRASE_READ_STREAM>
 <PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
-DELETE DATA! continuo? (y)=yes: 
+Daten gehen verloren! Weiter? (j)=Ja: 
 </PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
 <PHRASE_ELEMENT_DELETE_CONFIRMATION>
-ELEMENT delete. sure? (y)=yes: 
+ELEMENT wirklich loeschen? (j)=Ja: 
 </PHRASE_ELEMENT_DELETE_CONFIRMATION>
 <PHRASE_CLEAR_CONFIRMATION>
-linListe clear. sure? (y)=yes: 
+linListe wirklich leeren? (j)=Ja: 
 </PHRASE_CLEAR_CONFIRMATION>
 <PHRASE_LOAD_CONFIRMATION>
-drop list? (y)=yes: 
+aktuelle Liste verwerfen? (j)=Ja: 
 </PHRASE_LOAD_CONFIRMATION>
 <PHRASE_SAVE_CONFIRMATION>
-Overwride Backup? (y)=yes: 
+Backup ueberschreiben? (j)=Ja: 
 </PHRASE_SAVE_CONFIRMATION>
 <CONFIRM_DELETE>
-y
+j
 </CONFIRM_DELETE>
+
 </ADDITIONAL_PHRASES>
-</EN_US>
+</DE_DE>

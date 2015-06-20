@@ -13,7 +13,7 @@
 #include <sstream>
 #include <iostream>
 const char* LinList::MELDUNG_LISTE_LEER = "List EMPTY!";
-const char* LinList::MELDUNG_FALSCHE_POS  = "Invalid Position!";
+const char* LinList::MELDUNG_FALSCHE_POS  = " Invalid Position!";
 const char* LinList::ADD_SPACE = " ";
 const char* LinList::CHAINED_LIST = "Linked List: ";
 const char* LinList::ELEMENTS = " Element(s)\n";
