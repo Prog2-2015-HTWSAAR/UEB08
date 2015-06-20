@@ -13,7 +13,7 @@
 
 #ifndef LINLIST_LISTENDIALOG_H_
 #define LINLIST_LISTENDIALOG_H_
-enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR };
+enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR, START_MAINDIALOG, runAgain};
 enum MainDialogOption{ EXIT, AUTOMATICTEST, MANUELLDIALOG};
 enum ManuellDialogOption{ BACK, PUSH_BACK, PUSH_FRONT, POP_BACK, POP_FRONT, INSERT_ELEMENT, ERASE_ELEMENT, CLEAR, STREAM, SAVE_BACKUP, LOAD_BACKUP, FILE_DIALOG, ABORT };
 enum AutomaticTestOption{ AUTO_INIT ,AUTO_PUSH_BACK, AUTO_PUSH_FRONT, AUTO_POP_BACK, AUTO_POP_FRONT, AUTO_INSERT, AUTO_INSERT_HIGH_VALUE, 
@@ -26,19 +26,6 @@ public:
 	//Seperators
 	static const char* SPACER;
 	//Errorphrasses
-	static const char* INPUTERRORPHRASE;
-	//STD Phrases
-	static const char* STANDARDCHOICEPHRASE;
-	//Main Dialog
-	//Manuell Dialog
-	static const char* STD_VALUE_WIRKLICH_LOESCHEN;
-	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES;
-	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_EN;
-	static const char* STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR;
-	//FILE_DIALOG
-//	static const char* FILEDIALOG_OPTION_SAVE;
-//	static const char* FILEDIALOG_OPTION_LOAD;
-//	static const char* FILEDIALOG_OPTION_BACK;
 	//AUTO_TEST
 	static const char* AUTOMATIC_TEST_HYPHEN;
 	static const char* AUTOMATIC_TEST_POSITION;
@@ -61,14 +48,16 @@ public:
 	static const char* AUTOMATIC_TEST_ELEMENT_INSERT_LOW;
 	static const char* AUTOMATIC_TEST_EINGABE_STREAM;
 
-	static const char* LANGUAGE_OPTION_OVERVIEW;
-	static const char* LANGUAGE_OPTION_GERMAN;
-	static const char* LANGUAGE_OPTION_ENGLISH;
-	static const char* LANGUAGE_OPTION_HODOR;
-
 	static const string READ_END;
 	static const string PARSER_READ_END;
 	// const strings
+	// LanguageDialog
+	static const string STD_LANG_NOT_FOUND;
+	static const string DE_DE_LANG_NOT_FOUND;
+	static const string EN_US_LANG_NOT_FOUND;
+	static const string HODOR_WESTEROS_LANG_NOT_FOUND;
+	static const string PARSE_LANGUAGEDIALOG;
+
 	// Maindialog
 	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
 	static const string PARSE_MAINDIALOG;
@@ -90,7 +79,12 @@ public:
 	static const string PARSE_PHRASE_LOAD_CONFIRMATION;
 	static const string PARSE_PHRASE_SAVE_CONFIRMATION;
 	static const string PARSE_PHRASE_READ_STREAM;
-	
+	static const string CONFIRM_DELETE;
+
+	static const string LANGUAGE_GERMAN;
+	static const string LANGUAGE_ENGLISH;
+	static const string LANGUAGE_HODOR;
+	static const string LANGUAGE_STD;
 	// Automatic Dialog
 	static const string PARSE_AUTOMATICTEST;
 
@@ -142,6 +136,7 @@ public:
 	void clearInput();
 	void initLanguage();
 	bool fileExists(string fileName);
+	int readNumericInput();
 	string readVariables(string fileName, int lowerBorder);
 	string parsePhrases(string fileName, string begin);
 

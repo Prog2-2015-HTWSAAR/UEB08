@@ -73,10 +73,10 @@ Your Choice:
 </DIALOG>
 <ADDITIONAL_PHRASES>
 <PHRASE_NAME>
-NAME:
+NAME: 
 <END>
 <PHRASE_POSITION>
-Position:
+Position: 
 <END>
 <PHRASE_READ_STREAM>
 Enter Multible Elements seperated by space. Enter NIL for stop reading!!
@@ -96,6 +96,9 @@ drop list? (y)=yes:
 <END>
 <PHRASE_SAVE_CONFIRMATION>
 Overwride Backup? (y)=yes: 
+<END>
+<CONFIRM_DELETE>
+y
 <END>
 </ADDITIONAL_PHRASES>
 

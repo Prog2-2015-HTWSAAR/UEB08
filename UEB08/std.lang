@@ -1,14 +1,4 @@
-﻿<SEPERATOR>
-<SEPERATOR_STD>
--------------------------------
-<END>
-<SEPERATOR_LANGUAGE_SELECT>
--------------------------------
---------Language-Select--------
--------------------------------
-<END>
-</SEPERATOR>
-<ERROR>
+﻿<ERROR>
 <INPUT_ERROR>
 -> INPUT ERROR <-
 <END>
@@ -19,6 +9,10 @@ ERROR!!
 <DIALOG>
 <LANGUAGE_DIALOGE>
 Please chose Language
+-------------------------------
+--------Language-Select--------
+-------------------------------
+
 (1) GERMAN
 (2) ENGLISH
 (3) HODOR
@@ -27,3 +21,14 @@ Please chose Language
 -> 
 <END>
 </DIALOG>
+<ADDITIONAL_PHRASES>
+<DE_DE_LANG_NOT_FOUND>
+"Sprache de_DE Nicht Gefunden"
+<END>
+<EN_US_LANG_NOT_FOUND>
+"Language en_US NOT Found"
+<END>
+<HODOR_WESTEROS_LANG_NOT_FOUND>
+"HODOR hodor_WESTEROS HODOR HODOR"
+<END>
+</ADDITIONAL_PHRASES>

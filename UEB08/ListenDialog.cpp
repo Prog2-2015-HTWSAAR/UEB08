@@ -16,16 +16,6 @@
 //Konstanten 
 //Seperators
 const char* ListenDialog::SPACER = " ";
-//ErrorphrassesMANUELLDIALOG_OPTION_ERASE
-const char* ListenDialog::INPUTERRORPHRASE = "-> FEHLERHAFTE EINGABE <-";
-//STD Phrases
-const char* ListenDialog::STANDARDCHOICEPHRASE = "-> ";
-
-const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN = "n";
-const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES = "j";
-const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES_EN = "y";
-const char* ListenDialog::STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR = "HODOR";
-
 //AUTO_TEST
 const char* ListenDialog::AUTOMATIC_TEST_HYPHEN = "- ";
 const char* ListenDialog::AUTOMATIC_TEST_POSITION = " POSITION: ";
@@ -49,16 +39,19 @@ const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM = "-INPUT STREAM VALUE: 
 const char* ListenDialog::AUTOMATIC_TEST_EINGABE_STREAM_VALUE = "A B C D NIL";
 
 
-
-const char* ListenDialog::LANGUAGE_OPTION_OVERVIEW = "Please chose Language";
-const char* ListenDialog::LANGUAGE_OPTION_GERMAN = "(1) GERMAN";
-const char* ListenDialog::LANGUAGE_OPTION_ENGLISH = "(2) ENGLISH";
-const char* ListenDialog::LANGUAGE_OPTION_HODOR = "(3) HODOR";
-
-
-const string ListenDialog::READ_END = "##END";
+const string ListenDialog::LANGUAGE_GERMAN = "de_DE.lang";
+const string ListenDialog::LANGUAGE_ENGLISH = "en_US.lang";
+const string ListenDialog::LANGUAGE_HODOR = "hodor_WESTEROS.lang";
+const string ListenDialog::LANGUAGE_STD = "std.lang";
 const string ListenDialog::PARSER_READ_END = "<END>";
 // const strings
+// Languagedialog
+const string ListenDialog::STD_LANG_NOT_FOUND = "Language std NOT Found";
+const string ListenDialog::DE_DE_LANG_NOT_FOUND ="<DE_DE_LANG_NOT_FOUND>";
+const string ListenDialog::EN_US_LANG_NOT_FOUND = "<EN_US_LANG_NOT_FOUND>";
+const string ListenDialog::HODOR_WESTEROS_LANG_NOT_FOUND = "<HODOR_WESTEROS_LANG_NOT_FOUND>";
+const string ListenDialog::PARSE_LANGUAGEDIALOG = "<LANGUAGE_DIALOGE>";
+
 // Maindialog
 const string ListenDialog::PARSE_SEPERATOR_LINLIST_BLOCK = "<SEPERATOR_LINLIST_BLOCK>";
 const string ListenDialog::PARSE_MAINDIALOG = "<MAINDIALOG>";
@@ -81,7 +74,7 @@ const string ListenDialog::PARSE_PHRASE_CLEAR_CONFIRMATION = "<PHRASE_CLEAR_CONF
 const string ListenDialog::PARSE_PHRASE_LOAD_CONFIRMATION = "<PHRASE_LOAD_CONFIRMATION>";
 const string ListenDialog::PARSE_PHRASE_SAVE_CONFIRMATION = "<PHRASE_SAVE_CONFIRMATION>";
 const string ListenDialog::PARSE_PHRASE_READ_STREAM = "<PHRASE_READ_STREAM>";
-
+const string ListenDialog::CONFIRM_DELETE = "<CONFIRM_DELETE>";
 // Automatic TEST
 const string ListenDialog::PARSE_AUTOMATICTEST = "<SEPERATOR_AUTOMATIC_TEST_BLOCK>";
 
@@ -125,11 +118,10 @@ void ListenDialog::mainDialog(string &fileName){
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string seperator_LinListe = parsePhrases(fileName, PARSE_SEPERATOR_LINLIST_BLOCK);
 	string main_dialog = parsePhrases(fileName, PARSE_MAINDIALOG);
-	int answer = STD_ANSWER_VALUE;
+	int answer;
 	do{
 		cout << seperator_LinListe << endl << main_dialog;
-		cin >> answer;
-		clearInput();
+		answer = readNumericInput();
 		switch (answer) {
 		case EXIT:
 			break;
@@ -246,7 +238,7 @@ void ListenDialog::manuellDialog(string &fileName){
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
 	linListeCopy = new LinList();
-	string wirklichLoeschen = STD_VALUE_WIRKLICH_LOESCHEN;
+	string wirklichLoeschen;
 	string name;
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string error_std = parsePhrases(fileName, PARSE_STD_ERROR);
@@ -269,22 +261,21 @@ void ListenDialog::manuellDialog(string &fileName){
 	string phrase_load_confirmation = parsePhrases(fileName, PARSE_PHRASE_LOAD_CONFIRMATION);
 	string phrase_save_confirmation = parsePhrases(fileName, PARSE_PHRASE_SAVE_CONFIRMATION);
 	string phrase_read_stream = parsePhrases(fileName, PARSE_PHRASE_READ_STREAM);
+	string confirm_Delete = parsePhrases(fileName, CONFIRM_DELETE);
 
-
-	int position = STD_ANSWER_VALUE;
-	int answer = STD_ANSWER_VALUE;
+	int position;
+	int answer;
 	do{
 		try{
 			cout << seperator_maunuell << endl << *linListe << endl << manuell_dialog;
 			cout.clear();
-			cin >> answer;
-			clearInput();
+			answer = readNumericInput();
 			switch (answer) {
 			case BACK:
 				cout << seperator_push << endl << phrase_element_delete_back_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				cout << endl;
@@ -307,7 +298,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -318,7 +309,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_pop << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -331,18 +322,16 @@ void ListenDialog::manuellDialog(string &fileName){
 				cin >> name;
 				clearInput();
 				cout << phrase_position;
-				cin >> position;
-				clearInput();
+				position = readNumericInput();
 				linListe->insert(position, name);
 				break;
 			case ERASE_ELEMENT:
 				cout << phrase_position;
-				cin >> position;
-				clearInput();
+				position = readNumericInput();
 				cout << seperator_erase << endl << phrase_element_delete_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -354,7 +343,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete << endl << phrase_clear_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -366,7 +355,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -380,7 +369,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete_liste << endl << phrase_save_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -396,7 +385,7 @@ void ListenDialog::manuellDialog(string &fileName){
 				cout << seperator_delete_liste << endl << phrase_load_confirmation;
 				cin >> wirklichLoeschen;
 				clearInput();
-				if (wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_EN && wirklichLoeschen != STD_VALUE_WIRKLICH_LOESCHEN_YES_HODOR){
+				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;
 				}
 				else {
@@ -431,54 +420,71 @@ void ListenDialog::manuellDialog(string &fileName){
 * @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 */
 void ListenDialog::initLanguage(){
-	string LANGUAGE_GERMAN = "de_DE.lang";
-	string LANGUAGE_ENGLISH = "en_US.lang";
-	string LANGUAGE_HODOR = "hodor_WESTEROS.lang";
-	string LANGUAGE_STD = "std.lang";
+	string error_input = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
+	string error_de_DE_Not_Found = parsePhrases(LANGUAGE_STD, DE_DE_LANG_NOT_FOUND);
+	string error_en_US_Not_Found = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
+	string error_hodor_WESTEROS_Not_Found = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
+	string language_dialog = parsePhrases(LANGUAGE_STD, PARSE_LANGUAGEDIALOG);
+	string chosenLanguage = LANGUAGE_GERMAN;
 	if (fileExists(LANGUAGE_STD)){
-	int answer = STD_ANSWER_VALUE;
-	do{
-		cout << LANGUAGE_OPTION_OVERVIEW << endl << LANGUAGE_OPTION_GERMAN << endl << LANGUAGE_OPTION_ENGLISH << endl << LANGUAGE_OPTION_HODOR << endl << STANDARDCHOICEPHRASE;
-		cin >> answer;
-		clearInput();
-		switch (answer) {
-		case CLOSEPROGRAM:
-			break;
-		case GERMAN:
-			if (fileExists(LANGUAGE_GERMAN)){
-				mainDialog(LANGUAGE_GERMAN);
+		int answer = STD_ANSWER_VALUE;
+		do{
+
+			if (answer != START_MAINDIALOG){
+				cout << language_dialog;
+				answer = readNumericInput();
+				if (answer == START_MAINDIALOG || answer == runAgain){
+					answer = STD_ANSWER_VALUE;
+				}
 			}
-			else{
-				cout << "Language German NOT Found" << endl;
-				clearInput();
+			switch (answer) {
+			case CLOSEPROGRAM:
+				break;
+			case GERMAN:
+				if (fileExists(LANGUAGE_GERMAN)){
+					chosenLanguage = LANGUAGE_GERMAN;
+					answer = START_MAINDIALOG;
+					
+				}
+				else{
+					cout << error_de_DE_Not_Found << endl;
+					clearInput();
+				}
+				break;
+			case ENGLISH:
+				if (fileExists(LANGUAGE_ENGLISH)){
+					chosenLanguage = LANGUAGE_ENGLISH;
+					answer = START_MAINDIALOG;
+				}
+				else{
+					cout << error_en_US_Not_Found << endl;
+					clearInput();
+				}
+				break;
+			case HODOR:
+				if (fileExists(LANGUAGE_HODOR)){
+					chosenLanguage = LANGUAGE_HODOR;
+					answer = START_MAINDIALOG;
+				}
+				else{
+					cout << error_hodor_WESTEROS_Not_Found << endl;
+					clearInput();
+				}
+				break;
+			case START_MAINDIALOG:
+				mainDialog(chosenLanguage);
+				answer = runAgain;
+				break;
+			case runAgain:
+				break;
+			default:
+				cout << error_input << endl;
+				break;
 			}
-			break;
-		case ENGLISH:
-			if (fileExists(LANGUAGE_ENGLISH)){
-				mainDialog(LANGUAGE_ENGLISH);
-			}
-			else{
-				cout << "Language Englisch NOT Found" << endl;
-				clearInput();
-			}
-			break;
-		case HODOR:
-			if (fileExists(LANGUAGE_HODOR)){
-				mainDialog(LANGUAGE_HODOR);
-			}
-			else{
-				cout << "Language Hodor NOT Found" << endl;
-				clearInput();
-			}
-			break;
-		default:
-			cout << INPUTERRORPHRASE << endl;
-			break;
-		}
-	
-	} while (answer != EXIT);
-} else{
-		cout << "Language std NOT Found" << endl;
+		} while (answer != EXIT);
+	}
+	else{
+		cout << STD_LANG_NOT_FOUND << endl;
 		clearInput();
 	}
 }
@@ -530,6 +536,16 @@ void ListenDialog::clearInput(){
 	cin.ignore(HIGH_VALUE, '\n');
 }
 
+int ListenDialog::readNumericInput(){
+	int number;
+	if (cin >> number){
+	}
+	else {
+		number = STD_ANSWER_VALUE;
+	}
+	clearInput();
+	return number;
+}
 bool ListenDialog::fileExists(string fileName) {
 	const char* constName = fileName.c_str();
 	ifstream infile(constName);
