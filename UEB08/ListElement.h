@@ -45,6 +45,8 @@ public:
 	* @returns referenz auf stream mit angehaengtem istream Element
 	*/
 	friend istream& operator>> (istream& i, ListElement& listElement);
+	bool operator==(ListElement& listElement);
+	bool operator!=(ListElement& listElement);
 private:
 	InhaltTyp inhalt;
 	ListElement* previous;

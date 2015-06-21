@@ -49,4 +49,18 @@ istream& operator>> (istream& i, ListElement& listElement){
 	i >> listElement.inhalt;
 	return i;
 }
+bool ListElement::operator==(ListElement& listElement){
+	bool ergebnis = false;
+	if(inhalt.compare(listElement.inhalt) == 0){
+		ergebnis = true;
+	}
+	return ergebnis;
+}
+bool ListElement::operator!=(ListElement& listElement){
+	bool ergebnis = false;
+	if(inhalt.compare(listElement.inhalt) != 0){
+		ergebnis = true;
+	}
+	return ergebnis;
+}
 

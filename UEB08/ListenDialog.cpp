@@ -292,7 +292,9 @@ void ListenDialog::automaticTest(string &fileName){
 				linListe->clear();
 				break;
 			case ELEMENT_AT_POSITION:
-				cout << linListe[3] << endl;
+				//TODO Position Phrase
+				cout << "linListe[3]" << endl;
+				cout << (*linListe)[3] << endl;
 				break;
 			case POP_EMPTY:
 				cout << phrase_Pop_Empty << endl;

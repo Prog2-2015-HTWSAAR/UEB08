@@ -104,6 +104,10 @@ public:
 	/**
 	 *
 	 */
+	const ListElement& operator[](int pos) const;
+	/**
+	 *
+	 */
 	LinList& operator+=(LinList& linList);
 	/**
 	 *
