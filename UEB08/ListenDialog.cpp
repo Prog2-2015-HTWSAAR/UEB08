@@ -25,6 +25,7 @@ const string ListenDialog::LANGUAGE_GERMAN = "de_DE.xml";
 const string ListenDialog::LANGUAGE_ENGLISH = "en_US.xml";
 const string ListenDialog::LANGUAGE_HODOR = "hodor_WESTEROS.xml";
 const string ListenDialog::LANGUAGE_STD = "std.xml";
+const string ListenDialog::STD_INP_PHRASE = "STD_INP_PHRASE";
 // const strings
 // Languagedialog
 const string ListenDialog::STD_LANG_NOT_FOUND = "Language std NOT Found";
@@ -97,6 +98,7 @@ const int ListenDialog::STD_ANSWER_VALUE = -1;
 const int ListenDialog::ZERO_VALUE = 0;
 const int ListenDialog::INPUT_ONE = 1;
 const int ListenDialog::INPUT_VALUE = 2;
+const int ListenDialog::ARRAY_OPERATOR_TEST_VALUE = 3;
 const int ListenDialog::MAX_RUNS_FILE_READ = 4;
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 21;
@@ -167,14 +169,15 @@ void ListenDialog::automaticTest(string &fileName){
 	string seperator_Automatic_Test = parsePhrases(fileName, PARSE_AUTOMATICTEST);
 	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
 	string error_std = parsePhrases(fileName, PARSE_STD_ERROR);
-
 	string phrase_Equal = parsePhrases(fileName, PARSE_EQUAL);
 	string phrase_NON_Equal = parsePhrases(fileName, PARSE_NON_EQUAL);
 	string phrase_Append = parsePhrases(fileName, PARSE_APPEND_LIST);
 	string phrase_Combine = parsePhrases(fileName, PARSE_COMBINE_LIST);
-	string phrase_Element_At_Position = parsePhrases(fileName, PARSE_ELEMENT_AT_POSITION);
+	string phrase_Element_At_Position = parsePhrases(fileName, PARSE_ELEMENT_AT_POSITION) + SPACER;
 	string phrase_Check_Equal = parsePhrases(fileName, CHECK_EQUAL);
 	string phrase_Check_Non_Equal = parsePhrases(fileName, CHECK_NON_EQUAL);
+
+	string phrase_Std_Input = parsePhrases(LANGUAGE_STD, STD_INP_PHRASE) + SPACER;
 	LinList* linListe = NULL;
 	LinList* linListeCopy = NULL;
 	linListe = new LinList();
@@ -239,11 +242,11 @@ void ListenDialog::automaticTest(string &fileName){
 				break;
 			case AUTO_COPY_TEST:
 				*linListeCopy = *linListe;
-				cout << phrase_Copy << endl << linListe << SPACER << *linListe << endl
+				cout << phrase_Copy << endl << endl << linListe << SPACER << *linListe << endl
 					<< linListeCopy << SPACER << *linListeCopy << endl;
 				break;
 			case AUTO_TEST_EQUAL_ONE:
-				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				cout << phrase_Check_Equal << endl << endl << *linListe << endl << *linListeCopy << endl;
 				if (*linListe == *linListeCopy){
 					cout << phrase_Equal << endl << endl;
 				}
@@ -252,7 +255,7 @@ void ListenDialog::automaticTest(string &fileName){
 				}
 				break;
 			case AUTO_TEST_NON_EQUAL_ONE:
-				cout << phrase_Check_Non_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				cout << phrase_Check_Non_Equal << endl << endl << *linListe << endl << *linListeCopy << endl;
 				if (!(*linListe != *linListeCopy)){
 					cout << phrase_Equal << endl << endl;
 				}
@@ -263,9 +266,10 @@ void ListenDialog::automaticTest(string &fileName){
 			case AUTO_APPEND:
 				cout << phrase_Append << endl;
 				*linListe += *linListeCopy;
+				cout << *linListe << endl;
 				break;
 			case AUTO_TEST_EQUAL_TWO:
-				cout << phrase_Check_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				cout << phrase_Check_Equal << endl << endl << *linListe << endl << *linListeCopy << endl;
 				if (*linListe == *linListeCopy){
 					cout << phrase_Equal << endl << endl;
 				}
@@ -274,7 +278,7 @@ void ListenDialog::automaticTest(string &fileName){
 				}
 				break;
 			case AUTO_TEST_NON_EQUAL_TWO:
-				cout << phrase_Check_Non_Equal << endl << *linListe << endl << *linListeCopy << endl;
+				cout << phrase_Check_Non_Equal << endl << endl << *linListe << endl << *linListeCopy << endl;
 				if (!(*linListe != *linListeCopy)){
 					cout << phrase_Equal << endl << endl;
 				}
@@ -285,16 +289,15 @@ void ListenDialog::automaticTest(string &fileName){
 			case AUTO_COMBINE:
 				cout << phrase_Append << endl;
 				*linListe = *linListe + *linListeCopy;
-				cout << *linListe;
+				cout << *linListe << endl;
+				break;
+			case ELEMENT_AT_POSITION:
+				cout << phrase_Element_At_Position << ARRAY_OPERATOR_TEST_VALUE << endl;
+				cout << phrase_Std_Input << (*linListe)[ARRAY_OPERATOR_TEST_VALUE] << endl << endl;
 				break;
 			case AUTO_CLEAR:
 				cout << phrase_Clear << endl;
 				linListe->clear();
-				break;
-			case ELEMENT_AT_POSITION:
-				//TODO Position Phrase
-				cout << "linListe[3]" << endl;
-				cout << (*linListe)[3] << endl;
 				break;
 			case POP_EMPTY:
 				cout << phrase_Pop_Empty << endl;
@@ -354,7 +357,7 @@ void ListenDialog::manuellDialog(string &fileName){
 			answer = readIntegerInput();
 			switch (answer) {
 			case BACK:
-				cout << seperator_push << endl << phrase_element_delete_back_confirmation;
+				cout << seperator_delete_liste << endl << phrase_element_delete_back_confirmation;
 				wirklichLoeschen = readStringInput();
 				if (wirklichLoeschen != confirm_Delete){
 					answer = ABORT;

@@ -260,18 +260,18 @@ ListElement& LinList::operator[] (int pos){
 	return *tmp;
 }
 
-const ListElement& LinList::operator[](int pos) const{
-	int suchIndex = 1;
-	const ListElement* tmp = first;
-	if ((size_t)pos < 1 || (size_t)pos > size){
-		throw LinListException(MELDUNG_FALSCHE_POS);
-	}
-	while (suchIndex < pos){
-		tmp = tmp->next;
-		suchIndex++;
-	}
-	return *tmp;
-}
+//const ListElement& LinList::operator[](int pos) const{
+//	int suchIndex = 1;
+//	const ListElement* tmp = first;
+//	if ((size_t)pos < 1 || (size_t)pos > size){
+//		throw LinListException(MELDUNG_FALSCHE_POS);
+//	}
+//	while (suchIndex < pos){
+//		tmp = tmp->next;
+//		suchIndex++;
+//	}
+//	return *tmp;
+//}
 
 LinList& LinList::operator+= (LinList& linList){
 	copyElements(linList);

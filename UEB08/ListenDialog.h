@@ -40,6 +40,7 @@ public:
 	static const string LANGUAGE_ENGLISH;
 	static const string LANGUAGE_HODOR;
 	static const string LANGUAGE_STD;
+	static const string STD_INP_PHRASE;
 	// Maindialog
 	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
 	static const string PARSE_MAINDIALOG;
@@ -101,7 +102,7 @@ public:
 	static const int TEST_QUANTITY;
 	static const int MAX_RUNS_FILE_READ;
 	static const int A_REGULAR_OUTPUT_STOPER;
-
+	static const int ARRAY_OPERATOR_TEST_VALUE;
 
 	//FKT
 	/**
