@@ -490,8 +490,8 @@ void ListenDialog::manuellDialog(string &fileName){
 }
 
 /**
-* @brief ListenDialog::clearInput()
-* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
+* @brief initLanguage()
+* @details Language Dialog
 */
 void ListenDialog::initLanguage(){
 	string error_input = parsePhrases(LANGUAGE_STD, PARSE_INPUT_ERROR);
@@ -562,6 +562,11 @@ void ListenDialog::initLanguage(){
 		clearInput();
 	}
 }
+/**
+* @brief parsePhrases Xml Parser
+* @param fileName Xml Datei die genutzt werden soll
+* @param begin String in Xml Datei der als start und endpunkt gennommen werden soll
+*/
 string ListenDialog::parsePhrases(string fileName, string begin){
 	fstream file;
 	string anfang = "<" + begin + ">";
@@ -604,10 +609,16 @@ string ListenDialog::parsePhrases(string fileName, string begin){
 	file.close();
 	return ausgabe;
 }
+/**
+* @brief clearInput Clear Cin
+*/
 void ListenDialog::clearInput(){
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');
 }
+/**
+* @brief readIntegerInput read in int
+*/
 int ListenDialog::readIntegerInput(){
 	double number = readDoubleInput();
 	if (!(fmod(number, INPUT_ONE) == ZERO_VALUE)){
@@ -615,6 +626,9 @@ int ListenDialog::readIntegerInput(){
 	}
 	return (int)number;
 }
+/**
+* @brief readIntegerInput read in double
+*/
 double ListenDialog::readDoubleInput(){
 	double number;
 	if (cin >> number){
@@ -625,18 +639,28 @@ double ListenDialog::readDoubleInput(){
 	clearInput();
 	return number;
 }
+/**
+* @brief readIntegerInput read in string
+*/
 string ListenDialog::readStringInput(){
 	string input;
 	cin >> input;
 	clearInput();
 	return input;
 }
+/**
+* @brief fileExists prüft existenz
+* @param fileName Xml Datei die genutzt werden soll
+*/
 bool ListenDialog::fileExists(string fileName) {
 	const char* constName = fileName.c_str();
 	ifstream infile(constName);
 	return infile.good();
 }
-
+/**
+* @brief trim string trimmer
+* @param str String Referenz
+*/
 void ListenDialog::trim(string& str) {
 	string trim_chars = " \t";
 	string::size_type pos = str.find_last_not_of(trim_chars);

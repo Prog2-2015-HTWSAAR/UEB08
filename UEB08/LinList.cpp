@@ -246,7 +246,11 @@ istream& operator>> (istream& i, LinList& linList){
 	}
 	return i;
 }
-
+/**
+* @brief Operator[] zum Ausgeben einens Elements
+* @param pos position
+* @returns Referenz auf objekt
+*/
 ListElement& LinList::operator[] (int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
@@ -272,12 +276,20 @@ ListElement& LinList::operator[] (int pos){
 //	}
 //	return *tmp;
 //}
-
+/**
+* @brief Operator+= zur Append obj
+* @param linList Listenreferenz
+* @returns Referenz auf Stream mit angehaengtem obj
+*/
 LinList& LinList::operator+= (LinList& linList){
 	copyElements(linList);
 	return *this;
 }
-
+/**
+* @brief Operator== Vergleicht obj
+* @param linList Listenreferenz
+* @returns ergenis bool value
+*/
 bool LinList::operator== (LinList& linList){
 	bool ergebnis = true;
 	ListElement* tmp1 = first;
@@ -295,11 +307,20 @@ bool LinList::operator== (LinList& linList){
 	}
 	return ergebnis;
 }
-
+/**
+* @brief Operator!= Vergleicht obj
+* @param linList Listenreferenz
+* @returns ergenis bool value
+*/
 bool LinList::operator!= (LinList& linList){
 	return !(*this == linList);
 }
-
+/**
+* @brief Operator+ Erzeugt neues obj mit den werten 2er objs
+* @param linList1 Listenreferenz1
+* @param linList2 Listenreferenz2
+* @returns Referenz auf objekt
+*/
 LinList& operator+(LinList& linList1, LinList& linList2){
 	LinList* tmp = new LinList(linList1);
 	*tmp += linList2;

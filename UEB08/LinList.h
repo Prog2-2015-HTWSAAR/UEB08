@@ -97,29 +97,37 @@ public:
 	 */
 	friend istream& operator>> (istream& i, LinList& linList);
 	/**
-	 * @brief indexOperator zum Zugriff auf ein Element
-	 *
-	 */
+	* @brief Operator[] zum Ausgeben einens Elements
+	* @param pos position
+	* @returns Referenz auf objekt
+	*/
 	ListElement& operator[](int pos);
+
+//	const ListElement& operator[](int pos) const;
 	/**
-	 *
-	 */
-	const ListElement& operator[](int pos) const;
-	/**
-	 *
-	 */
+	* @brief Operator+= zur Append obj
+	* @param linList Listenreferenz
+	* @returns Referenz auf Stream mit angehaengtem obj
+	*/
 	LinList& operator+=(LinList& linList);
 	/**
-	 *
-	 */
+	* @brief Operator== Vergleicht obj
+	* @param linList Listenreferenz
+	* @returns ergenis bool value
+	*/
 	bool operator==(LinList& linList);
 	/**
-	 *
-	 */
+	* @brief Operator!= Vergleicht obj
+	* @param linList Listenreferenz
+	* @returns ergenis bool value
+	*/
 	bool operator!=(LinList& linList);
 	/**
-	 *
-	 */
+	* @brief Operator+ Erzeugt neues obj mit den werten 2er objs
+	* @param linList1 Listenreferenz1
+	* @param linList2 Listenreferenz2
+	* @returns Referenz auf objekt
+	*/
 	friend LinList& operator+(LinList& linList1, LinList& linList2);
 	static const char* MELDUNG_LISTE_LEER;
 	static const char* MELDUNG_FALSCHE_POS;

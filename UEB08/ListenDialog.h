@@ -132,13 +132,38 @@ public:
 	* @details Im Falle einer falschen eingabe leer dies den Eingabepuffer.
 	*/
 	void clearInput();
+	/**
+	* @brief initLanguage()
+	* @details Language Dialog
+	*/
 	void initLanguage();
+	/**
+	* @brief fileExists prüft existenz
+	* @param fileName Xml Datei die genutzt werden soll
+	*/
 	bool fileExists(string fileName);
+	/**
+	* @brief readIntegerInput read in int
+	*/
 	int readIntegerInput();
+	/**
+	* @brief readIntegerInput read in double
+	*/
 	double readDoubleInput();
+	/**
+	* @brief readIntegerInput read in string
+	*/
 	string readStringInput();
-	string readVariables(string fileName, int lowerBorder);
+	/**
+	* @brief parsePhrases Xml Parser
+	* @param fileName Xml Datei die genutzt werden soll
+	* @param begin String in Xml Datei der als start und endpunkt gennommen werden soll
+	*/
 	string parsePhrases(string fileName, string begin);
+	/**
+	* @brief trim string trimmer
+	* @param str String Referenz
+	*/
 	void trim(std::string& str);
 	/**
 	* @brief Konstruktor
