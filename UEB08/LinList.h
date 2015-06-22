@@ -113,13 +113,13 @@ public:
 	/**
 	* @brief Operator== Vergleicht obj
 	* @param linList Listenreferenz
-	* @returns ergenis bool value
+	* @returns ergebnis bool value
 	*/
 	bool operator==(LinList& linList);
 	/**
 	* @brief Operator!= Vergleicht obj
 	* @param linList Listenreferenz
-	* @returns ergenis bool value
+	* @returns ergebnis bool value
 	*/
 	bool operator!=(LinList& linList);
 	/**

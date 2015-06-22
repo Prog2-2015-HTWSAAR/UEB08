@@ -27,7 +27,7 @@ ListElement::ListElement(InhaltTyp inhalt, ListElement* previous,
 * @brief Dekonstruktor
 */
 ListElement::~ListElement() {
-	// TODO Auto-generated destructor stub
+	// Nothins to do here!
 }
 /**
 * @brief <<Operator zur ausgabe in einen stream

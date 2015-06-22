@@ -103,7 +103,6 @@ const int ListenDialog::MAX_RUNS_FILE_READ = 4;
 const int ListenDialog::HIGH_VALUE = 1000;
 const int ListenDialog::TEST_QUANTITY = 21;
 const int ListenDialog::A_REGULAR_OUTPUT_STOPER = 13;
-//TODO Implement me Senpai
 
 /**
 * @brief Konstruktor
