@@ -159,7 +159,7 @@
       drop list? (y)=yes:
     </PHRASE_LOAD_CONFIRMATION>
     <PHRASE_SAVE_CONFIRMATION>
-      Overwride Backup? (y)=yes:
+      Override Backup? (y)=yes:
     </PHRASE_SAVE_CONFIRMATION>
     <CONFIRM_DELETE>
       y
@@ -174,7 +174,7 @@
       Lists append
     </APPEND_LIST>
     <COMBINE_LIST>
-      Lists Combin
+      Lists Combine
     </COMBINE_LIST>
     <ELEMENT_AT_POSITION>
       ELEMENT at POSITION:
